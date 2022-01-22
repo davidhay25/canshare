@@ -1,0 +1,192 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "com.clinfhir.canshare",
+  "url": "http://example.org/ImplementationGuide/com.clinfhir.canshare",
+  "version": "0.1.0",
+  "name": "CanShare",
+  "status": "draft",
+  "publisher": "David Hay",
+  "contact": [
+    {
+      "name": "David Hay",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://example.org/example-publisher"
+        }
+      ]
+    }
+  ],
+  "packageId": "com.clinfhir.canshare",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/cs-extracted-Observation"
+        },
+        "name": "Extracted Observations",
+        "description": "Describes the supported content of extracted observations",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/LungModel"
+        },
+        "name": "Model for Lung cancer data",
+        "description": "Model for Lung cancer data",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/smoking-status"
+        },
+        "name": "Smoking Status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/resection"
+        },
+        "name": "Nature of the resection",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/site"
+        },
+        "name": "Site and laterality",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/resection"
+        },
+        "name": "Nature of the resection",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/site"
+        },
+        "name": "Smoking Status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/smoking-status"
+        },
+        "name": "Smoking Status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Questionnaire/QLungCancer"
+        },
+        "name": "QLungCancer",
+        "description": "Questionnaire for Lung Cancer histology request",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "QuestionnaireResponse/QLungCancerInstance"
+        },
+        "name": "QLungCancerInstance",
+        "description": "A QR instance",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Questionnaire/QSystemsReview"
+        },
+        "name": "QSystemsReview",
+        "description": "Questionnaire Systems review",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/dataserverCS"
+        },
+        "name": "Data Server Capability Statement",
+        "description": "Represents API exposed by the Data Server",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/formsManagerCS"
+        },
+        "name": "CapabilityStatement",
+        "description": "API exposed by Forms Manager",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/formsReceiverCS"
+        },
+        "name": "CapabilityStatement",
+        "description": "API exposed by Forms Reciever",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Patient/patient1"
+        },
+        "name": "patient1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Patient/patient2"
+        },
+        "name": "patient2",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/practitioner1"
+        },
+        "name": "practitioner1",
+        "exampleBoolean": true
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "fhirgraphs.html",
+          "title": "Fhirgraphs",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "forms.html",
+          "title": "Forms",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "referenceimplementation.html",
+          "title": "Referenceimplementation",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2021+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      }
+    ]
+  }
+}

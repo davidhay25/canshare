@@ -1,0 +1,54 @@
+{
+  "resourceType": "CapabilityStatement",
+  "id": "formsManagerCS",
+  "url": "http://example.org/CapabilityStatement/formsManagerCS",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "NZ",
+          "system": "urn:iso:std:iso:3166"
+        }
+      ]
+    }
+  ],
+  "text": {
+    "status": "additional",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Forms Manager capabilities</div>"
+  },
+  "name": "FM_CapabilityStatement",
+  "title": "Capability Statement describing Forms Manager",
+  "description": "This is the computable resource that describes the RESTful endpoint",
+  "date": "2020-04-01",
+  "status": "draft",
+  "kind": "instance",
+  "fhirVersion": "4.0.1",
+  "format": [
+    "json"
+  ],
+  "implementation": {
+    "description": "Forms Manager",
+    "url": ""
+  },
+  "rest": [
+    {
+      "mode": "server",
+      "resource": [
+        {
+          "type": "Questionnaire",
+          "documentation": "Questionnaire query\n",
+          "interaction": [
+            {
+              "code": "read",
+              "documentation": "Used to retrieve a Practitioner resource by Id."
+            },
+            {
+              "code": "search-type",
+              "documentation": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

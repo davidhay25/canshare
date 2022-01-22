@@ -1,0 +1,831 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "LungModel",
+  "url": "http://clinfhir.com/StructureDefinition/LungModel",
+  "version": "0.1.0",
+  "name": "LungModel",
+  "title": "Model for Lung cancer data",
+  "status": "active",
+  "description": "Model for Lung cancer data",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://clinfhir.com/StructureDefinition/LungModel",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "LungModel",
+        "path": "LungModel",
+        "short": "Model for Lung cancer data",
+        "definition": "Model for Lung cancer data"
+      },
+      {
+        "id": "LungModel.patient",
+        "path": "LungModel.patient",
+        "short": "Patient data",
+        "definition": "Patient data",
+        "comment": "The Patient resource",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.NHI",
+        "path": "LungModel.patient.NHI",
+        "short": "NHI for the patient",
+        "definition": "NHI for the patient",
+        "comment": "Will be in the Patient.identifier element",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.familyName",
+        "path": "LungModel.patient.familyName",
+        "short": "Family name",
+        "definition": "Family name",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.givenName",
+        "path": "LungModel.patient.givenName",
+        "short": "Given (first) names",
+        "definition": "Given (first) names",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.birthDate",
+        "path": "LungModel.patient.birthDate",
+        "short": "Date of Birth",
+        "definition": "Date of Birth",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.gender",
+        "path": "LungModel.patient.gender",
+        "short": "Gender",
+        "definition": "Gender",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.birthSex",
+        "path": "LungModel.patient.birthSex",
+        "short": "sex on birth certificate",
+        "definition": "sex on birth certificate",
+        "comment": "Patient.extension",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.patient.ethnicity",
+        "path": "LungModel.patient.ethnicity",
+        "short": "Ethnicities (up to 6). Text element available if not coded",
+        "definition": "Ethnicities (up to 6). Text element available if not coded",
+        "comment": "An extension on the patient resource",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative",
+        "path": "LungModel.administrative",
+        "short": "Administrative data",
+        "definition": "Administrative data",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.identifier",
+        "path": "LungModel.administrative.identifier",
+        "short": "Client identifier for the request (not an integer)",
+        "definition": "Client identifier for the request (not an integer)",
+        "comment": "On the ServiceRequest. This is the identifier of the request - not the patient",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.requestDate",
+        "path": "LungModel.administrative.requestDate",
+        "short": "The date that the request was made",
+        "definition": "The date that the request was made",
+        "comment": "ServiceRequest.date",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.principalClinician",
+        "path": "LungModel.administrative.principalClinician",
+        "short": "The HPI of the main clinician looking after the patient",
+        "definition": "The HPI of the main clinician looking after the patient",
+        "comment": "ServiceRequest.extension",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.requestingClinician",
+        "path": "LungModel.administrative.requestingClinician",
+        "short": "The physician or an organization HPI make the request",
+        "definition": "The bundle will contain a Practitioner resource for the patient, so may include name, etc.",
+        "comment": "ServiceRequest.requester Actually a reference to a PractitionerRole resource, which will have the identifier.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.requestingFacility",
+        "path": "LungModel.administrative.requestingFacility",
+        "comment": "From pracrole",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.administrative.copyTo",
+        "path": "LungModel.administrative.copyTo",
+        "short": "People and Organizations to get a copy. HPI number",
+        "definition": "People and Organizations to get a copy. HPI number",
+        "comment": "ServiceRequest.extension",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData",
+        "path": "LungModel.clinicalData",
+        "short": "Clinical information about the request",
+        "definition": "Clinical information about the request",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.smokingStatus",
+        "path": "LungModel.clinicalData.smokingStatus",
+        "short": "Smoking status",
+        "definition": "Smoking status",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://clinfhir.com/ValueSet/ss"
+        }
+      },
+      {
+        "id": "LungModel.clinicalData.asbestos",
+        "path": "LungModel.clinicalData.asbestos",
+        "short": "Has there been asbestos exposure",
+        "definition": "Has there been asbestos exposure",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.previousCytology",
+        "path": "LungModel.clinicalData.previousCytology",
+        "short": "Details of previous cytology or biopsies for this tumour",
+        "definition": "An Observation. needs to have coded yes / no / unknown and details",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.previousTx",
+        "path": "LungModel.clinicalData.previousTx",
+        "short": "Details of previous treatment for this tumour",
+        "definition": "An Observation. needs to have coded yes / no / unknown and details",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.previousCancer",
+        "path": "LungModel.clinicalData.previousCancer",
+        "short": "Any previous cancers",
+        "definition": "An Observation. needs to have coded yes / no / unknown and details",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.radiologyData",
+        "path": "LungModel.clinicalData.radiologyData",
+        "short": "Any other relevant rediologic information",
+        "definition": "Need 'unknown' as well as narrative",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.otherClinicalData",
+        "path": "LungModel.clinicalData.otherClinicalData",
+        "short": "Any other relevant information",
+        "definition": "Any other relevant information",
+        "comment": "Observation. code = ??",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM",
+        "path": "LungModel.clinicalData.TNM",
+        "short": "Clinical TNM Classification",
+        "definition": "Clinical TNM Classification",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.T-stage",
+        "path": "LungModel.clinicalData.TNM.T-stage",
+        "short": "Clinical T (Tumour) stage",
+        "definition": "Clinical T (Tumour) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.N-stage",
+        "path": "LungModel.clinicalData.TNM.N-stage",
+        "short": "Clinical N (Nodes) stage",
+        "definition": "Clinical N (Nodes) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.M-stage",
+        "path": "LungModel.clinicalData.TNM.M-stage",
+        "short": "Clinical M (Metastasis) stage",
+        "definition": "Clinical M (Metastasis) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.group",
+        "path": "LungModel.clinicalData.TNM.group",
+        "short": "Clinical group",
+        "definition": "Clinical group",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.edition",
+        "path": "LungModel.clinicalData.TNM.edition",
+        "short": "Edition of TNM used",
+        "definition": "Edition of TNM used",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.TNM.date",
+        "path": "LungModel.clinicalData.TNM.date",
+        "short": "Date evaluation done",
+        "definition": "Date evaluation done",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.indication",
+        "path": "LungModel.clinicalData.indication",
+        "short": "Primary, recurrance, metastatic, other",
+        "definition": "Primary, recurrance, metastatic, other",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.neoadjuvantTherapy",
+        "path": "LungModel.clinicalData.neoadjuvantTherapy",
+        "short": "Information about therapies prior to procedure",
+        "definition": "Information about therapies prior to procedure",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.neoadjuvantTherapy.administered",
+        "path": "LungModel.clinicalData.neoadjuvantTherapy.administered",
+        "short": "Whether therapy was administered",
+        "definition": "Whether therapy was administered",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.clinicalData.neoadjuvantTherapy.details",
+        "path": "LungModel.clinicalData.neoadjuvantTherapy.details",
+        "short": "Details of therapy",
+        "definition": "Details of therapy",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure",
+        "path": "LungModel.procedure",
+        "short": "Details of the procedure performed",
+        "definition": "Details of the procedure performed",
+        "comment": "Procedure resource",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.site",
+        "path": "LungModel.procedure.site",
+        "short": "Where the procedure was performed",
+        "definition": "Where the procedure was performed",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.type",
+        "path": "LungModel.procedure.type",
+        "short": "Type of procedure - Bronchoscopic, Transthoracic, Frozed section, operative lung / pleura / mediastinum",
+        "definition": "Type of procedure - Bronchoscopic, Transthoracic, Frozed section, operative lung / pleura / mediastinum",
+        "comment": "Procedure.category",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.code",
+        "path": "LungModel.procedure.code",
+        "short": "Specific procedure.",
+        "definition": "Specific procedure.",
+        "comment": "Procedure.code",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.notes",
+        "path": "LungModel.procedure.notes",
+        "short": "Notes on procedure",
+        "definition": "Notes on procedure",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.adjacentOrgans",
+        "path": "LungModel.procedure.adjacentOrgans",
+        "short": "Are adjacent organs involved",
+        "definition": "Are adjacent organs involved",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.adjacentOrgans.involved",
+        "path": "LungModel.procedure.adjacentOrgans.involved",
+        "short": "Whether adjacent organs were involved",
+        "definition": "Whether adjacent organs were involved",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.adjacentOrgans.details",
+        "path": "LungModel.procedure.adjacentOrgans.details",
+        "short": "Details of involvement",
+        "definition": "Details of involvement",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.surgicalOpinion",
+        "path": "LungModel.procedure.surgicalOpinion",
+        "short": "Surgeon's opinion of local residual tumour post procedure",
+        "definition": "Surgeon's opinion of local residual tumour post procedure",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.surgicalOpinion.residual",
+        "path": "LungModel.procedure.surgicalOpinion.residual",
+        "short": "Whether residual is left behind",
+        "definition": "Whether residual is left behind",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.procedure.surgicalOpinion.notes",
+        "path": "LungModel.procedure.surgicalOpinion.notes",
+        "short": "Notes on residual tumour",
+        "definition": "Notes on residual tumour",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.tumour",
+        "path": "LungModel.tumour",
+        "short": "Data about the tumour.",
+        "definition": "Data about the tumour.",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.tumour.site",
+        "path": "LungModel.tumour.site",
+        "short": "Where the tumour is located",
+        "definition": "Where the tumour is located",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.tumour.notes",
+        "path": "LungModel.tumour.notes",
+        "short": "Notes on Tumour - eg expanding on site",
+        "definition": "Notes on Tumour - eg expanding on site",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen",
+        "path": "LungModel.specimen",
+        "short": "Details about the specimen - including lymph nodes. can have reference to procedure & site & tumour",
+        "definition": "Details about the specimen - including lymph nodes. can have reference to procedure & site & tumour",
+        "comment": "Specimen",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.identifier",
+        "path": "LungModel.specimen.identifier",
+        "short": "Specimen identifier",
+        "definition": "Specimen identifier",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.type",
+        "path": "LungModel.specimen.type",
+        "short": "eg lymph node, from tumour",
+        "definition": "eg lymph node, from tumour",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.location",
+        "path": "LungModel.specimen.location",
+        "short": "Where specimen was collected from",
+        "definition": "Where specimen was collected from",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.specLabel",
+        "path": "LungModel.specimen.specLabel",
+        "short": "Specimen Label",
+        "definition": "Specimen Label",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.notes",
+        "path": "LungModel.specimen.notes",
+        "short": "General notes",
+        "definition": "General notes",
+        "comment": "Specimen.container.extension (url=label)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.specReturn",
+        "path": "LungModel.specimen.specReturn",
+        "short": "Does the patient want the specimen returned",
+        "definition": "Does the patient want the specimen returned",
+        "comment": "Specimen.extension (url = return)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.image",
+        "path": "LungModel.specimen.image",
+        "short": "Associated images with this specimen",
+        "definition": "Associated images with this specimen",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.image.identifier",
+        "path": "LungModel.specimen.image.identifier",
+        "short": "Image identifier",
+        "definition": "Image identifier",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/elementdefinition-identifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.image.image",
+        "path": "LungModel.specimen.image.image",
+        "short": "An image - photographic / hand drawn",
+        "definition": "An image - photographic / hand drawn",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Attachment"
+          }
+        ]
+      },
+      {
+        "id": "LungModel.specimen.image.notes",
+        "path": "LungModel.specimen.image.notes",
+        "short": "Notes about the image",
+        "definition": "Notes about the image",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
