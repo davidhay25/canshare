@@ -26,6 +26,7 @@ This is the computable resource that describes the RESTful endpoint
 * implementation.url = ""
 
 
+
 * rest.mode = #server
 
 
