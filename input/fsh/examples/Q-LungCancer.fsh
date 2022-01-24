@@ -67,12 +67,14 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerValueSet = "http://hl7.org/fhir/ValueSet/condition-code"
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
 * item[=].item[=].extension[=].valueBoolean = true
-
 * item[=].item[+].linkId = "height"
 * item[=].item[=].text = "Current height (m)"
 * item[=].item[=].type = #decimal
+* item[=].item[=].required = true 
+
 * item[=].item[=].code = $loinc#8302-2
 * item[=].item[=].code.display = "Height" 
+* item[=].item[=].required = true 
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
 * item[=].item[=].extension[=].valueBoolean = true
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
@@ -100,7 +102,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 * item[=].item[=].answerOption[+].valueCoding = $ss-cs#current "current"
 * item[=].item[=].answerOption[+].valueCoding  = $ss-cs#current "ex"
-* item[=].item[=].answerOption[+].valueCoding  = $ss-cs#current "never"
+* item[=].item[=].answerOption[+].valueCoding  = $ss-cs#never "never"
 
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
 * item[=].item[=].extension[=].valueBoolean = true

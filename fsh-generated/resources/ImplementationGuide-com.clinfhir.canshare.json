@@ -117,7 +117,7 @@
         "reference": {
           "reference": "CapabilityStatement/formsManagerCS"
         },
-        "name": "CapabilityStatement",
+        "name": "Forms Manager CapabilityStatement",
         "description": "API exposed by Forms Manager",
         "exampleBoolean": false
       },
@@ -125,7 +125,7 @@
         "reference": {
           "reference": "CapabilityStatement/formsReceiverCS"
         },
-        "name": "CapabilityStatement",
+        "name": "Forms Receiver CapabilityStatement",
         "description": "API exposed by Forms Reciever",
         "exampleBoolean": false
       },

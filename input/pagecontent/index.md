@@ -5,6 +5,10 @@ The CanShare program of work is to capture clinical information relating to Canc
 
 It is a FHIR based repository of information. Data is saved as FHIR resources.
 
+### High level
+
+<img style="width:500px; float:none" src="canshare.png"/>
+
 ### External ecosystem
 
 <img style="width:500px; float:none" src="ecosystem.png"/>
