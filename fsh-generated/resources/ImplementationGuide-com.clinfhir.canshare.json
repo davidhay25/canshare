@@ -4,6 +4,7 @@
   "url": "http://example.org/ImplementationGuide/com.clinfhir.canshare",
   "version": "0.1.0",
   "name": "CanShare",
+  "title": "CanShare",
   "status": "draft",
   "publisher": "David Hay",
   "contact": [
@@ -29,6 +30,22 @@
         },
         "name": "Extracted Observations",
         "description": "Describes the supported content of extracted observations",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/cs-Questionnaire"
+        },
+        "name": "Questionnaire for canShare",
+        "description": "Describes the profile on Questionnaire",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/cs-QuestionnaireResponse"
+        },
+        "name": "QuestionnaireResponse for canShare",
+        "description": "Describes the profile on QuestionnaireResponse",
         "exampleBoolean": false
       },
       {
@@ -159,6 +176,11 @@
         {
           "nameUrl": "index.html",
           "title": "Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "createform.html",
+          "title": "Createform",
           "generation": "markdown"
         },
         {

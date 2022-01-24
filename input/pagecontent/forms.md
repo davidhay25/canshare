@@ -3,9 +3,6 @@ Describes the forms based input to the repository
 
 Compliant with the [Structured Data Capture (SDC)](https://build.fhir.org/ig/HL7/sdc/) Implementation Guide
 
-### High level design
-
-<img style="width:500px; float:none" src="SDC-Overview.png"/>
 
 ### Use Cases
 

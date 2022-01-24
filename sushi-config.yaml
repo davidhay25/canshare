@@ -10,6 +10,7 @@ version: 0.1.0
 fhirVersion: 4.0.1
 copyrightYear: 2021+
 releaseLabel: ci-build
+title: CanShare
 publisher:
   name: David Hay
   url: http://example.org/example-publisher
@@ -19,8 +20,11 @@ publisher:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  Forms: 
+    Overview: forms.html
+    Using the Questionnaire: createform.html
   Reference Implementation: referenceimplementation.html
-  Forms: forms.html
   Artifacts: artifacts.html
+
 
 

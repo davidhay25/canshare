@@ -13,11 +13,21 @@
   <li>
     <a href="index.html">Home</a>
   </li>
-  <li>
-    <a href="referenceimplementation.html">Reference Implementation</a>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Forms
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="forms.html">Overview</a>
+      </li>
+      <li>
+        <a href="createform.html">Using the Questionnaire</a>
+      </li>
+    </ul>
   </li>
   <li>
-    <a href="forms.html">Forms</a>
+    <a href="referenceimplementation.html">Reference Implementation</a>
   </li>
   <li>
     <a href="artifacts.html">Artifacts</a>
