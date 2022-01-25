@@ -101,7 +101,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].code.display = "Smoking Status" 
 
 * item[=].item[=].answerOption[+].valueCoding = $ss-cs#current "current"
-* item[=].item[=].answerOption[+].valueCoding  = $ss-cs#current "ex"
+* item[=].item[=].answerOption[+].valueCoding  = $ss-cs#ex "ex"
 * item[=].item[=].answerOption[+].valueCoding  = $ss-cs#never "never"
 
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"

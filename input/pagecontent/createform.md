@@ -3,11 +3,12 @@
 
 The following graph shows the resources that represent a completed form on the FHIR server
 
-<img style="width:500px; float:none" src="fhir-resources.png"/>
+<img style="width:800px; float:none" src="fhir-resources.png"/>
 
 There are 4 'categories' of resource:
 * The QuestionnaireResponse (QR) that represents the form as completed by the user. This ability to unambiguously identify what the user entered is likely to be medico-legally important, and difficult to establish in the absense of the QR
-* Resources that were extracted from the QR during form submission. These are resources that need to be queried independently from the QR resource
+* Resources that were extracted from the QR or otherwise created during form submission. These are resources that need to be queried independently from the QR resource. As the linkage between QR and extracted resources is maintained, updates to the form are feasible (see below)
+* Supporting resources such as Patient & Practitioner. Many of the extracted resources will have references to them.
 * A Provenance resource that links the extracted resources to the QR from which they are extracted. This also supports form editing.
 
 ### Form creation process
@@ -55,7 +56,7 @@ At this point, all resources - QR, extracted clinical resources and Provenance a
 
 At times, it is necessary to amend a form that has been submitted and processed as there was an error of some sort during it's completion. Note that this is not the same as 'information evolution' - eg where a diagnosis changes after histological examination - as it is desirable to be able to track that change.
 
-For this to be done, it must be possible to collect and potentially modify all the resources that were created as part of that form. This is one of the responsibilities of the Provenance resource.
+For this to be done, it must be possible to collect and potentially modify all the resources that were created as part of that form as well as the form (QR instance). This is one of the responsibilities of the Provenance resource.
 
 There are a couple of strategies that could be used.
 
@@ -63,18 +64,18 @@ There are a couple of strategies that could be used.
 
 * Retrieve the Provenance resource (Provenance.entity.role = 'source' will refer to the QR)
 * Collect all extracted resources (Provenance.entity.role = 'derivation') and mark as deprecated. eg Observation.status = 'entered-in-error'
-* Re-run extraction
+* Re-run extraction against the QR.
 
 #### Smarter update
 
 * Retrieve the Provenance resource (Provenance.entity.role = 'source' will refer to the QR)
 * Collect all extracted resources (Provenance.entity.role = 'derivation') 
-* Run the extraction routine from the QR into areference bundle
-* Run diff between existing and new into transaction (can do CRUD)
+* Run the extraction routine from the QR into a reference bundle
+* Run diff between existing and new and place changes into transaction (can do CRUD)
 * Post the transaction 
 
 
-At the time of writing, form update is not supported by the Reference Implementation.
+At the time of writing, form update is not yet supported by the Reference Implementation.
 
 ### Designing a Questionnaire 
 
@@ -82,11 +83,10 @@ In this IG, the Questionnaire serves 2 main purposes:
 * defining the form contents (including data types and terminologies)
 * defining the resources that are to be extracted from a QR instance
 
+The extraction process is described in the SDC IG. 
 
-This process is described in the SDC IG. 
-
-For Observations, all that is needed is to have the Observation.code in the questionnaire item, and include the specific SDC extension in the item.
+For Observations, all that is needed is to have the Observation.code in the questionnaire item, and include the specific SDC extension in the item. The other elements needed are found in the QR
 
 For other resources, the details needed in the item can vary.
 
-The Reference Implementation currently supports Observation extraction
+The Reference Implementation includes a form designer (in the DashBoard app) and currently supports Observation extraction in the Form Receiver service.
