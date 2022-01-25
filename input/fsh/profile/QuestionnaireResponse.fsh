@@ -17,6 +17,8 @@ Description:    "Describes the profile on QuestionnaireResponse"
 * subject 1..1 
 * questionnaire 1..1
 * subject only Reference(Patient)
+* item.text 1..1
+* item.item.text 1..1
 
 
 //not supported items

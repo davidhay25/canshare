@@ -1,0 +1,29 @@
+{
+  "resourceType": "OperationDefinition",
+  "id": "ProcessResponse",
+  "url": "http://clinfhir.com/OperationDefinition/process-response",
+  "name": "ProcessForm",
+  "status": "draft",
+  "kind": "operation",
+  "code": "process-response",
+  "system": false,
+  "type": true,
+  "instance": false,
+  "comment": "Process a QR instance, extracting rsources as defined by the Questionnaire and create ServiceRequest and Provenance",
+  "parameter": [
+    {
+      "name": "QR",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "QuestionnaireResponse"
+    },
+    {
+      "name": "result",
+      "use": "in",
+      "min": 1,
+      "max": "1",
+      "type": "OperationOutcome"
+    }
+  ]
+}

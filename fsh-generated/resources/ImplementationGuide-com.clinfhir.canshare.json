@@ -100,6 +100,14 @@
       },
       {
         "reference": {
+          "reference": "OperationDefinition/ProcessResponse"
+        },
+        "name": "ProcessResponse",
+        "description": "Process a completed QuestionnaireResponse. This could be the SDC one",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Questionnaire/QLungCancer"
         },
         "name": "QLungCancer",
@@ -181,6 +189,11 @@
         {
           "nameUrl": "createform.html",
           "title": "Createform",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "ehr.html",
+          "title": "Ehr",
           "generation": "markdown"
         },
         {

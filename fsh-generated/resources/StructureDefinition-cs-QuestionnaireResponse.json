@@ -108,6 +108,25 @@
         "id": "QuestionnaireResponse.source",
         "path": "QuestionnaireResponse.source",
         "max": "0"
+      },
+      {
+        "id": "QuestionnaireResponse.item.text",
+        "path": "QuestionnaireResponse.item.text",
+        "min": 1
+      },
+      {
+        "id": "QuestionnaireResponse.item.item",
+        "path": "QuestionnaireResponse.item.item",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "QuestionnaireResponse.item.item.text",
+        "path": "QuestionnaireResponse.item.item.text",
+        "min": 1
       }
     ]
   }

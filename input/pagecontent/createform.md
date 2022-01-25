@@ -19,7 +19,7 @@ This section describes how a form instance is created, completed by a user and s
 3. Process in custom operation
 
 
-#### 1. Create Form UI
+#### Create Form UI
 
 The form filler renders the form to the user, performing any pre-population it can (based on information in the Q)
 
@@ -33,11 +33,11 @@ This is what the Reference Implementation does - it loads the Questionnaire (Q) 
 
 In this situation, the user interface is created using whatever features the form filler has. This may be a completely manual process - in which case the Q acts as the detailed requirements - and the structure for the QR. Alternatively, the form filler may have some scaffolding ability, in which case the Q may be used to create that scaffolding algorithmically.
 
-#### 2. Generate form data instance
+#### Generate form data instance
 
 The form filler, accepts the data input and generates the form instance as a QuestionnaireResponse (QR) resource. The structure of the QR - ie the nesting of the individual items - is the same as the Q. The information entered by the user (or pre-populated) is present as answer elements in the QR items. The QR is submitted to the custom operation
 
-#### 3. Process the QR
+#### Process the QR
 
 The custom operation receives the QR, and retrieves the matching Q (this can be from the Forms Manager or some other process).
 
