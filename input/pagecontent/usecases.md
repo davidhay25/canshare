@@ -1,14 +1,9 @@
 
-Describes the forms based input to the repository
-
-Compliant with the [Structured Data Capture (SDC)](https://build.fhir.org/ig/HL7/sdc/) Implementation Guide
-
-
 ### Use Cases
 
 #### Create a new form (EHR)
 
-1. The Form Filler selects the template (Q) 
+1. The Form Filler selects the template. This might be a Q or a custom form. 
 2. Any possible pre-pop occurs (defined in Q)
 3. The form is completed by the user. Parking of forms if Form Filler supports
 4. Completed data is sent as a QR to the Forms Receiver
@@ -22,7 +17,7 @@ Compliant with the [Structured Data Capture (SDC)](https://build.fhir.org/ig/HL7
 
 #### Query extracted resources (EHR)
 
-1. Use the supported FHIR queries to extract resources
+1. Use the supported FHIR queries to retrieve resources from the data server
 2. Display as per EHR requirements
 
 #### Determine provenance of extracted resources
@@ -36,14 +31,3 @@ Compliant with the [Structured Data Capture (SDC)](https://build.fhir.org/ig/HL7
 3. If item is intended to be extracted as a resource, add appropriate extensions to item + add code
 4. Save
 
-**Can also add Q directly to Forms Manager - eg create from FSH**
-
-### Key resources
-
-#### Questionnaire
-
-
-#### QuestionnaireResponse
-
-
-### Extracting resources

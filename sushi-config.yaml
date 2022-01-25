@@ -20,11 +20,11 @@ publisher:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Forms: 
-    Use Cases: forms.html
-    Using the Questionnaire: createform.html
+  Use Cases: usecases.html
+  Form creation: createform.html
   Reference Implementation: referenceimplementation.html
   Artifacts: artifacts.html
+  TOC: toc.html
 
 
 

@@ -7,11 +7,6 @@
   "title": "A form to capture data to accompany a histology request for lung cancer",
   "item": [
     {
-      "linkId": "test",
-      "text": "test question at top level",
-      "type": "text"
-    },
-    {
       "linkId": "clinicalinfo",
       "text": "Clinical Information",
       "type": "group",
@@ -107,7 +102,7 @@
             },
             {
               "valueCoding": {
-                "code": "current",
+                "code": "ex",
                 "system": "http://clinfhir.com/CodeSystem/ss",
                 "display": "ex"
               }
@@ -147,6 +142,55 @@
           "text": "Details of previous cancer diagnosis",
           "type": "text"
         },
+        {
+          "linkId": "otherclinical",
+          "text": "Other clincial data of relevance",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "tnm",
+      "text": "TNM staging",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "tstage",
+          "text": "T-stage",
+          "type": "string"
+        },
+        {
+          "linkId": "nstage",
+          "text": "N-stage",
+          "type": "string"
+        },
+        {
+          "linkId": "mstage",
+          "text": "M-stage",
+          "type": "string"
+        },
+        {
+          "linkId": "tnmgroup",
+          "text": "TNM Group",
+          "type": "string"
+        },
+        {
+          "linkId": "tnmedition",
+          "text": "TNM Edition",
+          "type": "string"
+        },
+        {
+          "linkId": "tnmdate",
+          "text": "TNM Date",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "linkId": "proc",
+      "text": "Procedure",
+      "type": "group",
+      "item": [
         {
           "linkId": "site",
           "text": "Site and laterality",
@@ -197,53 +241,46 @@
           ]
         },
         {
-          "linkId": "resection",
-          "text": "Nature of the resection",
-          "type": "choice",
-          "answerOption": [
-            {
-              "valueCoding": {
-                "code": "wedge",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "wedge"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "segmentectomy",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "segmentectomy"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "bilobectomy",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "bilobectomy"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "lobectomy",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "lobectomy"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "pneumonectomy",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "pneumonectomy"
-              }
-            },
-            {
-              "valueCoding": {
-                "code": "other",
-                "system": "http://clinfhir.com/CodeSystem/resection",
-                "display": "Other"
-              }
-            }
-          ]
+          "linkId": "type",
+          "text": "Nature of procedure",
+          "type": "choice"
+        },
+        {
+          "linkId": "procCode",
+          "text": "Procedure code",
+          "type": "choice"
+        },
+        {
+          "linkId": "procNotes",
+          "text": "Procedure notes",
+          "type": "choice"
+        },
+        {
+          "linkId": "adjOrgansInv",
+          "text": "Adjacent Organs involved",
+          "type": "boolean"
+        },
+        {
+          "linkId": "adjOrgansDetails",
+          "text": "Details of adjacent Organs involvement",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "linkId": "tumour",
+      "text": "Tumour Information",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "tumoursite",
+          "text": "Tumour site",
+          "type": "choice"
+        },
+        {
+          "linkId": "tumournotes",
+          "text": "Notes",
+          "type": "text"
         }
       ]
     },

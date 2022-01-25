@@ -1,7 +1,11 @@
 
+### Creating a form
+This page lists the process for creating and editing a form
+
+
 ### FHIR resources
 
-The following graph shows the resources that represent a completed form on the FHIR server
+The following graph shows an example of the resources that represent a completed form on the FHIR server
 
 <img style="width:800px; float:none" src="fhir-resources.png"/>
 
