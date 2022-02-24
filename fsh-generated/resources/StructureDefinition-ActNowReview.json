@@ -1,0 +1,1967 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ActNowReview",
+  "url": "http://clinfhir.com/StructureDefinition/actnowreview",
+  "version": "0.1.0",
+  "name": "ActNowReview",
+  "title": "Model for recording the review of the treatment plan",
+  "status": "active",
+  "description": "Records chemotherapy given ",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://clinfhir.com/StructureDefinition/actnowreview",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "derivation": "specialization",
+  "snapshot": {
+    "element": [
+      {
+        "id": "actnowreview",
+        "path": "actnowreview",
+        "short": "Model for recording the review of the treatment plan",
+        "definition": "Records chemotherapy given ",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "actnowreview",
+          "min": 0,
+          "max": "*"
+        },
+        "condition": [
+          "ele-1"
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.id",
+        "path": "actnowreview.id",
+        "representation": [
+          "xmlAttr"
+        ],
+        "short": "Unique id for inter-element referencing",
+        "definition": "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Element.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "http://hl7.org/fhirpath/System.String",
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type",
+                "valueUrl": "string"
+              }
+            ]
+          }
+        ],
+        "isModifier": false,
+        "isSummary": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.extension",
+        "path": "actnowreview.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "description": "Extensions are always sliced by (at least) url",
+          "rules": "open"
+        },
+        "short": "Additional content defined by implementations",
+        "definition": "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.",
+        "comment": "There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.",
+        "alias": [
+          "extensions",
+          "user content"
+        ],
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Element.extension",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          },
+          {
+            "key": "ext-1",
+            "severity": "error",
+            "human": "Must have either extensions or value[x], not both",
+            "expression": "extension.exists() != value.exists()",
+            "xpath": "exists(f:extension)!=exists(f:*[starts-with(local-name(.), \"value\")])",
+            "source": "http://hl7.org/fhir/StructureDefinition/Extension"
+          }
+        ],
+        "isModifier": false,
+        "isSummary": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.patient",
+        "path": "actnowreview.patient",
+        "short": "Patient demographics",
+        "definition": "Patient demographics",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.patient",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.patient.nhi",
+        "path": "actnowreview.patient.nhi",
+        "short": "The patients NHI number",
+        "definition": "The patients NHI number",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.patient.nhi",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.dxDate",
+        "path": "actnowreview.dxDate",
+        "short": "The date the diagnosis was made",
+        "definition": "The date the diagnosis was made",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.dxDate",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.primarySite",
+        "path": "actnowreview.primarySite",
+        "short": "The primary site of the cancer",
+        "definition": "The primary site of the cancer",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.primarySite",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.histology",
+        "path": "actnowreview.histology",
+        "short": "The histologic cancer type",
+        "definition": "The histologic cancer type",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.histology",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.laterality",
+        "path": "actnowreview.laterality",
+        "short": "Laterality of tumour ?is this needed - is it part of site",
+        "definition": "Laterality of tumour ?is this needed - is it part of site",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.laterality",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.grade",
+        "path": "actnowreview.grade",
+        "short": "Cancer grading. Includes system and version",
+        "definition": "Cancer grading. Includes system and version",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.grade",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance",
+        "path": "actnowreview.recurrance",
+        "short": "Recurrance information",
+        "definition": "Recurrance information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.recurrance",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance.type",
+        "path": "actnowreview.recurrance.type",
+        "short": "Type of recurrance",
+        "definition": "Type of recurrance",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.recurrance.type",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance.date",
+        "path": "actnowreview.recurrance.date",
+        "short": "Date of recurrance",
+        "definition": "Date of recurrance",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.recurrance.date",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM",
+        "path": "actnowreview.clinicalTNM",
+        "short": "Clinical TNM Classification",
+        "definition": "Clinical TNM Classification",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.T-stage",
+        "path": "actnowreview.clinicalTNM.T-stage",
+        "short": "Clinical T (Tumour) stage",
+        "definition": "Clinical T (Tumour) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.T-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.N-stage",
+        "path": "actnowreview.clinicalTNM.N-stage",
+        "short": "Clinical N (Nodes) stage",
+        "definition": "Clinical N (Nodes) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.N-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.M-stage",
+        "path": "actnowreview.clinicalTNM.M-stage",
+        "short": "Clinical M (Metastasis) stage",
+        "definition": "Clinical M (Metastasis) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.M-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.group",
+        "path": "actnowreview.clinicalTNM.group",
+        "short": "Clinical group",
+        "definition": "Clinical group",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.group",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.edition",
+        "path": "actnowreview.clinicalTNM.edition",
+        "short": "Edition of TNM used",
+        "definition": "Edition of TNM used",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.edition",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.date",
+        "path": "actnowreview.clinicalTNM.date",
+        "short": "Date evaluation done",
+        "definition": "Date evaluation done",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.clinicalTNM.date",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM",
+        "path": "actnowreview.pathologicalTNM",
+        "short": "Clinical TNM Classification",
+        "definition": "Clinical TNM Classification",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.T-stage",
+        "path": "actnowreview.pathologicalTNM.T-stage",
+        "short": "Clinical T (Tumour) stage",
+        "definition": "Clinical T (Tumour) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.T-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.N-stage",
+        "path": "actnowreview.pathologicalTNM.N-stage",
+        "short": "Clinical N (Nodes) stage",
+        "definition": "Clinical N (Nodes) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.N-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.M-stage",
+        "path": "actnowreview.pathologicalTNM.M-stage",
+        "short": "Clinical M (Metastasis) stage",
+        "definition": "Clinical M (Metastasis) stage",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.M-stage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.group",
+        "path": "actnowreview.pathologicalTNM.group",
+        "short": "Clinical group",
+        "definition": "Clinical group",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.group",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.edition",
+        "path": "actnowreview.pathologicalTNM.edition",
+        "short": "Edition of TNM used",
+        "definition": "Edition of TNM used",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.edition",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.date",
+        "path": "actnowreview.pathologicalTNM.date",
+        "short": "Date evaluation done",
+        "definition": "Date evaluation done",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.pathologicalTNM.date",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging",
+        "path": "actnowreview.otherStaging",
+        "short": "Other staging",
+        "definition": "Other staging",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.otherStaging",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.groupStage",
+        "path": "actnowreview.otherStaging.groupStage",
+        "short": "The cancer group stage, using a system other than TNM",
+        "definition": "The cancer group stage, using a system other than TNM",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.otherStaging.groupStage",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.basis",
+        "path": "actnowreview.otherStaging.basis",
+        "short": "The basis of the Other staging group stage",
+        "definition": "The basis of the Other staging group stage",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.otherStaging.basis",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.system",
+        "path": "actnowreview.otherStaging.system",
+        "short": "The other staging system used to stage the cancer",
+        "definition": "The other staging system used to stage the cancer",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.otherStaging.system",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.edition",
+        "path": "actnowreview.otherStaging.edition",
+        "short": "The other staging system edition used to stage the cancer",
+        "definition": "The other staging system edition used to stage the cancer",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.otherStaging.edition",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring",
+        "path": "actnowreview.prognosticScoring",
+        "short": "Prognostic scoring",
+        "definition": "Prognostic scoring",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "actnowreview.prognosticScoring",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.score",
+        "path": "actnowreview.prognosticScoring.score",
+        "short": "Prognostic score",
+        "definition": "Prognostic score",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.prognosticScoring.score",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.system",
+        "path": "actnowreview.prognosticScoring.system",
+        "short": "Scoring system",
+        "definition": "Scoring system",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.prognosticScoring.system",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.edition",
+        "path": "actnowreview.prognosticScoring.edition",
+        "short": "Edition of score",
+        "definition": "Edition of score",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.prognosticScoring.edition",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen",
+        "path": "actnowreview.regimen",
+        "short": "Initial regimen to use",
+        "definition": "Initial regimen to use",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.ECOG",
+        "path": "actnowreview.regimen.ECOG",
+        "short": "ECOG score at start of regimen",
+        "definition": "ECOG score at start of regimen",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.ECOG",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.url",
+        "path": "actnowreview.regimen.url",
+        "short": "Url of regimen",
+        "definition": "Url of regimen",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.url",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.intent",
+        "path": "actnowreview.regimen.intent",
+        "short": "Intent of treatment",
+        "definition": "Intent of treatment",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.intent",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.clinicalTrial",
+        "path": "actnowreview.regimen.clinicalTrial",
+        "short": "Is this a clinical trial regimen",
+        "definition": "Is this a clinical trial regimen",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.clinicalTrial",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue",
+        "path": "actnowreview.regimen.discontinue",
+        "short": "If the regimen was discontinued",
+        "definition": "If the regimen was discontinued",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.discontinue",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.date",
+        "path": "actnowreview.regimen.discontinue.date",
+        "short": "Date discontinued",
+        "definition": "Date discontinued",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.discontinue.date",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.reason",
+        "path": "actnowreview.regimen.discontinue.reason",
+        "short": "Reason discontinued",
+        "definition": "Reason discontinued",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.discontinue.reason",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.patientFactors",
+        "path": "actnowreview.regimen.discontinue.patientFactors",
+        "short": "patient reasons for discontinuation",
+        "definition": "patient reasons for discontinuation",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "actnowreview.regimen.discontinue.patientFactors",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.toxicity",
+        "path": "actnowreview.regimen.discontinue.toxicity",
+        "short": "toxicity reasons",
+        "definition": "toxicity reasons",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "actnowreview.regimen.discontinue.toxicity",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.cycleCount",
+        "path": "actnowreview.regimen.cycleCount",
+        "short": "Number of cycles completed",
+        "definition": "Number of cycles completed",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "actnowreview.regimen.cycleCount",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "integer"
+          }
+        ],
+        "constraint": [
+          {
+            "key": "ele-1",
+            "severity": "error",
+            "human": "All FHIR elements must have a @value or children",
+            "expression": "hasValue() or (children().count() > id.count())",
+            "xpath": "@value|f:*|h:div",
+            "source": "http://hl7.org/fhir/StructureDefinition/Element"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "actnowreview",
+        "path": "actnowreview",
+        "short": "Model for recording the review of the treatment plan",
+        "definition": "Records chemotherapy given "
+      },
+      {
+        "id": "actnowreview.patient",
+        "path": "actnowreview.patient",
+        "short": "Patient demographics",
+        "definition": "Patient demographics",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.patient.nhi",
+        "path": "actnowreview.patient.nhi",
+        "short": "The patients NHI number",
+        "definition": "The patients NHI number",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.dxDate",
+        "path": "actnowreview.dxDate",
+        "short": "The date the diagnosis was made",
+        "definition": "The date the diagnosis was made",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.primarySite",
+        "path": "actnowreview.primarySite",
+        "short": "The primary site of the cancer",
+        "definition": "The primary site of the cancer",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.histology",
+        "path": "actnowreview.histology",
+        "short": "The histologic cancer type",
+        "definition": "The histologic cancer type",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.laterality",
+        "path": "actnowreview.laterality",
+        "short": "Laterality of tumour ?is this needed - is it part of site",
+        "definition": "Laterality of tumour ?is this needed - is it part of site",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.grade",
+        "path": "actnowreview.grade",
+        "short": "Cancer grading. Includes system and version",
+        "definition": "Cancer grading. Includes system and version",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance",
+        "path": "actnowreview.recurrance",
+        "short": "Recurrance information",
+        "definition": "Recurrance information",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance.type",
+        "path": "actnowreview.recurrance.type",
+        "short": "Type of recurrance",
+        "definition": "Type of recurrance",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.recurrance.date",
+        "path": "actnowreview.recurrance.date",
+        "short": "Date of recurrance",
+        "definition": "Date of recurrance",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM",
+        "path": "actnowreview.clinicalTNM",
+        "short": "Clinical TNM Classification",
+        "definition": "Clinical TNM Classification",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.T-stage",
+        "path": "actnowreview.clinicalTNM.T-stage",
+        "short": "Clinical T (Tumour) stage",
+        "definition": "Clinical T (Tumour) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.N-stage",
+        "path": "actnowreview.clinicalTNM.N-stage",
+        "short": "Clinical N (Nodes) stage",
+        "definition": "Clinical N (Nodes) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.M-stage",
+        "path": "actnowreview.clinicalTNM.M-stage",
+        "short": "Clinical M (Metastasis) stage",
+        "definition": "Clinical M (Metastasis) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.group",
+        "path": "actnowreview.clinicalTNM.group",
+        "short": "Clinical group",
+        "definition": "Clinical group",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.edition",
+        "path": "actnowreview.clinicalTNM.edition",
+        "short": "Edition of TNM used",
+        "definition": "Edition of TNM used",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.clinicalTNM.date",
+        "path": "actnowreview.clinicalTNM.date",
+        "short": "Date evaluation done",
+        "definition": "Date evaluation done",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM",
+        "path": "actnowreview.pathologicalTNM",
+        "short": "Clinical TNM Classification",
+        "definition": "Clinical TNM Classification",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.T-stage",
+        "path": "actnowreview.pathologicalTNM.T-stage",
+        "short": "Clinical T (Tumour) stage",
+        "definition": "Clinical T (Tumour) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.N-stage",
+        "path": "actnowreview.pathologicalTNM.N-stage",
+        "short": "Clinical N (Nodes) stage",
+        "definition": "Clinical N (Nodes) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.M-stage",
+        "path": "actnowreview.pathologicalTNM.M-stage",
+        "short": "Clinical M (Metastasis) stage",
+        "definition": "Clinical M (Metastasis) stage",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.group",
+        "path": "actnowreview.pathologicalTNM.group",
+        "short": "Clinical group",
+        "definition": "Clinical group",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.edition",
+        "path": "actnowreview.pathologicalTNM.edition",
+        "short": "Edition of TNM used",
+        "definition": "Edition of TNM used",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.pathologicalTNM.date",
+        "path": "actnowreview.pathologicalTNM.date",
+        "short": "Date evaluation done",
+        "definition": "Date evaluation done",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging",
+        "path": "actnowreview.otherStaging",
+        "short": "Other staging",
+        "definition": "Other staging",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.groupStage",
+        "path": "actnowreview.otherStaging.groupStage",
+        "short": "The cancer group stage, using a system other than TNM",
+        "definition": "The cancer group stage, using a system other than TNM",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.basis",
+        "path": "actnowreview.otherStaging.basis",
+        "short": "The basis of the Other staging group stage",
+        "definition": "The basis of the Other staging group stage",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.system",
+        "path": "actnowreview.otherStaging.system",
+        "short": "The other staging system used to stage the cancer",
+        "definition": "The other staging system used to stage the cancer",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.otherStaging.edition",
+        "path": "actnowreview.otherStaging.edition",
+        "short": "The other staging system edition used to stage the cancer",
+        "definition": "The other staging system edition used to stage the cancer",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring",
+        "path": "actnowreview.prognosticScoring",
+        "short": "Prognostic scoring",
+        "definition": "Prognostic scoring",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.score",
+        "path": "actnowreview.prognosticScoring.score",
+        "short": "Prognostic score",
+        "definition": "Prognostic score",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.system",
+        "path": "actnowreview.prognosticScoring.system",
+        "short": "Scoring system",
+        "definition": "Scoring system",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.prognosticScoring.edition",
+        "path": "actnowreview.prognosticScoring.edition",
+        "short": "Edition of score",
+        "definition": "Edition of score",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen",
+        "path": "actnowreview.regimen",
+        "short": "Initial regimen to use",
+        "definition": "Initial regimen to use",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.ECOG",
+        "path": "actnowreview.regimen.ECOG",
+        "short": "ECOG score at start of regimen",
+        "definition": "ECOG score at start of regimen",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.url",
+        "path": "actnowreview.regimen.url",
+        "short": "Url of regimen",
+        "definition": "Url of regimen",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.intent",
+        "path": "actnowreview.regimen.intent",
+        "short": "Intent of treatment",
+        "definition": "Intent of treatment",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.clinicalTrial",
+        "path": "actnowreview.regimen.clinicalTrial",
+        "short": "Is this a clinical trial regimen",
+        "definition": "Is this a clinical trial regimen",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue",
+        "path": "actnowreview.regimen.discontinue",
+        "short": "If the regimen was discontinued",
+        "definition": "If the regimen was discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.date",
+        "path": "actnowreview.regimen.discontinue.date",
+        "short": "Date discontinued",
+        "definition": "Date discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.reason",
+        "path": "actnowreview.regimen.discontinue.reason",
+        "short": "Reason discontinued",
+        "definition": "Reason discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.patientFactors",
+        "path": "actnowreview.regimen.discontinue.patientFactors",
+        "short": "patient reasons for discontinuation",
+        "definition": "patient reasons for discontinuation",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.discontinue.toxicity",
+        "path": "actnowreview.regimen.discontinue.toxicity",
+        "short": "toxicity reasons",
+        "definition": "toxicity reasons",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.regimen.cycleCount",
+        "path": "actnowreview.regimen.cycleCount",
+        "short": "Number of cycles completed",
+        "definition": "Number of cycles completed",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      }
+    ]
+  }
+}

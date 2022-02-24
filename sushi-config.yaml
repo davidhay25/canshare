@@ -21,6 +21,7 @@ publisher:
 menu:
   Home: index.html
   Use Cases: usecases.html
+  Interactions: interactions.html
   Form creation: createform.html
   Reference Implementation: referenceimplementation.html
   Artifacts: artifacts.html

@@ -20,9 +20,13 @@ Description:    "Describes the profile on QuestionnaireResponse"
 * item.text 1..1
 * item.item.text 1..1
 
+//extensions
+
+//principal clinician
+//requesting facility
 
 //not supported items
-* identifier 0..0
+
 * basedOn 0..0
 * partOf 0..0
 * encounter 0..0

@@ -18,7 +18,7 @@
 #### Query extracted resources (EHR)
 
 1. Use the supported FHIR queries to retrieve resources from the data server
-2. Display as per EHR requirements
+2. Display / Proces as per EHR requirements
 
 #### Determine provenance of extracted resources
 

@@ -50,6 +50,22 @@
       },
       {
         "reference": {
+          "reference": "StructureDefinition/ActNowAdminister"
+        },
+        "name": "Model for recording the administration of a medication",
+        "description": "Records chemotherapy given ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ActNowReview"
+        },
+        "name": "Model for recording the review of the treatment plan",
+        "description": "Records chemotherapy given ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/LungModel"
         },
         "name": "Model for Lung cancer data",
@@ -124,6 +140,14 @@
       },
       {
         "reference": {
+          "reference": "Questionnaire/QLungCancerV1"
+        },
+        "name": "QLungCancerV1",
+        "description": "Questionnaire for Lung Cancer histology request",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Questionnaire/QSystemsReview"
         },
         "name": "QSystemsReview",
@@ -192,6 +216,11 @@
           "generation": "markdown"
         },
         {
+          "nameUrl": "csmodel.html",
+          "title": "Csmodel",
+          "generation": "markdown"
+        },
+        {
           "nameUrl": "ehr.html",
           "title": "Ehr",
           "generation": "markdown"
@@ -202,8 +231,18 @@
           "generation": "markdown"
         },
         {
+          "nameUrl": "interactions.html",
+          "title": "Interactions",
+          "generation": "markdown"
+        },
+        {
           "nameUrl": "referenceimplementation.html",
           "title": "Referenceimplementation",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "structuredpath.html",
+          "title": "Structuredpath",
           "generation": "markdown"
         },
         {

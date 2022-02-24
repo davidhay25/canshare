@@ -18,7 +18,28 @@ Alias: $snomed = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 Alias: $ucum = http://unitsofmeasure.org
 
-Instance: QLungCancer
+Instance: QLungCancerInstance
+InstanceOf: QuestionnaireResponse
+Description: "A QR instance"
+
+* status = #completed
+* questionnaire = "http://clinfhir.com/Questionnaire/lungcancer"
+* subject = Reference(Patient/patient1)
+* authored = 2022-01-18T12:00:00Z
+
+* item[+].linkId = "clinicalinfo"
+* item[=].text = "Clinical Information"
+
+* item[=].item[+].linkId = "height"
+* item[=].item[=].answer[0].valueDecimal = 160
+
+* item[=].item[+].linkId = "weight"
+* item[=].item[=].answer[0].valueDecimal = 80
+
+//------------------------------------------------------------
+
+Instance: QLungCancerV1
+
 InstanceOf: Questionnaire
 Description: "Questionnaire for Lung Cancer histology request"
 
@@ -31,23 +52,44 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 //-----  clinical information
 
-/* add admin stuff as profile on QR
-* item[+].linkId = "admin"
-* item[=].text = "Administrative"
-* item[=].type = #group
 
-* item[=].item[+].linkId = "prinClin"
-* item[=].item[=].text = "Principal Clinician "
-* item[=].item[=].type = #string
 
-* item[=].item[+].linkId = "cc"
-* item[=].item[=].text = "Copy to"
-* item[=].item[=].type = #string
-
-*/
 * item[+].linkId = "clinicalinfo"
 * item[=].text = "Clinical Information"
 * item[=].type = #group
+
+* item[=].item[+].linkId = "provdx"
+* item[=].item[=].text = "Provisional Diagnosis"
+* item[=].item[=].type = #choice
+* item[=].item[=].code = $snomed#148006
+* item[=].item[=].code.display = "Provisional Diagnosis" 
+* item[=].item[=].answerValueSet = "http://hl7.org/fhir/ValueSet/condition-code"
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+* item[=].item[+].linkId = "height"
+* item[=].item[=].text = "Current height (m)"
+* item[=].item[=].type = #decimal
+* item[=].item[=].required = true 
+
+* item[=].item[=].code = $loinc#8302-2
+* item[=].item[=].code.display = "Height" 
+* item[=].item[=].required = true 
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
+* item[=].item[=].extension[=].valueCoding = $ucum#cm
+
+
+* item[=].item[+].linkId = "weight"
+* item[=].item[=].text = "Current weight (Kg)"
+* item[=].item[=].type = #decimal
+* item[=].item[=].code = $loinc#29463-7
+* item[=].item[=].code.display = "Weight" 
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-unit"
+* item[=].item[=].extension[=].valueCoding = $ucum#kg
+
 
 
 
@@ -79,10 +121,6 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 * item[=].item[+].linkId = "previousCancer"
 * item[=].item[=].text = "Details of previous cancer diagnosis"
-* item[=].item[=].type = #text
-
-* item[=].item[+].linkId = "radiology"
-* item[=].item[=].text = "Radiology info"
 * item[=].item[=].type = #text
 
 * item[=].item[+].linkId = "otherclinical"

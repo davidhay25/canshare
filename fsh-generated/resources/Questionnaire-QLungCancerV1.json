@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "id": "QLungCancer",
+  "id": "QLungCancerV1",
   "url": "http://clinfhir.com/Questionnaire/lungcancer",
   "status": "draft",
   "name": "LungCancerHistologyRequest",
@@ -11,6 +11,76 @@
       "text": "Clinical Information",
       "type": "group",
       "item": [
+        {
+          "linkId": "provdx",
+          "text": "Provisional Diagnosis",
+          "type": "choice",
+          "code": [
+            {
+              "code": "148006",
+              "system": "http://snomed.info/sct",
+              "display": "Provisional Diagnosis"
+            }
+          ],
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/condition-code",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "height",
+          "text": "Current height (m)",
+          "type": "decimal",
+          "required": true,
+          "code": [
+            {
+              "code": "8302-2",
+              "system": "http://loinc.org",
+              "display": "Height"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+              "valueBoolean": true
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "cm",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "weight",
+          "text": "Current weight (Kg)",
+          "type": "decimal",
+          "code": [
+            {
+              "code": "29463-7",
+              "system": "http://loinc.org",
+              "display": "Weight"
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+              "valueBoolean": true
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "code": "kg",
+                "system": "http://unitsofmeasure.org"
+              }
+            }
+          ]
+        },
         {
           "linkId": "ss",
           "text": "Smoking Status",
@@ -70,11 +140,6 @@
         {
           "linkId": "previousCancer",
           "text": "Details of previous cancer diagnosis",
-          "type": "text"
-        },
-        {
-          "linkId": "radiology",
-          "text": "Radiology info",
           "type": "text"
         },
         {
