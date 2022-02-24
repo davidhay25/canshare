@@ -47,6 +47,47 @@ Parent:         Element
   * url 1..1 string "Url of regimen"
   * intent 0..1 code "Intent of treatment"
   * clinicalTrial 0..1 boolean "Is this a clinical trial regimen"
+
+
+Logical:        ActNowDeliver
+Title:          "Model for recording the delivery of care"
+Description:    "Records chemotherapy given - a MedicationAdministration resource "
+Parent:         Element
+
+* ^url = "http://clinfhir.com/StructureDefinition/actnowdeliver"
+
+* patient 1..1 BackboneElement "Patient demographics"
+  * nhi 1..1 Identifier "The patients NHI number"
+* medication 1..* BackboneElement "details of medications administered - in MedicationAdministration resource"
+  * startDate 1..1 dateTime "The date and time administration started"
+  * endDate 1..1 dateTime "The date and time administration ended"
+  * regimen 0..1 url "Url of the regimen that this medication was administered under"
+  * cycleDay 1..1 integer "The day of the cycle that this administrato"
+  * medication 1..1 CodeableConcept "The medication given"
+  * prescribedDose 0..1 string "The prescribed dosage (Dosage datatype)"
+  * administeredDose 0..1 string "The administered dosage (Dosage datatype)"
+  * doseAdjustmentReason 0..1 CodeableConcept "The reason the dose was adjusted from prescribed"
+  * route 1..1 CodeableConcept "The route of administration"
+* creatinine 1..* BackboneElement "Creatinine clearance results"
+  * value 1..1 Quantity  "Value of creatinine clearance"
+  * date 1..1 dateTime "Date sample taken"
+
+
+
+Logical:        ActNowUpdate
+Title:          "Model for recording an update to the plan of care"
+Description:    "Records chemotherapy given - a MedicationAdministration resource "
+Parent:         Element
+
+* ^url = "http://clinfhir.com/StructureDefinition/actnowupdate"
+
+* patient 1..1 BackboneElement "Patient demographics"
+  * nhi 1..1 Identifier "The patients NHI number"
+* regimen 0..1 BackboneElement "change to regimen"  
+  * ECOG 0..1 integer "ECOG score at start of regimen"
+  * url 1..1 string "Url of regimen"
+  * intent 0..1 code "Intent of treatment"
+  * clinicalTrial 0..1 boolean "Is this a clinical trial regimen"
   * discontinue 0..1 BackboneElement "If the regimen was discontinued"  
     * date 0..1 date "Date discontinued"
     * reason 0..1 CodeableConcept "Reason discontinued"
@@ -54,14 +95,4 @@ Parent:         Element
     * toxicity 0..* CodeableConcept "toxicity reasons"
   * cycleCount 0..1 integer "Number of cycles completed"
 
-Logical:        ActNowAdminister
-Title:          "Model for recording the administration of a medication"
-Description:    "Records chemotherapy given - a MedicationAdministration resource "
-Parent:         Element
-
-* ^url = "http://clinfhir.com/StructureDefinition/actnowadminister"
-
-* patient 1..1 BackboneElement "Patient demographics"
-  * nhi 1..1 Identifier "The patients NHI number"
-* medication 1..1 string "details of medication - in MedicationAdministration resource"
 

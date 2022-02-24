@@ -9,6 +9,10 @@ It is a FHIR based repository of information. Data is saved - and exposed - as F
 
 <img style="width:800px; float:none" src="canshare.png"/>
 
+### Workflow
+
+<img style="width:800px; float:none" src="workflow.png"/>
+
 
 ### First deliverable
 

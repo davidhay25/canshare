@@ -1,0 +1,228 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ActNowDeliver",
+  "url": "http://clinfhir.com/StructureDefinition/actnowdeliver",
+  "version": "0.1.0",
+  "name": "ActNowDeliver",
+  "title": "Model for recording the delivery of care",
+  "status": "active",
+  "description": "Records chemotherapy given - a MedicationAdministration resource ",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://clinfhir.com/StructureDefinition/actnowdeliver",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "actnowdeliver",
+        "path": "actnowdeliver",
+        "short": "Model for recording the delivery of care",
+        "definition": "Records chemotherapy given - a MedicationAdministration resource "
+      },
+      {
+        "id": "actnowdeliver.patient",
+        "path": "actnowdeliver.patient",
+        "short": "Patient demographics",
+        "definition": "Patient demographics",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.patient.nhi",
+        "path": "actnowdeliver.patient.nhi",
+        "short": "The patients NHI number",
+        "definition": "The patients NHI number",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication",
+        "path": "actnowdeliver.medication",
+        "short": "details of medications administered - in MedicationAdministration resource",
+        "definition": "details of medications administered - in MedicationAdministration resource",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.startDate",
+        "path": "actnowdeliver.medication.startDate",
+        "short": "The date and time administration started",
+        "definition": "The date and time administration started",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.endDate",
+        "path": "actnowdeliver.medication.endDate",
+        "short": "The date and time administration ended",
+        "definition": "The date and time administration ended",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.regimen",
+        "path": "actnowdeliver.medication.regimen",
+        "short": "Url of the regimen that this medication was administered under",
+        "definition": "Url of the regimen that this medication was administered under",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "url"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.cycleDay",
+        "path": "actnowdeliver.medication.cycleDay",
+        "short": "The day of the cycle that this administrato",
+        "definition": "The day of the cycle that this administrato",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.medication",
+        "path": "actnowdeliver.medication.medication",
+        "short": "The medication given",
+        "definition": "The medication given",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.prescribedDose",
+        "path": "actnowdeliver.medication.prescribedDose",
+        "short": "The prescribed dosage (Dosage datatype)",
+        "definition": "The prescribed dosage (Dosage datatype)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.administeredDose",
+        "path": "actnowdeliver.medication.administeredDose",
+        "short": "The administered dosage (Dosage datatype)",
+        "definition": "The administered dosage (Dosage datatype)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.doseAdjustmentReason",
+        "path": "actnowdeliver.medication.doseAdjustmentReason",
+        "short": "The reason the dose was adjusted from prescribed",
+        "definition": "The reason the dose was adjusted from prescribed",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.medication.route",
+        "path": "actnowdeliver.medication.route",
+        "short": "The route of administration",
+        "definition": "The route of administration",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.creatinine",
+        "path": "actnowdeliver.creatinine",
+        "short": "Creatinine clearance results",
+        "definition": "Creatinine clearance results",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.creatinine.value",
+        "path": "actnowdeliver.creatinine.value",
+        "short": "Value of creatinine clearance",
+        "definition": "Value of creatinine clearance",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ]
+      },
+      {
+        "id": "actnowdeliver.creatinine.date",
+        "path": "actnowdeliver.creatinine.date",
+        "short": "Date sample taken",
+        "definition": "Date sample taken",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

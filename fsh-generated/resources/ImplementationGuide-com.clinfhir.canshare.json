@@ -50,10 +50,10 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/ActNowAdminister"
+          "reference": "StructureDefinition/ActNowDeliver"
         },
-        "name": "Model for recording the administration of a medication",
-        "description": "Records chemotherapy given ",
+        "name": "Model for recording the delivery of care",
+        "description": "Records chemotherapy given - a MedicationAdministration resource ",
         "exampleBoolean": false
       },
       {
@@ -62,6 +62,14 @@
         },
         "name": "Model for recording the review of the treatment plan",
         "description": "Records chemotherapy given ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ActNowUpdate"
+        },
+        "name": "Model for recording an update to the plan of care",
+        "description": "Records chemotherapy given - a MedicationAdministration resource ",
         "exampleBoolean": false
       },
       {
@@ -231,11 +239,6 @@
           "generation": "markdown"
         },
         {
-          "nameUrl": "interactions.html",
-          "title": "Interactions",
-          "generation": "markdown"
-        },
-        {
           "nameUrl": "referenceimplementation.html",
           "title": "Referenceimplementation",
           "generation": "markdown"
@@ -243,6 +246,11 @@
         {
           "nameUrl": "structuredpath.html",
           "title": "Structuredpath",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "treatmentrecording.html",
+          "title": "Treatmentrecording",
           "generation": "markdown"
         },
         {

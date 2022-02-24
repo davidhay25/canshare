@@ -1,0 +1,202 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ActNowUpdate",
+  "url": "http://clinfhir.com/StructureDefinition/actnowupdate",
+  "version": "0.1.0",
+  "name": "ActNowUpdate",
+  "title": "Model for recording an update to the plan of care",
+  "status": "active",
+  "description": "Records chemotherapy given - a MedicationAdministration resource ",
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://clinfhir.com/StructureDefinition/actnowupdate",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "actnowupdate",
+        "path": "actnowupdate",
+        "short": "Model for recording an update to the plan of care",
+        "definition": "Records chemotherapy given - a MedicationAdministration resource "
+      },
+      {
+        "id": "actnowupdate.patient",
+        "path": "actnowupdate.patient",
+        "short": "Patient demographics",
+        "definition": "Patient demographics",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.patient.nhi",
+        "path": "actnowupdate.patient.nhi",
+        "short": "The patients NHI number",
+        "definition": "The patients NHI number",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen",
+        "path": "actnowupdate.regimen",
+        "short": "change to regimen",
+        "definition": "change to regimen",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.ECOG",
+        "path": "actnowupdate.regimen.ECOG",
+        "short": "ECOG score at start of regimen",
+        "definition": "ECOG score at start of regimen",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.url",
+        "path": "actnowupdate.regimen.url",
+        "short": "Url of regimen",
+        "definition": "Url of regimen",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.intent",
+        "path": "actnowupdate.regimen.intent",
+        "short": "Intent of treatment",
+        "definition": "Intent of treatment",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.clinicalTrial",
+        "path": "actnowupdate.regimen.clinicalTrial",
+        "short": "Is this a clinical trial regimen",
+        "definition": "Is this a clinical trial regimen",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.discontinue",
+        "path": "actnowupdate.regimen.discontinue",
+        "short": "If the regimen was discontinued",
+        "definition": "If the regimen was discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.discontinue.date",
+        "path": "actnowupdate.regimen.discontinue.date",
+        "short": "Date discontinued",
+        "definition": "Date discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.discontinue.reason",
+        "path": "actnowupdate.regimen.discontinue.reason",
+        "short": "Reason discontinued",
+        "definition": "Reason discontinued",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.discontinue.patientFactors",
+        "path": "actnowupdate.regimen.discontinue.patientFactors",
+        "short": "patient reasons for discontinuation",
+        "definition": "patient reasons for discontinuation",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.discontinue.toxicity",
+        "path": "actnowupdate.regimen.discontinue.toxicity",
+        "short": "toxicity reasons",
+        "definition": "toxicity reasons",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "actnowupdate.regimen.cycleCount",
+        "path": "actnowupdate.regimen.cycleCount",
+        "short": "Number of cycles completed",
+        "definition": "Number of cycles completed",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      }
+    ]
+  }
+}
