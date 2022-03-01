@@ -1,9 +1,0 @@
-{
-  "resourceType": "Patient",
-  "id": "anr-patient",
-  "name": [
-    {
-      "text": "John Doe"
-    }
-  ]
-}

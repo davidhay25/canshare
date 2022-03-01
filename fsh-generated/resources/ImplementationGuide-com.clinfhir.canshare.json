@@ -26,7 +26,7 @@
     "resource": [
       {
         "reference": {
-          "reference": "StructureDefinition/actnow-review"
+          "reference": "StructureDefinition/actnow-complete"
         },
         "name": "ActNow review Composition",
         "description": "Defines the ActNow review composition",
@@ -180,31 +180,59 @@
       },
       {
         "reference": {
-          "reference": "Composition/an-review"
-        },
-        "name": "ActNow review",
-        "description": "An example composition for a review of the cancer and propose treatment",
-        "exampleCanonical": "https://aehrc.com/fhir/StructureDefinition/actnow-review"
-      },
-      {
-        "reference": {
-          "reference": "Condition/anr-cancer"
+          "reference": "Condition/an-cancer"
         },
         "name": "The cancer being treated",
         "exampleBoolean": true
       },
       {
         "reference": {
-          "reference": "Patient/anr-patient"
+          "reference": "Composition/an-complete"
+        },
+        "name": "ActNow complete",
+        "description": "An example composition containing all act-now data",
+        "exampleCanonical": "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
+      },
+      {
+        "reference": {
+          "reference": "Patient/an-patient"
         },
         "name": "John Doe",
         "exampleBoolean": true
       },
       {
         "reference": {
-          "reference": "Practitioner/anr-practitioner"
+          "reference": "Practitioner/an-practitioner"
         },
         "name": "Marcus Welby",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/cM"
+        },
+        "name": "cM",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/cN"
+        },
+        "name": "cN",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/cT"
+        },
+        "name": "cT",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/cTNM"
+        },
+        "name": "cTNM",
         "exampleBoolean": true
       },
       {

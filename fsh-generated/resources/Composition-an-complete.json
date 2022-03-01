@@ -1,9 +1,9 @@
 {
   "resourceType": "Composition",
-  "id": "an-review",
+  "id": "an-complete",
   "meta": {
     "profile": [
-      "https://aehrc.com/fhir/StructureDefinition/actnow-review"
+      "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
     ]
   },
   "type": {
@@ -15,15 +15,15 @@
       }
     ]
   },
-  "title": "Review document",
+  "title": "complete document",
   "status": "final",
   "author": [
     {
-      "reference": "Practitioner/anr-practitioner"
+      "reference": "Practitioner/an-practitioner"
     }
   ],
   "subject": {
-    "reference": "Patient/anr-patient"
+    "reference": "Patient/an-patient"
   },
   "date": "2020-04-21",
   "section": [
@@ -42,7 +42,26 @@
       },
       "entry": [
         {
-          "reference": "Condition/anr-cancer"
+          "reference": "Condition/an-cancer"
+        }
+      ]
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "75620-5",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "text": {
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Clinical TNM</div>",
+        "status": "generated"
+      },
+      "entry": [
+        {
+          "reference": "Observation/cTNM"
         }
       ]
     }

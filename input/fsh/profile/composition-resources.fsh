@@ -1,19 +1,19 @@
 // PROFILES 
 
-Profile: ActNowReviewComposition
+Profile: ActNowCompleteComposition
 Parent: Composition
-Id: actnow-review
+Id: actnow-complete
 Title: "ActNow review Composition"
 Description: "Defines the ActNow review composition"
 
-* ^url = "https://aehrc.com/fhir/StructureDefinition/actnow-review"
+* ^url = "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
 //* status = #draft
 
 * type = http://loinc.org#11503-0 "Medical Records"
 * subject 1..1      //there must be a subject
 // - maybe nz patient* subject only Reference(https://aehrc.com/fhir/StructureDefinition/AUPrimaryCarePatient)
 
-* title = "Review document"
+* title = "complete document"
 
 //discriminator for the sections - slice on the section code...
 * section ^slicing.discriminator.type = #value
@@ -21,7 +21,12 @@ Description: "Defines the ActNow review composition"
 * section ^slicing.rules = #open
 
 * section contains 
-    cancerDetails 1..1 
+    cancerDetails 1..1 and
+    clinicalTNM 0..1 and
+    pathologicalTNM 0..1 and
+    otherStaging 0..1 and
+    prognosticScoring 0..1 and
+    treatment-regimen 0..1
 /*
     adverseReactionList 1..1 and
     vaccinationList 1..1 and
