@@ -59,17 +59,17 @@
         },
         {
           "linkId": "previousCx",
-          "text": "Details of previous cytology or biopsies for this tumour",
+          "text": "Details of any previous cytology or biopsies for this tumour",
           "type": "text"
         },
         {
           "linkId": "previousTx",
-          "text": "Details of previous treatment for this tumour",
+          "text": "Details of any previous treatment for this tumour",
           "type": "text"
         },
         {
           "linkId": "previousCancer",
-          "text": "Details of previous cancer diagnosis",
+          "text": "Details of any previous cancer diagnosis",
           "type": "text"
         },
         {
@@ -86,7 +86,7 @@
     },
     {
       "linkId": "tnm",
-      "text": "TNM staging",
+      "text": "Clinical TNM staging",
       "type": "group",
       "item": [
         {
@@ -178,17 +178,62 @@
         {
           "linkId": "type",
           "text": "Nature of procedure",
-          "type": "choice"
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "wedge",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "wedge"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "segmentectomy",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "segmentectomy"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "bilobectomy",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "bilobectomy"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "lobectomy",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "lobectomy"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "pneumonectomy",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "pneumonectomy"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "other",
+                "system": "http://clinfhir.com/CodeSystem/resection",
+                "display": "Other"
+              }
+            }
+          ]
         },
         {
           "linkId": "procCode",
           "text": "Procedure code",
-          "type": "choice"
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/procedure-code"
         },
         {
           "linkId": "procNotes",
           "text": "Procedure notes",
-          "type": "choice"
+          "type": "text"
         },
         {
           "linkId": "adjOrgansInv",
@@ -210,7 +255,51 @@
         {
           "linkId": "tumoursite",
           "text": "Tumour site",
-          "type": "choice"
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "rul",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Right Upper Lobe"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "rml",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Right Middle Lobe"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "rll",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Right Lower Lobe"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "lul",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Left Upper Lobe"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "lll",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Left Lower Lobe"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "mb",
+                "system": "http://clinfhir.com/CodeSystem/site",
+                "display": "Main Bronchus"
+              }
+            }
+          ]
         },
         {
           "linkId": "tumournotes",
@@ -232,6 +321,18 @@
         {
           "linkId": "specReturn",
           "text": "Patient requests specimen return",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "linkId": "admin",
+      "text": "Administration",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "mdmreferral",
+          "text": "Refer for MDM assessment",
           "type": "boolean"
         }
       ]

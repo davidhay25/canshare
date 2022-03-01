@@ -1,0 +1,46 @@
+{
+  "resourceType": "Condition",
+  "id": "anr-cancer",
+  "clinicalStatus": {
+    "coding": [
+      {
+        "code": "active"
+      }
+    ]
+  },
+  "verificationStatus": {
+    "coding": [
+      {
+        "code": "confirmed"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/anr-patient"
+  },
+  "code": {
+    "coding": [
+      {
+        "code": "11348-0",
+        "system": "http://loinc.org"
+      }
+    ]
+  },
+  "bodySite": [
+    {
+      "coding": [
+        {
+          "code": "3341006",
+          "system": "http://snomed.info/sct"
+        }
+      ]
+    }
+  ],
+  "stage": [
+    {
+      "summary": {
+        "text": "Advanced"
+      }
+    }
+  ]
+}

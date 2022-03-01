@@ -1,6 +1,6 @@
 Logical:        LungModel
-Title:          "Model for Lung cancer data"
-Description:    "Model for Lung cancer data"
+Title:          "Model for Lung cancer data form"
+Description:    "Data for lung cancer pathology request"
 Parent:         Element
 
 * ^url = "http://clinfhir.com/StructureDefinition/LungModel"

@@ -39,24 +39,58 @@
           {
             "code": "BackboneElement"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Patient",
+            "comment": "",
+            "identity": "canshare"
+          }
         ]
       },
       {
         "id": "actnowreview.patient.nhi",
         "path": "actnowreview.patient.nhi",
         "short": "The patients NHI number",
-        "definition": "The patients NHI number",
+        "definition": "The NZ NHI",
         "min": 1,
         "max": "1",
         "type": [
           {
             "code": "Identifier"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Patient.identifier",
+            "comment": "system value: https://standards.digital.health.nz/ns/nhi-id",
+            "identity": "canshare"
+          }
         ]
       },
       {
-        "id": "actnowreview.dxDate",
-        "path": "actnowreview.dxDate",
+        "id": "actnowreview.cancerDetails",
+        "path": "actnowreview.cancerDetails",
+        "short": "Details about the cancer",
+        "definition": "Details about the cancer",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "mapping": [
+          {
+            "map": "Condition",
+            "comment": "A number of the elements in this section map to a single Condition resource",
+            "identity": "canshare"
+          }
+        ]
+      },
+      {
+        "id": "actnowreview.cancerDetails.dxDate",
+        "path": "actnowreview.cancerDetails.dxDate",
         "short": "The date the diagnosis was made",
         "definition": "The date the diagnosis was made",
         "min": 1,
@@ -65,11 +99,18 @@
           {
             "code": "date"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Condition.extension",
+            "comment": "<a href='http://hl7.org/fhir/StructureDefinition/condition-assertedDate'>http://hl7.org/fhir/StructureDefinition/condition-assertedDate</a>",
+            "identity": "canshare"
+          }
         ]
       },
       {
-        "id": "actnowreview.primarySite",
-        "path": "actnowreview.primarySite",
+        "id": "actnowreview.cancerDetails.primarySite",
+        "path": "actnowreview.cancerDetails.primarySite",
         "short": "The primary site of the cancer",
         "definition": "The primary site of the cancer",
         "min": 1,
@@ -78,11 +119,18 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Condition.bodySite",
+            "comment": "",
+            "identity": "canshare"
+          }
         ]
       },
       {
-        "id": "actnowreview.histology",
-        "path": "actnowreview.histology",
+        "id": "actnowreview.cancerDetails.histology",
+        "path": "actnowreview.cancerDetails.histology",
         "short": "The histologic cancer type",
         "definition": "The histologic cancer type",
         "min": 1,
@@ -91,11 +139,18 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Condition.code",
+            "comment": "",
+            "identity": "canshare"
+          }
         ]
       },
       {
-        "id": "actnowreview.laterality",
-        "path": "actnowreview.laterality",
+        "id": "actnowreview.cancerDetails.laterality",
+        "path": "actnowreview.cancerDetails.laterality",
         "short": "Laterality of tumour ?is this needed - is it part of site",
         "definition": "Laterality of tumour ?is this needed - is it part of site",
         "min": 0,
@@ -104,11 +159,18 @@
           {
             "code": "CodeableConcept"
           }
+        ],
+        "mapping": [
+          {
+            "map": "Condition.bodySite.extension",
+            "comment": "<a href='http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier'>http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier</a>",
+            "identity": "canshare"
+          }
         ]
       },
       {
-        "id": "actnowreview.grade",
-        "path": "actnowreview.grade",
+        "id": "actnowreview.cancerDetails.grade",
+        "path": "actnowreview.cancerDetails.grade",
         "short": "Cancer grading. Includes system and version",
         "definition": "Cancer grading. Includes system and version",
         "min": 0,
@@ -265,8 +327,8 @@
       {
         "id": "actnowreview.pathologicalTNM.T-stage",
         "path": "actnowreview.pathologicalTNM.T-stage",
-        "short": "Clinical T (Tumour) stage",
-        "definition": "Clinical T (Tumour) stage",
+        "short": "Pathological T (Tumour) stage",
+        "definition": "Pathological T (Tumour) stage",
         "min": 0,
         "max": "1",
         "type": [
@@ -278,8 +340,8 @@
       {
         "id": "actnowreview.pathologicalTNM.N-stage",
         "path": "actnowreview.pathologicalTNM.N-stage",
-        "short": "Clinical N (Nodes) stage",
-        "definition": "Clinical N (Nodes) stage",
+        "short": "Pathological N (Nodes) stage",
+        "definition": "Pathological N (Nodes) stage",
         "min": 0,
         "max": "1",
         "type": [
@@ -291,8 +353,8 @@
       {
         "id": "actnowreview.pathologicalTNM.M-stage",
         "path": "actnowreview.pathologicalTNM.M-stage",
-        "short": "Clinical M (Metastasis) stage",
-        "definition": "Clinical M (Metastasis) stage",
+        "short": "Pathological M (Metastasis) stage",
+        "definition": "Pathological M (Metastasis) stage",
         "min": 0,
         "max": "1",
         "type": [
@@ -304,8 +366,8 @@
       {
         "id": "actnowreview.pathologicalTNM.group",
         "path": "actnowreview.pathologicalTNM.group",
-        "short": "Clinical group",
-        "definition": "Clinical group",
+        "short": "Pathological group",
+        "definition": "Pathological group",
         "min": 1,
         "max": "1",
         "type": [

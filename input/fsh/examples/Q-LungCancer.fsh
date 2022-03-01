@@ -31,20 +31,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 //-----  clinical information
 
-/* add admin stuff as profile on QR
-* item[+].linkId = "admin"
-* item[=].text = "Administrative"
-* item[=].type = #group
 
-* item[=].item[+].linkId = "prinClin"
-* item[=].item[=].text = "Principal Clinician "
-* item[=].item[=].type = #string
-
-* item[=].item[+].linkId = "cc"
-* item[=].item[=].text = "Copy to"
-* item[=].item[=].type = #string
-
-*/
 * item[+].linkId = "clinicalinfo"
 * item[=].text = "Clinical Information"
 * item[=].type = #group
@@ -70,15 +57,15 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].type = #boolean
 
 * item[=].item[+].linkId = "previousCx"
-* item[=].item[=].text = "Details of previous cytology or biopsies for this tumour"
+* item[=].item[=].text = "Details of any previous cytology or biopsies for this tumour"
 * item[=].item[=].type = #text
 
 * item[=].item[+].linkId = "previousTx"
-* item[=].item[=].text = "Details of previous treatment for this tumour"
+* item[=].item[=].text = "Details of any previous treatment for this tumour"
 * item[=].item[=].type = #text
 
 * item[=].item[+].linkId = "previousCancer"
-* item[=].item[=].text = "Details of previous cancer diagnosis"
+* item[=].item[=].text = "Details of any previous cancer diagnosis"
 * item[=].item[=].type = #text
 
 * item[=].item[+].linkId = "radiology"
@@ -90,9 +77,8 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].type = #text
 
 * item[+].linkId = "tnm"
-* item[=].text = "TNM staging"
+* item[=].text = "Clinical TNM staging"
 * item[=].type = #group
-
 
 * item[=].item[+].linkId = "tstage"
 * item[=].item[=].text = "T-stage"
@@ -137,14 +123,23 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[+].linkId = "type"
 * item[=].item[=].text = "Nature of procedure"
 * item[=].item[=].type = #choice
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#wedge "wedge"
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#segmentectomy "segmentectomy"
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#bilobectomy "bilobectomy"
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#lobectomy "lobectomy"
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#pneumonectomy "pneumonectomy"
+* item[=].item[=].answerOption[+].valueCoding = $resection-cs#other "Other"
 
 * item[=].item[+].linkId = "procCode"
 * item[=].item[=].text = "Procedure code"
 * item[=].item[=].type = #choice
 
+* item[=].item[=].answerValueSet = "http://hl7.org/fhir/ValueSet/procedure-code"
+
+
 * item[=].item[+].linkId = "procNotes"
 * item[=].item[=].text = "Procedure notes"
-* item[=].item[=].type = #choice
+* item[=].item[=].type = #text
 
 * item[=].item[+].linkId = "adjOrgansInv"
 * item[=].item[=].text = "Adjacent Organs involved"
@@ -155,24 +150,6 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].type = #text
 
 
-
-
-/*
-* item[=].item[+].linkId = "resection"
-* item[=].item[=].text = "Nature of the resection"
-* item[=].item[=].type = #choice
-//* item[=].item[=].answerValueSet = $resection-vs
-
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#wedge "wedge"
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#segmentectomy "segmentectomy"
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#bilobectomy "bilobectomy"
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#lobectomy "lobectomy"
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#pneumonectomy "pneumonectomy"
-* item[=].item[=].answerOption[+].valueCoding = $resection-cs#other "Other"
-
-
-*/
-
 * item[+].linkId = "tumour"
 * item[=].text = "Tumour Information"
 * item[=].type = #group
@@ -180,6 +157,12 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[+].linkId = "tumoursite"
 * item[=].item[=].text = "Tumour site"
 * item[=].item[=].type = #choice
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#rul "Right Upper Lobe"
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#rml "Right Middle Lobe"
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#rll "Right Lower Lobe"
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#lul "Left Upper Lobe"
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#lll "Left Lower Lobe"
+* item[=].item[=].answerOption[+].valueCoding = $site-cs#mb "Main Bronchus"
 
 * item[=].item[+].linkId = "tumournotes"
 * item[=].item[=].text = "Notes"
@@ -196,6 +179,15 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 * item[=].item[+].linkId = "specReturn"
 * item[=].item[=].text = "Patient requests specimen return"
+* item[=].item[=].type = #boolean
+
+
+* item[+].linkId = "admin"
+* item[=].text = "Administration"
+* item[=].type = #group
+
+* item[=].item[+].linkId = "mdmreferral"
+* item[=].item[=].text = "Refer for MDM assessment"
 * item[=].item[=].type = #boolean
 
 /*

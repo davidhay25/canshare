@@ -4,14 +4,14 @@ sushi  -s -o .
 if [[ $? -eq 0 ]]
 then
 
-# create the 2 summary files extensions.xml & profiles.xml. Saves in both /input.. & /fsh/ig-data...
 
-# echo "Updating the global summary of extensions and terminology"
-# ../globalScripts/makeGlobalIGSummary.js
+echo "Create the mapping file for ActNowReview"
+localscripts/makeLMMapping.js ActNowReview
+
 echo
 
 
-echo "Not doing anything else right now"
+
 
 else 
 echo

@@ -4,9 +4,9 @@
   "url": "http://clinfhir.com/StructureDefinition/LungModel",
   "version": "0.1.0",
   "name": "LungModel",
-  "title": "Model for Lung cancer data",
+  "title": "Model for Lung cancer data form",
   "status": "active",
-  "description": "Model for Lung cancer data",
+  "description": "Data for lung cancer pathology request",
   "fhirVersion": "4.0.1",
   "mapping": [
     {
@@ -25,8 +25,8 @@
       {
         "id": "LungModel",
         "path": "LungModel",
-        "short": "Model for Lung cancer data",
-        "definition": "Model for Lung cancer data"
+        "short": "Model for Lung cancer data form",
+        "definition": "Data for lung cancer pathology request"
       },
       {
         "id": "LungModel.patient",

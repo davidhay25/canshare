@@ -1,0 +1,50 @@
+{
+  "resourceType": "Composition",
+  "id": "an-review",
+  "meta": {
+    "profile": [
+      "https://aehrc.com/fhir/StructureDefinition/actnow-review"
+    ]
+  },
+  "type": {
+    "coding": [
+      {
+        "code": "11503-0",
+        "system": "http://loinc.org",
+        "display": "Medical Records"
+      }
+    ]
+  },
+  "title": "Review document",
+  "status": "final",
+  "author": [
+    {
+      "reference": "Practitioner/anr-practitioner"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/anr-patient"
+  },
+  "date": "2020-04-21",
+  "section": [
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "11348-0",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "text": {
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Details about this cancer</div>",
+        "status": "generated"
+      },
+      "entry": [
+        {
+          "reference": "Condition/anr-cancer"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+"Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)","Mapping: RIM Mapping"
+"actnowreview","","","",0,*,"","","","","Model for recording the review of the treatment plan","Records chemotherapy given ","","","","","","","","","",,,,,"",,,,"Element",0,*,"ele-1
+","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+","n/a"
+"actnowreview.id","","","",0,1,"","","","string {[]} {[]}
+","Unique id for inter-element referencing","Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.","","","","","","","","","",,,,,"",,,,"Element.id",0,1,"","","n/a"
+"actnowreview.extension","","extensions
+user content","",0,*,"","","","Extension {[]} {[]}
+","Additional content defined by implementations","May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.","There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.","","","","","","","","",,,,,"","value:url}
+","Extensions are always sliced by (at least) url",,"open","Element.extension",0,*,"","ele-1:All FHIR elements must have a @value or children {hasValue() or (children().count() > id.count())}
+ext-1:Must have either extensions or value[x], not both {extension.exists() != value.exists()}","n/a"
+"actnowreview.patient","","","",1,1,"","","","BackboneElement {[]} {[]}
+","Patient demographics","Patient demographics","","","","","","","","","",,,,,"",,,,"actnowreview.patient",1,1,"",""
+"actnowreview.patient.nhi","","","",1,1,"","","","Identifier {[]} {[]}
+","The patients NHI number","The patients NHI number","","","","","","","","","",,,,,"",,,,"actnowreview.patient.nhi",1,1,"",""
+"actnowreview.dxDate","","","",1,1,"","","","date {[]} {[]}
+","The date the diagnosis was made","The date the diagnosis was made","","","","","","","","","",,,,,"",,,,"actnowreview.dxDate",1,1,"",""
+"actnowreview.primarySite","","","",1,1,"","","","CodeableConcept {[]} {[]}
+","The primary site of the cancer","The primary site of the cancer","","","","","","","","","",,,,,"",,,,"actnowreview.primarySite",1,1,"",""
+"actnowreview.histology","","","",1,1,"","","","CodeableConcept {[]} {[]}
+","The histologic cancer type","The histologic cancer type","","","","","","","","","",,,,,"",,,,"actnowreview.histology",1,1,"",""
+"actnowreview.laterality","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Laterality of tumour ?is this needed - is it part of site","Laterality of tumour ?is this needed - is it part of site","","","","","","","","","",,,,,"",,,,"actnowreview.laterality",0,1,"",""
+"actnowreview.grade","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Cancer grading. Includes system and version","Cancer grading. Includes system and version","","","","","","","","","",,,,,"",,,,"actnowreview.grade",0,1,"",""
+"actnowreview.recurrance","","","",0,1,"","","","BackboneElement {[]} {[]}
+","Recurrance information","Recurrance information","","","","","","","","","",,,,,"",,,,"actnowreview.recurrance",0,1,"",""
+"actnowreview.recurrance.type","","","",0,1,"","","","CodeableConcept {[]} {[]}
+","Type of recurrance","Type of recurrance","","","","","","","","","",,,,,"",,,,"actnowreview.recurrance.type",0,1,"",""
+"actnowreview.recurrance.date","","","",0,1,"","","","date {[]} {[]}
+","Date of recurrance","Date of recurrance","","","","","","","","","",,,,,"",,,,"actnowreview.recurrance.date",0,1,"",""
+"actnowreview.clinicalTNM","","","",0,1,"","","","BackboneElement {[]} {[]}
+","Clinical TNM Classification","Clinical TNM Classification","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM",0,1,"",""
+"actnowreview.clinicalTNM.T-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical T (Tumour) stage","Clinical T (Tumour) stage","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.T-stage",0,1,"",""
+"actnowreview.clinicalTNM.N-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical N (Nodes) stage","Clinical N (Nodes) stage","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.N-stage",0,1,"",""
+"actnowreview.clinicalTNM.M-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical M (Metastasis) stage","Clinical M (Metastasis) stage","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.M-stage",0,1,"",""
+"actnowreview.clinicalTNM.group","","","",1,1,"","","","code {[]} {[]}
+","Clinical group","Clinical group","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.group",1,1,"",""
+"actnowreview.clinicalTNM.edition","","","",1,1,"","","","code {[]} {[]}
+","Edition of TNM used","Edition of TNM used","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.edition",1,1,"",""
+"actnowreview.clinicalTNM.date","","","",1,1,"","","","date {[]} {[]}
+","Date evaluation done","Date evaluation done","","","","","","","","","",,,,,"",,,,"actnowreview.clinicalTNM.date",1,1,"",""
+"actnowreview.pathologicalTNM","","","",0,1,"","","","BackboneElement {[]} {[]}
+","Clinical TNM Classification","Clinical TNM Classification","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM",0,1,"",""
+"actnowreview.pathologicalTNM.T-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical T (Tumour) stage","Clinical T (Tumour) stage","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.T-stage",0,1,"",""
+"actnowreview.pathologicalTNM.N-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical N (Nodes) stage","Clinical N (Nodes) stage","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.N-stage",0,1,"",""
+"actnowreview.pathologicalTNM.M-stage","","","",0,1,"","","","code {[]} {[]}
+","Clinical M (Metastasis) stage","Clinical M (Metastasis) stage","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.M-stage",0,1,"",""
+"actnowreview.pathologicalTNM.group","","","",1,1,"","","","code {[]} {[]}
+","Clinical group","Clinical group","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.group",1,1,"",""
+"actnowreview.pathologicalTNM.edition","","","",1,1,"","","","code {[]} {[]}
+","Edition of TNM used","Edition of TNM used","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.edition",1,1,"",""
+"actnowreview.pathologicalTNM.date","","","",1,1,"","","","date {[]} {[]}
+","Date evaluation done","Date evaluation done","","","","","","","","","",,,,,"",,,,"actnowreview.pathologicalTNM.date",1,1,"",""
+"actnowreview.otherStaging","","","",0,1,"","","","BackboneElement {[]} {[]}
+","Other staging","Other staging","","","","","","","","","",,,,,"",,,,"actnowreview.otherStaging",0,1,"",""
+"actnowreview.otherStaging.groupStage","","","",1,1,"","","","code {[]} {[]}
+","The cancer group stage, using a system other than TNM","The cancer group stage, using a system other than TNM","","","","","","","","","",,,,,"",,,,"actnowreview.otherStaging.groupStage",1,1,"",""
+"actnowreview.otherStaging.basis","","","",1,1,"","","","code {[]} {[]}
+","The basis of the Other staging group stage","The basis of the Other staging group stage","","","","","","","","","",,,,,"",,,,"actnowreview.otherStaging.basis",1,1,"",""
+"actnowreview.otherStaging.system","","","",1,1,"","","","date {[]} {[]}
+","The other staging system used to stage the cancer","The other staging system used to stage the cancer","","","","","","","","","",,,,,"",,,,"actnowreview.otherStaging.system",1,1,"",""
+"actnowreview.otherStaging.edition","","","",1,1,"","","","code {[]} {[]}
+","The other staging system edition used to stage the cancer","The other staging system edition used to stage the cancer","","","","","","","","","",,,,,"",,,,"actnowreview.otherStaging.edition",1,1,"",""
+"actnowreview.prognosticScoring","","","",0,*,"","","","BackboneElement {[]} {[]}
+","Prognostic scoring","Prognostic scoring","","","","","","","","","",,,,,"",,,,"actnowreview.prognosticScoring",0,*,"",""
+"actnowreview.prognosticScoring.score","","","",1,1,"","","","code {[]} {[]}
+","Prognostic score","Prognostic score","","","","","","","","","",,,,,"",,,,"actnowreview.prognosticScoring.score",1,1,"",""
+"actnowreview.prognosticScoring.system","","","",1,1,"","","","date {[]} {[]}
+","Scoring system","Scoring system","","","","","","","","","",,,,,"",,,,"actnowreview.prognosticScoring.system",1,1,"",""
+"actnowreview.prognosticScoring.edition","","","",1,1,"","","","code {[]} {[]}
+","Edition of score","Edition of score","","","","","","","","","",,,,,"",,,,"actnowreview.prognosticScoring.edition",1,1,"",""
+"actnowreview.regimen","","","",0,1,"","","","BackboneElement {[]} {[]}
+","Initial regimen to use","Initial regimen to use","","","","","","","","","",,,,,"",,,,"actnowreview.regimen",0,1,"",""
+"actnowreview.regimen.ECOG","","","",0,1,"","","","integer {[]} {[]}
+","ECOG score at start of regimen","ECOG score at start of regimen","","","","","","","","","",,,,,"",,,,"actnowreview.regimen.ECOG",0,1,"",""
+"actnowreview.regimen.url","","","",1,1,"","","","string {[]} {[]}
+","Url of regimen","Url of regimen","","","","","","","","","",,,,,"",,,,"actnowreview.regimen.url",1,1,"",""
+"actnowreview.regimen.intent","","","",0,1,"","","","code {[]} {[]}
+","Intent of treatment","Intent of treatment","","","","","","","","","",,,,,"",,,,"actnowreview.regimen.intent",0,1,"",""
+"actnowreview.regimen.clinicalTrial","","","",0,1,"","","","boolean {[]} {[]}
+","Is this a clinical trial regimen","Is this a clinical trial regimen","","","","","","","","","",,,,,"",,,,"actnowreview.regimen.clinicalTrial",0,1,"",""

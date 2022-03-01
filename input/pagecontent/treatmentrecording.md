@@ -8,7 +8,12 @@ data is sent from the source system to CanShare.
 
 <img style="width:800px; float:none" src="workflow.png"/>
 
-There are 3 main interactions where data is sent from the external system to canShare.
+There are 3 main interactions where data is sent from the external system to canShare. Currently, the data flow is from external system to CanShare only. For each interaction type, there is (or will be)
+
+* A Logical Model that represents the information that could be present in the interaction. There will be overlap between the models for common elements - eg the chosen regimens or TNM status
+* A mapping table that indicates how the information in the logical model maps to FHIR artifacts
+* A profile on Composition to provide the overall structure of the interaction
+* Examples
 
 
 #### Review
@@ -16,6 +21,8 @@ There are 3 main interactions where data is sent from the external system to can
 This model represents the data collected by the external system when the patient is first referred to the treatment provider. It could also represent a review done at any time.
 
 [Logical Model](StructureDefinition-ActNowReview.html)
+
+[Mapping to resources](ActNowReviewmapping.html)
 
 #### Deliver care
 
