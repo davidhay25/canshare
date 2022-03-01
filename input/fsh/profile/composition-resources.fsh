@@ -26,7 +26,7 @@ Description: "Defines the ActNow review composition"
     pathologicalTNM 0..1 and
     otherStaging 0..1 and
     prognosticScoring 0..1 and
-    treatment-regimen 0..1
+    regimen 0..1
 /*
     adverseReactionList 1..1 and
     vaccinationList 1..1 and

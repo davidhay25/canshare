@@ -1,8 +1,12 @@
 {
   "resourceType": "Observation",
   "id": "cTNM",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Clinical TNM</div>",
+    "status": "generated"
+  },
   "subject": {
-    "reference": "cancer-patient-john-anyperson"
+    "reference": "Patient/an-patient"
   },
   "status": "final",
   "code": {

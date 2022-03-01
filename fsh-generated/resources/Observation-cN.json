@@ -1,6 +1,10 @@
 {
   "resourceType": "Observation",
   "id": "cN",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">N3</div>",
+    "status": "generated"
+  },
   "subject": {
     "reference": "Patient/an-patient"
   },

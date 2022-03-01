@@ -1,6 +1,10 @@
 {
   "resourceType": "Observation",
   "id": "cT",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">T3</div>",
+    "status": "generated"
+  },
   "subject": {
     "reference": "Patient/an-patient"
   },

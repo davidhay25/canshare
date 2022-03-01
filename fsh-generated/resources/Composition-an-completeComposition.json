@@ -1,6 +1,6 @@
 {
   "resourceType": "Composition",
-  "id": "an-complete",
+  "id": "an-completeComposition",
   "meta": {
     "profile": [
       "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
@@ -16,6 +16,10 @@
     ]
   },
   "title": "complete document",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Document metadata</div>",
+    "status": "generated"
+  },
   "status": "final",
   "author": [
     {
@@ -62,6 +66,25 @@
       "entry": [
         {
           "reference": "Observation/cTNM"
+        }
+      ]
+    },
+    {
+      "code": {
+        "coding": [
+          {
+            "code": "1234-5",
+            "system": "http://loinc.org"
+          }
+        ]
+      },
+      "text": {
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen summary</div>",
+        "status": "generated"
+      },
+      "entry": [
+        {
+          "reference": "Observation/regimen-summary1"
         }
       ]
     }

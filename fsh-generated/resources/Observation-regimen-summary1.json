@@ -1,0 +1,57 @@
+{
+  "resourceType": "Observation",
+  "id": "regimen-summary1",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen summary</div>",
+    "status": "generated"
+  },
+  "subject": {
+    "reference": "Patient/an-patient"
+  },
+  "effectiveDateTime": "2020-01-01",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "regimensummary",
+        "system": "http://clinfhir.com/codesystem",
+        "display": "Summary of regimen"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://clinfhir.com/StructureDefinition/cyclesummary",
+      "valueReference": {
+        "reference": "Observation/cycle-summary1"
+      }
+    },
+    {
+      "url": "http://clinfhir.com/StructureDefinition/regimen-discontinued",
+      "extension": [
+        {
+          "url": "date",
+          "valueDateTime": "2020-02-02T12:00:00Z"
+        },
+        {
+          "url": "reason",
+          "valueCodeableConcept": {
+            "text": "Not tolerated by patient"
+          }
+        },
+        {
+          "url": "patientfactors",
+          "valueCodeableConcept": {
+            "text": "Nausea"
+          }
+        },
+        {
+          "url": "toxicity",
+          "valueCodeableConcept": {
+            "text": "low WCC"
+          }
+        }
+      ]
+    }
+  ]
+}

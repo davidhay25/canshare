@@ -187,7 +187,14 @@
       },
       {
         "reference": {
-          "reference": "Composition/an-complete"
+          "reference": "Bundle/an-completeBundle"
+        },
+        "name": "an-completeBundle",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Composition/an-completeComposition"
         },
         "name": "ActNow complete",
         "description": "An example composition containing all act-now data",
@@ -237,6 +244,13 @@
       },
       {
         "reference": {
+          "reference": "Observation/cycle-summary1"
+        },
+        "name": "A summary of a single cycle of treatment",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "CapabilityStatement/dataserverCS"
         },
         "name": "Data Server Capability Statement",
@@ -261,6 +275,13 @@
       },
       {
         "reference": {
+          "reference": "MedicationAdministration/medication1"
+        },
+        "name": "A summary of a single cycle of treatment",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Patient/patient1"
         },
         "name": "patient1",
@@ -278,6 +299,13 @@
           "reference": "Practitioner/practitioner1"
         },
         "name": "practitioner1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/regimen-summary1"
+        },
+        "name": "A summary of a regimen",
         "exampleBoolean": true
       }
     ],

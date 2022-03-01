@@ -1,6 +1,10 @@
 {
   "resourceType": "Condition",
   "id": "an-cancer",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Small cell carcinoma</div>",
+    "status": "generated"
+  },
   "extension": [
     {
       "url": "http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier",

@@ -4182,7 +4182,7 @@
         ]
       },
       {
-        "id": "Composition.section:treatment-regimen",
+        "id": "Composition.section:regimen",
         "extension": [
           {
             "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name",
@@ -4190,7 +4190,7 @@
           }
         ],
         "path": "Composition.section",
-        "sliceName": "treatment-regimen",
+        "sliceName": "regimen",
         "short": "Composition is broken into sections",
         "definition": "The root of the sections that make up the composition.",
         "min": 0,
@@ -4350,9 +4350,9 @@
         "max": "1"
       },
       {
-        "id": "Composition.section:treatment-regimen",
+        "id": "Composition.section:regimen",
         "path": "Composition.section",
-        "sliceName": "treatment-regimen",
+        "sliceName": "regimen",
         "min": 0,
         "max": "1"
       }

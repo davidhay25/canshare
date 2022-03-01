@@ -1,0 +1,43 @@
+{
+  "resourceType": "Observation",
+  "id": "cycle-summary1",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cycle summary</div>",
+    "status": "generated"
+  },
+  "subject": {
+    "reference": "Patient/an-patient"
+  },
+  "effectiveDateTime": "2020-01-01",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "cyclesummary",
+        "system": "http://clinfhir.com/codesystem",
+        "display": "Summary of a cycle of treatment"
+      }
+    ]
+  },
+  "extension": [
+    {
+      "url": "http://clinfhir.com/StructureDefinition/regimen",
+      "extension": [
+        {
+          "url": "uri",
+          "valueUri": "http://cannonical/regimen/url"
+        },
+        {
+          "url": "name",
+          "valueString": "Excellent cancer regimen"
+        }
+      ]
+    },
+    {
+      "url": "http://clinfhir.com/StructureDefinition/medicationadministration",
+      "valueReference": {
+        "reference": "MedicationAdministration/medication1"
+      }
+    }
+  ]
+}
