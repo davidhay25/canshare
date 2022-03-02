@@ -1,33 +1,31 @@
 {
   "resourceType": "Observation",
-  "id": "regimen-summary1",
+  "id": "regimenOutcome",
   "text": {
-    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen summary</div>",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen Outcome</div>",
     "status": "generated"
   },
   "subject": {
     "reference": "Patient/an-patient"
   },
+  "performer": [
+    {
+      "reference": "Practitioner/an-practitioner"
+    }
+  ],
   "effectiveDateTime": "2020-01-01",
   "status": "final",
   "code": {
-    "coding": [
-      {
-        "code": "regimensummary",
-        "system": "http://clinfhir.com/codesystem",
-        "display": "Summary of regimen"
-      }
-    ]
+    "text": "Careplan outcome"
   },
+  "basedOn": [
+    {
+      "reference": "CarePlan/regimenPlan1"
+    }
+  ],
   "extension": [
     {
-      "url": "http://clinfhir.com/StructureDefinition/cyclesummary",
-      "valueReference": {
-        "reference": "Observation/cycle-summary1"
-      }
-    },
-    {
-      "url": "http://clinfhir.com/StructureDefinition/regimen-discontinued",
+      "url": "http://actnow/regimen-discontinued",
       "extension": [
         {
           "url": "date",
@@ -50,6 +48,27 @@
           "valueCodeableConcept": {
             "text": "low WCC"
           }
+        }
+      ]
+    },
+    {
+      "url": "http://actnow/cycle-count",
+      "valueInteger": 5
+    },
+    {
+      "url": "http://actnow/otu",
+      "extension": [
+        {
+          "url": "value",
+          "valueInteger": 1
+        },
+        {
+          "url": "benefit",
+          "valueInteger": 1
+        },
+        {
+          "url": "acceptable",
+          "valueInteger": 1
         }
       ]
     }

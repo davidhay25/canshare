@@ -17,6 +17,7 @@ Alias: $resection-cs = http://clinfhir.com/CodeSystem/resection
 Alias: $snomed = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 Alias: $ucum = http://unitsofmeasure.org
+Alias: $canshare = http://canshare.com
 
 Instance: QLungCancer
 InstanceOf: Questionnaire

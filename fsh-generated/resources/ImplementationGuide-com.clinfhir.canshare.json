@@ -190,15 +190,8 @@
           "reference": "Bundle/an-completeBundle"
         },
         "name": "an-completeBundle",
+        "description": "A Bundle containing all the resources for a single cycle of treatment for a regimen",
         "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "Composition/an-completeComposition"
-        },
-        "name": "ActNow complete",
-        "description": "An example composition containing all act-now data",
-        "exampleCanonical": "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
       },
       {
         "reference": {
@@ -212,6 +205,13 @@
           "reference": "Practitioner/an-practitioner"
         },
         "name": "Marcus Welby",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/bsa-cycle1"
+        },
+        "name": "BSA at start of cycle 1",
         "exampleBoolean": true
       },
       {
@@ -244,9 +244,16 @@
       },
       {
         "reference": {
-          "reference": "Observation/cycle-summary1"
+          "reference": "Observation/cc1"
         },
-        "name": "A summary of a single cycle of treatment",
+        "name": "Creatinine clearance",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "CarePlan/cycle1"
+        },
+        "name": "First cycle of treatment",
         "exampleBoolean": true
       },
       {
@@ -256,6 +263,20 @@
         "name": "Data Server Capability Statement",
         "description": "Represents API exposed by the Data Server",
         "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Observation/ecog-cycle1"
+        },
+        "name": "ECOG at start of cycle 1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/ecog-regimen"
+        },
+        "name": "ECOG at start of regimen",
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -277,7 +298,7 @@
         "reference": {
           "reference": "MedicationAdministration/medication1"
         },
-        "name": "A summary of a single cycle of treatment",
+        "name": "A single medication administration",
         "exampleBoolean": true
       },
       {
@@ -303,9 +324,16 @@
       },
       {
         "reference": {
-          "reference": "Observation/regimen-summary1"
+          "reference": "Observation/regimenOutcome"
         },
-        "name": "A summary of a regimen",
+        "name": "Outcome of regimen",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "CarePlan/regimenPlan1"
+        },
+        "name": "Regimen details",
         "exampleBoolean": true
       }
     ],

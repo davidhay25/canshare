@@ -1,0 +1,41 @@
+{
+  "resourceType": "CarePlan",
+  "id": "regimenPlan1",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen</div>",
+    "status": "generated"
+  },
+  "subject": {
+    "reference": "Patient/an-patient"
+  },
+  "author": {
+    "reference": "Practitioner/an-practitioner"
+  },
+  "status": "active",
+  "intent": "plan",
+  "instantiatesCanonical": [
+    "http://PlanDefinition/url"
+  ],
+  "supportingInfo": [
+    {
+      "reference": "Observation/ecog-regimen"
+    }
+  ],
+  "addresses": [
+    {
+      "reference": "Condition/an-cancer"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://actnow/intent-of-treatment",
+      "valueCodeableConcept": {
+        "text": "palliative"
+      }
+    },
+    {
+      "url": "http://actnow/clincial-trial",
+      "valueBoolean": false
+    }
+  ]
+}

@@ -1,102 +1,8 @@
 {
   "resourceType": "Bundle",
   "id": "an-completeBundle",
-  "type": "document",
+  "type": "collection",
   "entry": [
-    {
-      "resource": {
-        "resourceType": "Composition",
-        "id": "an-completeComposition",
-        "meta": {
-          "profile": [
-            "https://aehrc.com/fhir/StructureDefinition/actnow-complete"
-          ]
-        },
-        "type": {
-          "coding": [
-            {
-              "code": "11503-0",
-              "system": "http://loinc.org",
-              "display": "Medical Records"
-            }
-          ]
-        },
-        "title": "complete document",
-        "text": {
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Document metadata</div>",
-          "status": "generated"
-        },
-        "status": "final",
-        "author": [
-          {
-            "reference": "Practitioner/an-practitioner"
-          }
-        ],
-        "subject": {
-          "reference": "Patient/an-patient"
-        },
-        "date": "2020-04-21",
-        "section": [
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "11348-0",
-                  "system": "http://loinc.org"
-                }
-              ]
-            },
-            "text": {
-              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Details about this cancer</div>",
-              "status": "generated"
-            },
-            "entry": [
-              {
-                "reference": "Condition/an-cancer"
-              }
-            ]
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "75620-5",
-                  "system": "http://loinc.org"
-                }
-              ]
-            },
-            "text": {
-              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Clinical TNM</div>",
-              "status": "generated"
-            },
-            "entry": [
-              {
-                "reference": "Observation/cTNM"
-              }
-            ]
-          },
-          {
-            "code": {
-              "coding": [
-                {
-                  "code": "1234-5",
-                  "system": "http://loinc.org"
-                }
-              ]
-            },
-            "text": {
-              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen summary</div>",
-              "status": "generated"
-            },
-            "entry": [
-              {
-                "reference": "Observation/regimen-summary1"
-              }
-            ]
-          }
-        ]
-      }
-    },
     {
       "resource": {
         "resourceType": "Patient",
@@ -367,44 +273,148 @@
     },
     {
       "resource": {
-        "resourceType": "Observation",
-        "id": "cycle-summary1",
+        "resourceType": "CarePlan",
+        "id": "cycle1",
         "text": {
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cycle summary</div>",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cycle1</div>",
           "status": "generated"
         },
         "subject": {
           "reference": "Patient/an-patient"
         },
-        "effectiveDateTime": "2020-01-01",
-        "status": "final",
-        "code": {
+        "author": {
+          "reference": "Practitioner/an-practitioner"
+        },
+        "status": "active",
+        "intent": "plan",
+        "period": {
+          "start": "2020-01-01",
+          "end": "2020-02-01"
+        },
+        "partOf": [
+          {
+            "reference": "CarePlan/regimenPlan1"
+          }
+        ],
+        "addresses": [
+          {
+            "reference": "Condition/an-cancer"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://actnow/cycle-number",
+            "valueInteger": 1
+          }
+        ],
+        "supportingInfo": [
+          {
+            "reference": "Observation/bsa-cycle1"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "regimenPlan1",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen</div>",
+          "status": "generated"
+        },
+        "subject": {
+          "reference": "Patient/an-patient"
+        },
+        "author": {
+          "reference": "Practitioner/an-practitioner"
+        },
+        "status": "active",
+        "intent": "plan",
+        "instantiatesCanonical": [
+          "http://PlanDefinition/url"
+        ],
+        "supportingInfo": [
+          {
+            "reference": "Observation/ecog-regimen"
+          }
+        ],
+        "addresses": [
+          {
+            "reference": "Condition/an-cancer"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://actnow/intent-of-treatment",
+            "valueCodeableConcept": {
+              "text": "palliative"
+            }
+          },
+          {
+            "url": "http://actnow/clincial-trial",
+            "valueBoolean": false
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "medication1",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Methotrexate</div>",
+          "status": "generated"
+        },
+        "subject": {
+          "reference": "Patient/an-patient"
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/an-practitioner"
+            }
+          }
+        ],
+        "status": "completed",
+        "effectivePeriod": {
+          "start": "2020-01-10T10:00:00Z",
+          "end": "2020-01-10T11:00:00Z"
+        },
+        "medicationCodeableConcept": {
           "coding": [
             {
-              "code": "cyclesummary",
-              "system": "http://clinfhir.com/codesystem",
-              "display": "Summary of a cycle of treatment"
+              "code": "1234",
+              "system": "http://nzulm.co.nz"
             }
           ]
         },
+        "dosage": {
+          "text": "10 ml over 1 hour"
+        },
         "extension": [
           {
-            "url": "http://clinfhir.com/StructureDefinition/regimen",
-            "extension": [
-              {
-                "url": "uri",
-                "valueUri": "http://cannonical/regimen/url"
-              },
-              {
-                "url": "name",
-                "valueString": "Excellent cancer regimen"
-              }
-            ]
+            "url": "http://clinfhir.com/StructureDefinition/cycleday",
+            "valueReference": {
+              "reference": "CarePlan/cycle1"
+            },
+            "valueInteger": 1
           },
           {
-            "url": "http://clinfhir.com/StructureDefinition/medicationadministration",
+            "url": "http://clinfhir.com/StructureDefinition/creatinineclearance",
             "valueReference": {
-              "reference": "MedicationAdministration/medication1"
+              "reference": "Observation/cc1"
+            }
+          },
+          {
+            "url": "http://clinfhir.com/StructureDefinition/prescribeddose",
+            "valueDosage": {
+              "text": "10 ml over 1 hour"
+            }
+          },
+          {
+            "url": "http://clinfhir.com/StructureDefinition/adjustmentreason",
+            "valueCodeableConcept": {
+              "text": "Nausea on previous administrations"
             }
           }
         ]
@@ -413,34 +423,32 @@
     {
       "resource": {
         "resourceType": "Observation",
-        "id": "regimen-summary1",
+        "id": "regimenOutcome",
         "text": {
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen summary</div>",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen Outcome</div>",
           "status": "generated"
         },
         "subject": {
           "reference": "Patient/an-patient"
         },
+        "performer": [
+          {
+            "reference": "Practitioner/an-practitioner"
+          }
+        ],
         "effectiveDateTime": "2020-01-01",
         "status": "final",
         "code": {
-          "coding": [
-            {
-              "code": "regimensummary",
-              "system": "http://clinfhir.com/codesystem",
-              "display": "Summary of regimen"
-            }
-          ]
+          "text": "Careplan outcome"
         },
+        "basedOn": [
+          {
+            "reference": "CarePlan/regimenPlan1"
+          }
+        ],
         "extension": [
           {
-            "url": "http://clinfhir.com/StructureDefinition/cyclesummary",
-            "valueReference": {
-              "reference": "Observation/cycle-summary1"
-            }
-          },
-          {
-            "url": "http://clinfhir.com/StructureDefinition/regimen-discontinued",
+            "url": "http://actnow/regimen-discontinued",
             "extension": [
               {
                 "url": "date",
@@ -465,71 +473,122 @@
                 }
               }
             ]
+          },
+          {
+            "url": "http://actnow/cycle-count",
+            "valueInteger": 5
+          },
+          {
+            "url": "http://actnow/otu",
+            "extension": [
+              {
+                "url": "value",
+                "valueInteger": 1
+              },
+              {
+                "url": "benefit",
+                "valueInteger": 1
+              },
+              {
+                "url": "acceptable",
+                "valueInteger": 1
+              }
+            ]
           }
         ]
       }
     },
     {
       "resource": {
-        "resourceType": "MedicationAdministration",
-        "id": "medication1",
+        "resourceType": "Observation",
+        "id": "ecog-regimen",
         "text": {
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Methotrexate</div>",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">ECOG observation</div>",
           "status": "generated"
         },
         "subject": {
           "reference": "Patient/an-patient"
         },
-        "status": "completed",
-        "effectivePeriod": {
-          "start": "2020-01-10T10:00:00Z",
-          "end": "2020-01-10T11:00:00Z"
-        },
-        "medicationCodeableConcept": {
+        "performer": [
+          {
+            "reference": "Practitioner/an-practitioner"
+          }
+        ],
+        "effectiveDateTime": "2020-01-01",
+        "status": "final",
+        "code": {
           "coding": [
             {
-              "code": "1234",
-              "system": "http://nzulm.co.nz"
+              "code": "89247-1",
+              "system": "http://loinc.org",
+              "display": "ECOG score"
             }
           ]
         },
-        "dosage": {
-          "text": "10 ml over 1 hour"
+        "valueInteger": 3
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ecog-cycle1",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">ECOG cycle 1</div>",
+          "status": "generated"
         },
-        "extension": [
+        "subject": {
+          "reference": "Patient/an-patient"
+        },
+        "performer": [
           {
-            "url": "http://clinfhir.com/StructureDefinition/cycleday",
-            "valueInteger": 1
-          },
-          {
-            "url": "http://clinfhir.com/StructureDefinition/creatinineclearance",
-            "extension": [
-              {
-                "url": "value",
-                "valueQuantity": {
-                  "value": 70,
-                  "unit": "uMol/L"
-                }
-              },
-              {
-                "url": "date",
-                "valueDateTime": "2020-01-01"
-              }
-            ]
-          },
-          {
-            "url": "http://clinfhir.com/StructureDefinition/prescribeddose",
-            "valueDosage": {
-              "text": "10 ml over 1 hour"
-            }
-          },
-          {
-            "url": "http://clinfhir.com/StructureDefinition/adjustmentreason",
-            "valueCodeableConcept": {
-              "text": "Nausea on previous administrations"
-            }
+            "reference": "Practitioner/an-practitioner"
           }
-        ]
+        ],
+        "effectiveDateTime": "2020-01-01",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "89247-1",
+              "system": "http://loinc.org",
+              "display": "ECOG score"
+            }
+          ]
+        },
+        "valueInteger": 3
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "bsa-cycle1",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">BSA cycle 1</div>",
+          "status": "generated"
+        },
+        "subject": {
+          "reference": "Patient/an-patient"
+        },
+        "performer": [
+          {
+            "reference": "Practitioner/an-practitioner"
+          }
+        ],
+        "effectiveDateTime": "2020-01-01",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "8277-6",
+              "system": "http://loinc.org",
+              "display": "ECOG score"
+            }
+          ]
+        },
+        "valueQuantity": {
+          "value": 1.8,
+          "unit": "m2"
+        }
       }
     }
   ]

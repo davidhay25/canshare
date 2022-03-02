@@ -1,0 +1,41 @@
+{
+  "resourceType": "CarePlan",
+  "id": "cycle1",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cycle1</div>",
+    "status": "generated"
+  },
+  "subject": {
+    "reference": "Patient/an-patient"
+  },
+  "author": {
+    "reference": "Practitioner/an-practitioner"
+  },
+  "status": "active",
+  "intent": "plan",
+  "period": {
+    "start": "2020-01-01",
+    "end": "2020-02-01"
+  },
+  "partOf": [
+    {
+      "reference": "CarePlan/regimenPlan1"
+    }
+  ],
+  "addresses": [
+    {
+      "reference": "Condition/an-cancer"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://actnow/cycle-number",
+      "valueInteger": 1
+    }
+  ],
+  "supportingInfo": [
+    {
+      "reference": "Observation/bsa-cycle1"
+    }
+  ]
+}

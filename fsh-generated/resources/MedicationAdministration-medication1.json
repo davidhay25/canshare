@@ -8,6 +8,13 @@
   "subject": {
     "reference": "Patient/an-patient"
   },
+  "performer": [
+    {
+      "actor": {
+        "reference": "Practitioner/an-practitioner"
+      }
+    }
+  ],
   "status": "completed",
   "effectivePeriod": {
     "start": "2020-01-10T10:00:00Z",
@@ -27,23 +34,16 @@
   "extension": [
     {
       "url": "http://clinfhir.com/StructureDefinition/cycleday",
+      "valueReference": {
+        "reference": "CarePlan/cycle1"
+      },
       "valueInteger": 1
     },
     {
       "url": "http://clinfhir.com/StructureDefinition/creatinineclearance",
-      "extension": [
-        {
-          "url": "value",
-          "valueQuantity": {
-            "value": 70,
-            "unit": "uMol/L"
-          }
-        },
-        {
-          "url": "date",
-          "valueDateTime": "2020-01-01"
-        }
-      ]
+      "valueReference": {
+        "reference": "Observation/cc1"
+      }
     },
     {
       "url": "http://clinfhir.com/StructureDefinition/prescribeddose",
