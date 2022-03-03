@@ -14,5 +14,11 @@
       "family": "Doe",
       "text": "John Doe"
     }
+  ],
+  "identifier": [
+    {
+      "system": "https://standards.digital.health.nz/ns/nhi-id",
+      "value": "WER4568"
+    }
   ]
 }

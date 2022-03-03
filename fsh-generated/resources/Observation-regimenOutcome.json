@@ -16,7 +16,7 @@
   "effectiveDateTime": "2020-01-01",
   "status": "final",
   "code": {
-    "text": "Careplan outcome"
+    "text": "Regimen outcome"
   },
   "basedOn": [
     {

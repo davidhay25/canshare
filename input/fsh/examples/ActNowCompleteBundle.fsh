@@ -34,9 +34,10 @@ Description: "A Bundle containing all the resources for a single cycle of treatm
 
 * entry[+].resource = ecog-regimen
 
-
 * entry[+].resource = ecog-cycle1
 * entry[+].resource = bsa-cycle1
+
+* entry[+].resource = an-careteam
 
 
 
@@ -110,6 +111,8 @@ Usage: #example
 * instantiatesCanonical = "http://PlanDefinition/url"
 * supportingInfo = Reference(ecog-regimen)
 * addresses = Reference(an-cancer)
+* category = http://canshare.com#regimenCP
+* careTeam = Reference(an-careteam)
 
 //intent of treatment - not the same as the CaprePlan.intent
 * extension[+].url = "http://actnow/intent-of-treatment"
@@ -148,7 +151,7 @@ Usage: #example
 * performer = Reference(an-practitioner)
 * effectiveDateTime = "2020-01-01"
 * status = #final
-* code.text = "Careplan outcome"
+* code.text = "Regimen outcome"
 * basedOn = Reference(regimenPlan1)
 
 //the regimen was discontinued
@@ -190,6 +193,7 @@ Usage: #example
 * text.status = #generated
 * subject = Reference(an-patient)
 * author = Reference(an-practitioner)
+* category = http://canshare.com#cycleCP
 //* effectiveDateTime = "2020-01-01"
 * status = #active
 * intent = #plan
@@ -198,6 +202,7 @@ Usage: #example
 * period.end = "2020-02-01"
 * partOf = Reference(regimenPlan1)
 * addresses = Reference(an-cancer)
+* careTeam = Reference(an-careteam)
 
 //the cycle number
 //todo - what is the last admin date? could be derived from the MedicationAdmin resources that have a 'basedOn' reference to this plan
@@ -236,6 +241,22 @@ Usage: #example
 * code = $loinc#8277-6 "ECOG score"
 * valueQuantity.value = 1.8  
 * valueQuantity.unit = "m2"
+
+
+//The outcome of the cycle. Created when the regimen has been completed or cancelled
+Instance: cycle1Outcome
+InstanceOf: Observation
+Title: "Outcome of regimen"
+Usage: #example
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Regimen Outcome</div>"
+* text.status = #generated
+* subject = Reference(an-patient)
+* performer = Reference(an-practitioner)
+* effectiveDateTime = "2020-01-01"
+* status = #final
+* code.text = "Regimen outcome"
+* basedOn = Reference(regimenPlan1)
+
 
 //------- medication administration
 Instance: medication1
@@ -315,6 +336,8 @@ Usage: #example
 * name.given = "John"
 * name.family = "Doe"
 * name.text = "John Doe"
+* identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
+* identifier.value = "WER4568"
 
 Instance: an-practitioner
 InstanceOf: Practitioner
@@ -325,3 +348,14 @@ Usage: #example
 * name.given = "Marcus"
 * name.family = "Welby"
 * name.text = "Marcus Welby"
+* identifier.system = "https://standards.digital.health.nz/ns/hpi-person-id"
+* identifier.value = "hpi1"
+
+Instance: an-careteam
+InstanceOf: CareTeam
+Title: "Auckland Oncology"
+Usage: #example
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Auckland Oncology</div>"
+* text.status = #generated
+
+* name = "Auckland Oncology"

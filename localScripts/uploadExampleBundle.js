@@ -1,26 +1,38 @@
 #!/usr/bin/env node
 /**
- * the example bundle
-
+ * Upload act-now example bundles
+  a single file at a time (for simplicity) - might make multiple later
  * */
 
 const http = require('http')
- const fs = require('fs');
+const fs = require('fs');
 
-let fullFileName = "../fsh-generated/resources/Bundle-lungCancer1.json";
+
+let fullFileName = "./fsh-generated/resources/Bundle-an-completeBundle.json";
+
 let contents = fs.readFileSync(fullFileName, {encoding: 'utf8'});
 
+//convert into a transaction bundle
+let bundle = JSON.parse(contents)
+bundle.type = "transaction"
+bundle.entry.forEach(function(entry){
+  let resource = entry.resource
+  entry.request = {method:"PUT",url:resource.resourceType + "/" + resource.id}
+  
+})
 
+let json = JSON.stringify(bundle)
 
+//console.log(json)
 
 const options = {
-    hostname: 'home.clinfhir.com',
-    port: 8054,
-    path: '/baseR4/Bundle/lungCancer1',
-    method: 'PUT',
+    hostname: 'canshare.clinfhir.com',
+    port: 9099,
+    path: '/baseR4/',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/fhir+json',
-      'Content-Length': contents.length
+      'Content-Length': json.length
     }
   }
   
@@ -33,10 +45,10 @@ const options = {
   })
   
   req.on('error', error => {
-    console.error(error)
+    console.error('error',error)
   })
-  
-  req.write(contents)
+  console.log("writing...")
+  req.write(json)
   req.end()
 
   

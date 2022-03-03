@@ -13,5 +13,11 @@
       "family": "Welby",
       "text": "Marcus Welby"
     }
+  ],
+  "identifier": [
+    {
+      "system": "https://standards.digital.health.nz/ns/hpi-person-id",
+      "value": "hpi1"
+    }
   ]
 }

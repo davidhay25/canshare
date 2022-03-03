@@ -187,6 +187,13 @@
       },
       {
         "reference": {
+          "reference": "CareTeam/an-careteam"
+        },
+        "name": "Auckland Oncology",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Bundle/an-completeBundle"
         },
         "name": "an-completeBundle",
@@ -254,6 +261,13 @@
           "reference": "CarePlan/cycle1"
         },
         "name": "First cycle of treatment",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/cycle1Outcome"
+        },
+        "name": "Outcome of regimen",
         "exampleBoolean": true
       },
       {

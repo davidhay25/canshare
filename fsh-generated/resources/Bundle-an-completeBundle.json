@@ -20,6 +20,12 @@
             "family": "Doe",
             "text": "John Doe"
           }
+        ],
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/nhi-id",
+            "value": "WER4568"
+          }
         ]
       }
     },
@@ -38,6 +44,12 @@
             ],
             "family": "Welby",
             "text": "Marcus Welby"
+          }
+        ],
+        "identifier": [
+          {
+            "system": "https://standards.digital.health.nz/ns/hpi-person-id",
+            "value": "hpi1"
           }
         ]
       }
@@ -285,6 +297,16 @@
         "author": {
           "reference": "Practitioner/an-practitioner"
         },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "cycleCP",
+                "system": "http://canshare.com"
+              }
+            ]
+          }
+        ],
         "status": "active",
         "intent": "plan",
         "period": {
@@ -299,6 +321,11 @@
         "addresses": [
           {
             "reference": "Condition/an-cancer"
+          }
+        ],
+        "careTeam": [
+          {
+            "reference": "CareTeam/an-careteam"
           }
         ],
         "extension": [
@@ -341,6 +368,21 @@
         "addresses": [
           {
             "reference": "Condition/an-cancer"
+          }
+        ],
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "regimenCP",
+                "system": "http://canshare.com"
+              }
+            ]
+          }
+        ],
+        "careTeam": [
+          {
+            "reference": "CareTeam/an-careteam"
           }
         ],
         "extension": [
@@ -439,7 +481,7 @@
         "effectiveDateTime": "2020-01-01",
         "status": "final",
         "code": {
-          "text": "Careplan outcome"
+          "text": "Regimen outcome"
         },
         "basedOn": [
           {
@@ -589,6 +631,17 @@
           "value": 1.8,
           "unit": "m2"
         }
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CareTeam",
+        "id": "an-careteam",
+        "text": {
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Auckland Oncology</div>",
+          "status": "generated"
+        },
+        "name": "Auckland Oncology"
       }
     }
   ]

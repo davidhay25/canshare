@@ -11,6 +11,16 @@
   "author": {
     "reference": "Practitioner/an-practitioner"
   },
+  "category": [
+    {
+      "coding": [
+        {
+          "code": "cycleCP",
+          "system": "http://canshare.com"
+        }
+      ]
+    }
+  ],
   "status": "active",
   "intent": "plan",
   "period": {
@@ -25,6 +35,11 @@
   "addresses": [
     {
       "reference": "Condition/an-cancer"
+    }
+  ],
+  "careTeam": [
+    {
+      "reference": "CareTeam/an-careteam"
     }
   ],
   "extension": [
