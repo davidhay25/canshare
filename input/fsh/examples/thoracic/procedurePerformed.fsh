@@ -3,6 +3,9 @@ InstanceOf: Procedure
 
 //used at multiple places within the spreadsheet
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Biopsy</div>"
+* text.status = #generated
+
 * status = #completed
 * code = $canshare#biopsy   "Biopsy"
 * subject = Reference(patientLung)

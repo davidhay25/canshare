@@ -1,6 +1,10 @@
 {
   "resourceType": "Practitioner",
   "id": "practitionerPrincipal",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Marcus Welby</div>",
+    "status": "generated"
+  },
   "name": [
     {
       "given": [
@@ -8,6 +12,12 @@
       ],
       "family": "Welby",
       "text": "Marcus Welby"
+    }
+  ],
+  "identifier": [
+    {
+      "system": "https://standards.digital.health.nz/ns/hpi-person-id",
+      "value": "def"
     }
   ],
   "gender": "male"

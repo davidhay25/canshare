@@ -1,6 +1,9 @@
 Instance: serviceRequestLung
 InstanceOf: ServiceRequest
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Pathology request</div>"
+* text.status = #generated
+
 * extension[0].url = "http://canshare.com/cc"
 * extension[=].valueReference = Reference(practitionerCC)
 

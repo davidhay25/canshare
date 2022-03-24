@@ -1,6 +1,9 @@
 Instance: observationRelevantRadiol
 InstanceOf: Observation
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Relevant radiology</div>"
+* text.status = #generated
+
 * status = #final
 * code = $canshare#pres "Relevant radiology"
 * subject = Reference(patientLung)

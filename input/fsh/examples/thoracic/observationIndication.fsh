@@ -1,5 +1,7 @@
 Instance: observationIndication
 InstanceOf: Observation
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Clinical indication</div>"
+* text.status = #generated
 
 * status = #final
 * code = $canshare#ind "Indication"

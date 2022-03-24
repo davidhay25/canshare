@@ -1,6 +1,9 @@
 Instance: observationPresenting
 InstanceOf: Observation
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Presenting symptoms</div>"
+* text.status = #generated
+
 * status = #final
 * code = $canshare#pres "Presenting symptoms"
 * subject = Reference(patientLung)

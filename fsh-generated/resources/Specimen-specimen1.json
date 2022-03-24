@@ -1,6 +1,10 @@
 {
   "resourceType": "Specimen",
   "id": "specimen1",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Specimen</div>",
+    "status": "generated"
+  },
   "subject": {
     "reference": "Patient/patientLung"
   },

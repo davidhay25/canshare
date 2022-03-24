@@ -1,6 +1,8 @@
 Instance: observationCyto
 InstanceOf: Observation
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Previous cytology</div>"
+* text.status = #generated
 * status = #final
 * code = $canshare#pres "Previous cytology"
 * subject = Reference(patientLung)

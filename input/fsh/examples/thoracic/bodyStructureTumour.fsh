@@ -1,6 +1,8 @@
 Instance: bodyStructureTumour
 InstanceOf: BodyStructure
 
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Tumour</div>"
+* text.status = #generated
 
 * patient = Reference(patientLung)
 

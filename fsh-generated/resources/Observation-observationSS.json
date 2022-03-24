@@ -15,6 +15,10 @@
       }
     ]
   },
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Smoking status</div>",
+    "status": "generated"
+  },
   "status": "final",
   "subject": {
     "reference": "Patient/patientLung"

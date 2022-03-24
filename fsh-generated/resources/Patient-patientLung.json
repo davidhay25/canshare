@@ -1,6 +1,10 @@
 {
   "resourceType": "Patient",
   "id": "patientLung",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Lance Lung</div>",
+    "status": "generated"
+  },
   "name": [
     {
       "given": [
@@ -12,7 +16,7 @@
   ],
   "identifier": [
     {
-      "system": "http://nhi",
+      "system": "https://standards.digital.health.nz/ns/nhi-id",
       "value": "WER4568"
     }
   ],
