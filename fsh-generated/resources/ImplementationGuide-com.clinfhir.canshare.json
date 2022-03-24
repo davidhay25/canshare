@@ -373,6 +373,13 @@
       },
       {
         "reference": {
+          "reference": "Media/mediaImage"
+        },
+        "name": "mediaImage",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "MedicationAdministration/medication1"
         },
         "name": "A single medication administration",

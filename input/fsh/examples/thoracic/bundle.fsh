@@ -24,3 +24,4 @@ Description: "A Bundle containing all the base resources for the canshare db aft
 * entry[+].resource = observationIndication
 * entry[+].resource = bodyStructureTumour
 * entry[+].resource = specimen1
+* entry[+].resource = mediaImage

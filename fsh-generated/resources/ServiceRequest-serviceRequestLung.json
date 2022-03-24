@@ -63,6 +63,9 @@
     },
     {
       "reference": "Specimen/specimen1"
+    },
+    {
+      "reference": "Media/mediaImage"
     }
   ]
 }

@@ -27,3 +27,4 @@ InstanceOf: ServiceRequest
 * supportingInfo[+] = Reference(observationIndication)
 * supportingInfo[+] = Reference(bodyStructureTumour)
 * supportingInfo[+] = Reference(specimen1)
+* supportingInfo[+] = Reference(mediaImage)
