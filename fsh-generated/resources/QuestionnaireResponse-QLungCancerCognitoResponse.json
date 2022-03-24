@@ -1,0 +1,46 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "QLungCancerCognitoResponse",
+  "text": {
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A sample Lung cancer form from Cognito</div>",
+    "status": "generated"
+  },
+  "status": "completed",
+  "questionnaire": "http://canshare.com/Questionnaire/QLungCancerCognito",
+  "subject": {
+    "reference": "Patient/patient1"
+  },
+  "authored": "2022-01-18T12:00:00Z",
+  "item": [
+    {
+      "linkId": "clinicalInfo",
+      "item": [
+        {
+          "linkId": "previousCytoGroup",
+          "text": "Previous cyto",
+          "item": [
+            {
+              "linkId": "previousCyto",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "code": "Y",
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "previousCytoDetails",
+              "answer": [
+                {
+                  "valueString": "These are the details of the previous cytology"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

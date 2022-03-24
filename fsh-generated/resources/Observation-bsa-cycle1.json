@@ -20,7 +20,7 @@
       {
         "code": "8277-6",
         "system": "http://loinc.org",
-        "display": "ECOG score"
+        "display": "BSA"
       }
     ]
   },

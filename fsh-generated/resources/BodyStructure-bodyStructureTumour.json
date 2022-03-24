@@ -1,0 +1,17 @@
+{
+  "resourceType": "BodyStructure",
+  "id": "bodyStructureTumour",
+  "patient": {
+    "reference": "Patient/patientLung"
+  },
+  "location": {
+    "coding": [
+      {
+        "code": "9875009",
+        "system": "http://snomed.info/sct",
+        "display": "Thymus"
+      }
+    ]
+  },
+  "description": "Other details here"
+}

@@ -1,0 +1,18 @@
+{
+  "resourceType": "Observation",
+  "id": "observationPresenting",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "pres",
+        "system": "http://canshare.com",
+        "display": "Presenting symptoms"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueString": "These are the symptoms"
+}

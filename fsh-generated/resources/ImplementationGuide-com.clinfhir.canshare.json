@@ -58,6 +58,22 @@
       },
       {
         "reference": {
+          "reference": "StructureDefinition/observation-ss"
+        },
+        "name": "Smoking Status",
+        "description": "An observation for smoking status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/regimen-careplan"
+        },
+        "name": "Regimen Careplan",
+        "description": "A CarePlan that represents a PlanDefinition being applied to a Patient.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/ActNowComplete"
         },
         "name": "Complete Model for ACT-NOW spec",
@@ -156,6 +172,22 @@
       },
       {
         "reference": {
+          "reference": "Questionnaire/QLungCancerCognito"
+        },
+        "name": "QLungCancerCognito",
+        "description": "Questionnaire for Lung Cancer from cognito",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "QuestionnaireResponse/QLungCancerCognitoResponse"
+        },
+        "name": "QLungCancerCognitoResponse",
+        "description": "A QR instance corresponding to the QLungCancerCognito Q",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "QuestionnaireResponse/QLungCancerInstance"
         },
         "name": "QLungCancerInstance",
@@ -204,7 +236,7 @@
         "reference": {
           "reference": "Patient/an-patient"
         },
-        "name": "John Doe",
+        "name": "Lorrie Lung",
         "exampleBoolean": true
       },
       {
@@ -212,6 +244,21 @@
           "reference": "Practitioner/an-practitioner"
         },
         "name": "Marcus Welby",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Bundle/baseData"
+        },
+        "name": "baseData",
+        "description": "A Bundle containing all the base resources for the canshare db after clearing",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "BodyStructure/bodyStructureTumour"
+        },
+        "name": "bodyStructureTumour",
         "exampleBoolean": true
       },
       {
@@ -310,9 +357,102 @@
       },
       {
         "reference": {
+          "reference": "Bundle/lungRequest"
+        },
+        "name": "lungRequest",
+        "description": "A Bundle containing all the base resources for the canshare db after clearing",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "SearchParameter/ma-basedOn"
+        },
+        "name": "ma-basedOn",
+        "description": "based-on extension for MedicationAdmin -> CarePlan",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "MedicationAdministration/medication1"
         },
         "name": "A single medication administration",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationAsbestos"
+        },
+        "name": "observationAsbestos",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationCyto"
+        },
+        "name": "observationCyto",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationIndication"
+        },
+        "name": "observationIndication",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationNeoadjuvent"
+        },
+        "name": "observationNeoadjuvent",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationOtherrelevant"
+        },
+        "name": "observationOtherrelevant",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationPresenting"
+        },
+        "name": "observationPresenting",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationPreviousDx"
+        },
+        "name": "observationPreviousDx",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationPreviousTx"
+        },
+        "name": "observationPreviousTx",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationRelevantRadiol"
+        },
+        "name": "observationRelevantRadiol",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationSS"
+        },
+        "name": "observationSS",
+        "exampleCanonical": "http://hl7.org.nz/fhir/StructureDefinition/spath-observation-ss"
+      },
+      {
+        "reference": {
+          "reference": "Observation/observationVaping"
+        },
+        "name": "observationVaping",
         "exampleBoolean": true
       },
       {
@@ -331,9 +471,44 @@
       },
       {
         "reference": {
+          "reference": "Patient/patientLung"
+        },
+        "name": "patientLung",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Practitioner/practitioner1"
         },
         "name": "practitioner1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/practitionerCC"
+        },
+        "name": "practitionerCC",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/practitionerPrincipal"
+        },
+        "name": "practitionerPrincipal",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/practitionerRequesting"
+        },
+        "name": "practitionerRequesting",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Procedure/procedurePerformed"
+        },
+        "name": "procedurePerformed",
         "exampleBoolean": true
       },
       {
@@ -348,6 +523,28 @@
           "reference": "CarePlan/regimenPlan1"
         },
         "name": "Regimen details",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "ServiceRequest/serviceRequestLung"
+        },
+        "name": "serviceRequestLung",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Specimen/specimen1"
+        },
+        "name": "specimen1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "SearchParameter/supporting-info"
+        },
+        "name": "supporting-info",
+        "description": "Searches for supportingInfo references",
         "exampleBoolean": true
       }
     ],

@@ -1,0 +1,26 @@
+{
+  "resourceType": "Observation",
+  "id": "observationAsbestos",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "vap",
+        "system": "http://canshare.com",
+        "display": "Asbestos exposure"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "no",
+        "system": "http://canshare.com",
+        "display": "No"
+      }
+    ]
+  }
+}

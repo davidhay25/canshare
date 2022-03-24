@@ -104,22 +104,25 @@ Title: "Regimen details"
 Usage: #example
 * text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Regimen</div>"
 * text.status = #generated
+* title = "Plan for regemen derived from: http://PlanDefinition/lungcancer1"
 * subject = Reference(an-patient)
 * author = Reference(an-practitioner)
 * status = #active
 * intent = #plan
-* instantiatesCanonical = "http://PlanDefinition/url"
+* instantiatesCanonical = "http://PlanDefinition/lungcancer1"
 * supportingInfo = Reference(ecog-regimen)
 * addresses = Reference(an-cancer)
 * category = http://canshare.com#regimenCP
 * careTeam = Reference(an-careteam)
+
+* supportingInfo[0] = Reference(cTNM)
 
 //intent of treatment - not the same as the CaprePlan.intent
 * extension[+].url = "http://actnow/intent-of-treatment"
 * extension[=].valueCodeableConcept.text = "palliative"
 
 //Is this regimen part of a clinical trial
-* extension[+].url = "http://actnow/clincial-trial"
+* extension[+].url = "http://actnow/clinical-trial"
 * extension[=].valueBoolean = false
 
 
@@ -191,9 +194,13 @@ Title: "First cycle of treatment"
 Usage: #example
 * text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Cycle1</div>"
 * text.status = #generated
+
+* title = "Cycle1 Plan for regimen derived from: http://PlanDefinition/lungcancer1"
+
 * subject = Reference(an-patient)
 * author = Reference(an-practitioner)
 * category = http://canshare.com#cycleCP
+
 //* effectiveDateTime = "2020-01-01"
 * status = #active
 * intent = #plan
@@ -238,7 +245,7 @@ Usage: #example
 * performer = Reference(an-practitioner)
 * effectiveDateTime = "2020-01-01"
 * status = #final
-* code = $loinc#8277-6 "ECOG score"
+* code = $loinc#8277-6 "BSA"
 * valueQuantity.value = 1.8  
 * valueQuantity.unit = "m2"
 
@@ -308,6 +315,8 @@ InstanceOf: Condition
 Title: "The cancer being treated"
 Usage: #example
 
+
+
 //todo recurrance
 * text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Small cell carcinoma</div>"
 * text.status = #generated
@@ -328,14 +337,14 @@ Usage: #example
 
 Instance: an-patient
 InstanceOf: Patient
-Title: "John Doe"
+Title: "Lorrie Lung"
 Usage: #example
 * text.status = #generated
-* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>John Doe</div>"
+* text.div = "<div xmlns='http://www.w3.org/1999/xhtml'>Lorrie Lung</div>"
 * birthDate = "1989-02-02"
-* name.given = "John"
-* name.family = "Doe"
-* name.text = "John Doe"
+* name.given = "Lorrie"
+* name.family = "Lung"
+* name.text = "Lorrie Lung"
 * identifier.system = "https://standards.digital.health.nz/ns/nhi-id"
 * identifier.value = "WER4568"
 

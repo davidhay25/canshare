@@ -5,6 +5,7 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Regimen</div>",
     "status": "generated"
   },
+  "title": "Plan for regemen derived from: http://PlanDefinition/lungcancer1",
   "subject": {
     "reference": "Patient/an-patient"
   },
@@ -14,11 +15,11 @@
   "status": "active",
   "intent": "plan",
   "instantiatesCanonical": [
-    "http://PlanDefinition/url"
+    "http://PlanDefinition/lungcancer1"
   ],
   "supportingInfo": [
     {
-      "reference": "Observation/ecog-regimen"
+      "reference": "Observation/cTNM"
     }
   ],
   "addresses": [
@@ -49,7 +50,7 @@
       }
     },
     {
-      "url": "http://actnow/clincial-trial",
+      "url": "http://actnow/clinical-trial",
       "valueBoolean": false
     }
   ]

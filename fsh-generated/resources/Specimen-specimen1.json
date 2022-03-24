@@ -1,0 +1,12 @@
+{
+  "resourceType": "Specimen",
+  "id": "specimen1",
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "note": [
+    {
+      "text": "Here is where the label goes"
+    }
+  ]
+}

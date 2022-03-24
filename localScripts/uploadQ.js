@@ -7,9 +7,13 @@
 const http = require('http')
 const fs = require('fs');
 
+let QName = 'QLungCancer'
+//let QName = 'QLungCancerCognito'
 
-uploadQ('QLungCancer','canshare.clinfhir.com')
-uploadQ('QLungCancer','localhost')
+console.log("Uploading " + QName)
+
+uploadQ(QName,'canshare.clinfhir.com')
+uploadQ(QName,'localhost')
 
 
 function uploadQ(id,url) {

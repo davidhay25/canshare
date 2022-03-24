@@ -1,0 +1,26 @@
+{
+  "resourceType": "Observation",
+  "id": "observationRelevantRadiol",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "pres",
+        "system": "http://canshare.com",
+        "display": "Relevant radiology"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "N",
+        "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+        "display": "No"
+      }
+    ]
+  }
+}

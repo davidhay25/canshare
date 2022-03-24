@@ -102,13 +102,6 @@
             },
             {
               "valueCoding": {
-                "code": "ex",
-                "system": "http://clinfhir.com/CodeSystem/ss",
-                "display": "ex"
-              }
-            },
-            {
-              "valueCoding": {
                 "code": "never",
                 "system": "http://clinfhir.com/CodeSystem/ss",
                 "display": "never"

@@ -1,0 +1,64 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "serviceRequestLung",
+  "extension": [
+    {
+      "url": "http://canshare.com/cc",
+      "valueReference": {
+        "reference": "Practitioner/practitionerCC"
+      }
+    }
+  ],
+  "status": "active",
+  "intent": "order",
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "requester": {
+    "reference": "Practitioner/practitionerRequesting"
+  },
+  "supportingInfo": [
+    {
+      "reference": "Observation/observationSS"
+    },
+    {
+      "reference": "Observation/observationVaping"
+    },
+    {
+      "reference": "Observation/observationAsbestos"
+    },
+    {
+      "reference": "Observation/observationPresenting"
+    },
+    {
+      "reference": "Observation/observationCyto"
+    },
+    {
+      "reference": "Observation/observationPreviousTx"
+    },
+    {
+      "reference": "Observation/observationPreviousDx"
+    },
+    {
+      "reference": "Observation/observationRelevantRadiol"
+    },
+    {
+      "reference": "Observation/observationNeoadjuvent"
+    },
+    {
+      "reference": "Observation/observationOtherrelevant"
+    },
+    {
+      "reference": "Procedure/procedurePerformed"
+    },
+    {
+      "reference": "Observation/observationIndication"
+    },
+    {
+      "reference": "BodyStructure/bodyStructureTumour"
+    },
+    {
+      "reference": "Specimen/specimen1"
+    }
+  ]
+}

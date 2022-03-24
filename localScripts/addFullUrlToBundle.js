@@ -4,11 +4,11 @@
  * - to avoid having to do it manually...
  * */
 
-const http = require('http')
 const fs = require('fs');
 
 
 let fullFileName = "./fsh-generated/resources/Bundle-an-completeBundle.json";
+//let fullFileName = "./fsh-generated/resources/Bundle-lungRequest.json";
 
 let contents = fs.readFileSync(fullFileName, {encoding: 'utf8'});
 

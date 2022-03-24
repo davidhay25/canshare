@@ -1,0 +1,18 @@
+{
+  "resourceType": "Observation",
+  "id": "observationIndication",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "ind",
+        "system": "http://canshare.com",
+        "display": "Indication"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueString": "other indication"
+}

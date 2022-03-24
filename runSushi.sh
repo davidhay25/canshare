@@ -5,14 +5,14 @@ if [[ $? -eq 0 ]]
 then
 
 
-echo "Create the mapping file for ActNowReview"
-localscripts/makeLMMapping.js ActNowReview
+#echo "Create the mapping file for ActNowReview"
+#localscripts/makeLMMapping.js ActNowReview
 
-echo "Add fullUrl to example bundles"
-localscripts/addFullUrlToBundle.js
+#echo "Add fullUrl to example bundles"
+#localscripts/addFullUrlToBundle.js
 
-echo
-
+echo "make transaction bundle"
+localscripts/makeBundleTransaction.js
 
 
 

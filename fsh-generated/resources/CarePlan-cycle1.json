@@ -5,6 +5,7 @@
     "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Cycle1</div>",
     "status": "generated"
   },
+  "title": "Cycle1 Plan for regimen derived from: http://PlanDefinition/lungcancer1",
   "subject": {
     "reference": "Patient/an-patient"
   },

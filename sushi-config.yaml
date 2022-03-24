@@ -20,6 +20,7 @@ publisher:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  StructuredPath : structuredpath.html
   Use Cases: usecases.html
   ACT-NOW: actnow.html
   Form creation: createform.html

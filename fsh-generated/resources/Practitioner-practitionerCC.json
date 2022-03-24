@@ -1,0 +1,14 @@
+{
+  "resourceType": "Practitioner",
+  "id": "practitionerCC",
+  "name": [
+    {
+      "given": [
+        "Charlene"
+      ],
+      "family": "Copy",
+      "text": "Charlene Copy"
+    }
+  ],
+  "gender": "female"
+}

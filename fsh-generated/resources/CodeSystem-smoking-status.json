@@ -14,15 +14,18 @@
       "definition": "The person is currently a smoker"
     },
     {
-      "code": "ex",
-      "display": "ex",
-      "definition": "The person is an ex smoker."
+      "code": "exlt1yr",
+      "display": "Ex smoker less than 1 year"
     },
     {
       "code": "never",
       "display": "never",
       "definition": "The person has never smoked."
+    },
+    {
+      "code": "exgt1yr",
+      "display": "Ex smoker greater than 1 year"
     }
   ],
-  "count": 3
+  "count": 4
 }

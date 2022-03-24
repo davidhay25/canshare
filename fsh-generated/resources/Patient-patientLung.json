@@ -1,0 +1,20 @@
+{
+  "resourceType": "Patient",
+  "id": "patientLung",
+  "name": [
+    {
+      "given": [
+        "Lance"
+      ],
+      "family": "Lung",
+      "text": "Lance Lung"
+    }
+  ],
+  "identifier": [
+    {
+      "system": "http://nhi",
+      "value": "WER4568"
+    }
+  ],
+  "gender": "male"
+}

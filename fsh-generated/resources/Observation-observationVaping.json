@@ -1,0 +1,26 @@
+{
+  "resourceType": "Observation",
+  "id": "observationVaping",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "vap",
+        "system": "http://canshare.com",
+        "display": "Vaping Status"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueCodeableConcept": {
+    "coding": [
+      {
+        "code": "current",
+        "system": "http://canshare.com",
+        "display": "Current Vaper"
+      }
+    ]
+  }
+}

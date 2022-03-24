@@ -1,0 +1,18 @@
+{
+  "resourceType": "Observation",
+  "id": "observationOtherrelevant",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "code": "oitherrel",
+        "system": "http://canshare.com",
+        "display": "Other relevant clincial info"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/patientLung"
+  },
+  "valueString": "Other clincial details here"
+}
