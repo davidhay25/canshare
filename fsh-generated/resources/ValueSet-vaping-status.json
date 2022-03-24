@@ -1,0 +1,16 @@
+{
+  "resourceType": "ValueSet",
+  "status": "active",
+  "name": "VapingStatus",
+  "id": "vaping-status",
+  "title": "Vaping Status",
+  "version": "0.1.0",
+  "url": "http://canshare.com/ValueSet/vs",
+  "compose": {
+    "include": [
+      {
+        "system": "http://canshare.com/CodeSystem/vs"
+      }
+    ]
+  }
+}

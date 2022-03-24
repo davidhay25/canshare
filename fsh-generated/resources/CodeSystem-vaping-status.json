@@ -1,0 +1,41 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "active",
+  "content": "complete",
+  "name": "VapingStatus",
+  "id": "vaping-status",
+  "title": "Vaping Status",
+  "version": "0.1.0",
+  "url": "http://canshare.com/CodeSystem/vs",
+  "concept": [
+    {
+      "code": "currentnic",
+      "display": "Currently vaping with nicotine"
+    },
+    {
+      "code": "currentnonic",
+      "display": "Currently vaping without nicotine"
+    },
+    {
+      "code": "current",
+      "display": "Currently vaping"
+    },
+    {
+      "code": "exlt1yr",
+      "display": "Ex vaping less than 1 year"
+    },
+    {
+      "code": "exgt1yr",
+      "display": "Ex vaping more than 1 year"
+    },
+    {
+      "code": "trying",
+      "display": "Trying to give up vaping"
+    },
+    {
+      "code": "never",
+      "display": "Never vaped"
+    }
+  ],
+  "count": 7
+}

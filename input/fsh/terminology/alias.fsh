@@ -7,6 +7,10 @@ Alias: $loinc = http://loinc.org
 Alias: $ss-vs = http://clinfhir.com/ValueSet/ss
 Alias: $ss-cs = http://clinfhir.com/CodeSystem/ss
 
+//Vaping status
+Alias: $vs-vs = http://canshare.com/ValueSet/vs
+Alias: $vs-cs = http://canshare.com/CodeSystem/vs
+
 //site
 Alias: $site-vs = http://clinfhir.com/ValueSet/site
 Alias: $site-cs = http://clinfhir.com/CodeSystem/site

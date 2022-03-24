@@ -114,13 +114,6 @@
       },
       {
         "reference": {
-          "reference": "ValueSet/smoking-status"
-        },
-        "name": "Smoking Status",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
           "reference": "ValueSet/resection"
         },
         "name": "Nature of the resection",
@@ -131,6 +124,20 @@
           "reference": "ValueSet/site"
         },
         "name": "Site and laterality",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/smoking-status"
+        },
+        "name": "Smoking Status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/vaping-status"
+        },
+        "name": "Vaping Status",
         "exampleBoolean": false
       },
       {
@@ -152,6 +159,13 @@
           "reference": "CodeSystem/smoking-status"
         },
         "name": "Smoking Status",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/vaping-status"
+        },
+        "name": "Vaping Status",
         "exampleBoolean": false
       },
       {

@@ -119,11 +119,34 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
 * item[=].item[=].extension[=].valueBoolean = true
 
+// -------- vaping status
+* item[=].item[+].linkId = "vs"
+* item[=].item[=].text = "Vaping Status"
+* item[=].item[=].type = #choice
+* item[=].item[=].code = $loinc#272166-2 "Smoking Status" 
+* item[=].item[=].code.display = "Vaping Status" 
+
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#currentnic "Currently vaping with nicotine"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#currentnonic "Currently vaping without nicotine"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#current  "Currently vaping"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#exlt1yr "Ex vaping less than 1 year"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#exgt1yr "Ex vaping more than 1 year"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#trying  "Trying to give up vaping"
+* item[=].item[=].answerOption[+].valueCoding = $vs-cs#never  "Never vaped"
+
+
 //asbestos
 
 * item[=].item[+].linkId = "absestos"
 * item[=].item[=].text = "Asbestos exposure"
-* item[=].item[=].type = #boolean
+* item[=].item[=].type = #choice
+
+* item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
+* item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
+//specify rendering as radio...
+* item[=].item[=].extension[0].url = $control-radio
+* item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
+
 
 
 /*
@@ -135,7 +158,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerValueSet = "http://hl7.org/fhir/ValueSet/condition-code"
 */
 
-//---------- previous treatment ------------
+//---------- presenting symptoms ------------
 
 * item[=].item[+].linkId = "symptomsGroup"
 * item[=].item[=].text = "Presenting symptomatology"
@@ -153,7 +176,6 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].extension[0].url = $control-radio
 * item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
-
 * item[=].item[=].item[+].linkId = "symptomsDetails"
 * item[=].item[=].item[=].text = "Details"
 * item[=].item[=].item[=].type = #text
@@ -163,7 +185,8 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
 
-//-------------  this starts a new group off the section
+//-------------  previous cyto
+
 * item[=].item[+].linkId = "previousCytoGroup"
 * item[=].item[=].text = "Previous cyto"
 * item[=].item[=].type = #group
@@ -177,8 +200,8 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#asked-unknown "Unknown"
 
 //specify rendering as radio...
-//* item[=].item[=].item[=].extension[0].url = $control-radio
-//* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
+* item[=].item[=].item[=].extension[0].url = $control-radio
+* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
 
 * item[=].item[=].item[+].linkId = "previousCytoDetails"
@@ -257,24 +280,66 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[+].linkId = "radiology"
 * item[=].item[=].item[=].text = "Details of any relevant radiology"
 * item[=].item[=].item[=].type = #choice
-* item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
-* item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
-* item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#asked-unknown "Unknown"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $snomed#unk "Unknown"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $snomed#tnm "Clinical TNM"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $snomed#other "Other"
 
 //specify rendering as radio...
-* item[=].item[=].item[=].extension[0].url = $control-radio
-* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
+//* item[=].item[=].item[=].extension[0].url = $control-radio
+//* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
 
-* item[=].item[=].item[+].linkId = "radiologyDetails"
-* item[=].item[=].item[=].text = "Details"
+
+* item[=].item[=].item[+].linkId = "radiologyOther"
+* item[=].item[=].item[=].text = "Other relevant details"
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
-* item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#other
 
 
+* item[=].item[=].item[+].linkId = "clinicalT"
+* item[=].item[=].item[=].text = "Clinical T "
+* item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[+].linkId = "clinicalN"
+* item[=].item[=].item[=].text = "Clinical N"
+* item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[+].linkId = "clinicalM"
+* item[=].item[=].item[=].text = "Clinical M"
+* item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[+].linkId = "clinicalGroupStage"
+* item[=].item[=].item[=].text = "Clinical Group Stage"
+* item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[+].linkId = "clinicalTNMEdition"
+* item[=].item[=].item[=].text = "Clinical TNM edition"
+* item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[+].linkId = "clinicalStageDate"
+* item[=].item[=].item[=].text = "Clinical Stage date"
+* item[=].item[=].item[=].type = #date
+* item[=].item[=].item[=].enableWhen[0].question = "radiology"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
 
 //---------- neoadjuvant ------------
 
@@ -317,7 +382,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].text = "Tumour Clinical"
 * item[=].type = #group
 
-* item[=].item[+].linkId = "procedure"
+* item[=].item[+].linkId = "tumourprocedure"
 * item[=].item[=].text = "Procedure"
 * item[=].item[=].type = #choice
 
@@ -326,7 +391,14 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerOption[+].valueCoding = #frozen "Frozen section"
 
 
+* item[=].item[+].linkId = "tumourindication"
+* item[=].item[=].text = "Clinical Indication"
+* item[=].item[=].type = #choice
 
+* item[=].item[=].answerOption[+].valueCoding = #new "New primary cancer"
+* item[=].item[=].answerOption[+].valueCoding = #regional "Regional recurrance"
+* item[=].item[=].answerOption[+].valueCoding = #distant "distant metastasis"
+* item[=].item[=].answerOption[+].valueCoding = #other "Other"
 
 
 //================ Tumour site section
@@ -345,14 +417,16 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerOption[+].valueCoding = $site-cs#lll "Left Lower Lobe"
 * item[=].item[=].answerOption[+].valueCoding = $site-cs#mb "Main Bronchus"
 
+
+/*
 * item[=].item[+].linkId = "tumournotes"
 * item[=].item[=].text = "Notes"
 * item[=].item[=].type = #text
 
-
 * item[=].item[+].linkId = "newotes"
 * item[=].item[=].text = "Notes"
 * item[=].item[=].type = #text
+*/
 
 //=============== procedure
 

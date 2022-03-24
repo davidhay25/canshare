@@ -11,7 +11,7 @@ Title: "Smoking Status"
 * #exgt1yr "Ex smoker greater than 1 year"
 
 
-ValueSet : AliasTypeSmokingStatus
+ValueSet : SmokingStatus
 Id: smoking-status
 Title: "Smoking Status"
 

@@ -1,7 +1,7 @@
 {
   "resourceType": "ValueSet",
   "status": "active",
-  "name": "AliasTypeSmokingStatus",
+  "name": "SmokingStatus",
   "id": "smoking-status",
   "title": "Smoking Status",
   "version": "0.1.0",

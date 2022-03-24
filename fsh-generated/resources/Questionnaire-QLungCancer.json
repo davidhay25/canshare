@@ -185,9 +185,101 @@
           ]
         },
         {
+          "linkId": "vs",
+          "text": "Vaping Status",
+          "type": "choice",
+          "code": [
+            {
+              "code": "272166-2",
+              "system": "http://loinc.org",
+              "display": "Vaping Status"
+            }
+          ],
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "currentnic",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Currently vaping with nicotine"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "currentnonic",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Currently vaping without nicotine"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "current",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Currently vaping"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "exlt1yr",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Ex vaping less than 1 year"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "exgt1yr",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Ex vaping more than 1 year"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "trying",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Trying to give up vaping"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "never",
+                "system": "http://canshare.com/CodeSystem/vs",
+                "display": "Never vaped"
+              }
+            }
+          ]
+        },
+        {
           "linkId": "absestos",
           "text": "Asbestos exposure",
-          "type": "boolean"
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "Y",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "N",
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                "display": "No"
+              }
+            }
+          ],
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "code": "radio-button",
+                    "system": "http://hl7.org/fhir/questionnaire-item-control"
+                  }
+                ]
+              }
+            }
+          ]
         },
         {
           "linkId": "symptomsGroup",
@@ -281,6 +373,19 @@
                     "code": "asked-unknown",
                     "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
                     "display": "Unknown"
+                  }
+                }
+              ],
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "code": "radio-button",
+                        "system": "http://hl7.org/fhir/questionnaire-item-control"
+                      }
+                    ]
                   }
                 }
               ]
@@ -440,51 +545,128 @@
               "answerOption": [
                 {
                   "valueCoding": {
-                    "code": "Y",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                    "display": "Yes"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "N",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
-                    "display": "No"
-                  }
-                },
-                {
-                  "valueCoding": {
-                    "code": "asked-unknown",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136",
+                    "code": "unk",
+                    "system": "http://snomed.info/sct",
                     "display": "Unknown"
                   }
-                }
-              ],
-              "extension": [
+                },
                 {
-                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                  "valueCodeableConcept": {
-                    "coding": [
-                      {
-                        "code": "radio-button",
-                        "system": "http://hl7.org/fhir/questionnaire-item-control"
-                      }
-                    ]
+                  "valueCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct",
+                    "display": "Clinical TNM"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "code": "other",
+                    "system": "http://snomed.info/sct",
+                    "display": "Other"
                   }
                 }
               ]
             },
             {
-              "linkId": "radiologyDetails",
-              "text": "Details",
+              "linkId": "radiologyOther",
+              "text": "Other relevant details",
               "type": "text",
               "enableWhen": [
                 {
                   "question": "radiology",
                   "operator": "=",
                   "answerCoding": {
-                    "code": "Y",
-                    "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
+                    "code": "other",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalT",
+              "text": "Clinical T ",
+              "type": "string",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalN",
+              "text": "Clinical N",
+              "type": "string",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalM",
+              "text": "Clinical M",
+              "type": "string",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalGroupStage",
+              "text": "Clinical Group Stage",
+              "type": "string",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalTNMEdition",
+              "text": "Clinical TNM edition",
+              "type": "string",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "clinicalStageDate",
+              "text": "Clinical Stage date",
+              "type": "date",
+              "enableWhen": [
+                {
+                  "question": "radiology",
+                  "operator": "=",
+                  "answerCoding": {
+                    "code": "tnm",
+                    "system": "http://snomed.info/sct"
                   }
                 }
               ]
@@ -567,7 +749,7 @@
       "type": "group",
       "item": [
         {
-          "linkId": "procedure",
+          "linkId": "tumourprocedure",
           "text": "Procedure",
           "type": "choice",
           "answerOption": [
@@ -587,6 +769,37 @@
               "valueCoding": {
                 "code": "frozen",
                 "display": "Frozen section"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "tumourindication",
+          "text": "Clinical Indication",
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "code": "new",
+                "display": "New primary cancer"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "regional",
+                "display": "Regional recurrance"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "distant",
+                "display": "distant metastasis"
+              }
+            },
+            {
+              "valueCoding": {
+                "code": "other",
+                "display": "Other"
               }
             }
           ]

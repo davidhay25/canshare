@@ -14,7 +14,8 @@ then
 echo "make transaction bundle"
 localscripts/makeBundleTransaction.js
 
-
+#echo "add fullurl"
+#localscripts/addFullUrlToBundle.js
 
 else 
 echo
