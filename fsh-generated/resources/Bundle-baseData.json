@@ -105,6 +105,7 @@
                 "linkId": "cc",
                 "text": "Copy to",
                 "type": "reference",
+                "repeats": true,
                 "code": [
                   {
                     "code": "cc",
@@ -394,6 +395,12 @@
                           "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                         }
                       }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes",
+                        "valueString": "Should be present if the answer to symptoms was yet."
+                      }
                     ]
                   }
                 ]
@@ -456,6 +463,12 @@
                           "code": "Y",
                           "system": "http://terminology.hl7.org/CodeSystem/v2-0136"
                         }
+                      }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes",
+                        "valueString": "If the 'previous Cyto' is 'no' or 'unknown', then extract an Observation with that value. \nOtherwise create an Observation with this text."
                       }
                     ]
                   }
@@ -913,16 +926,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "linkId": "tumournotes",
-                "text": "Notes",
-                "type": "text"
-              },
-              {
-                "linkId": "newotes",
-                "text": "Notes",
-                "type": "text"
               }
             ]
           },
@@ -931,6 +934,184 @@
             "text": "Procedure",
             "type": "group",
             "item": [
+              {
+                "linkId": "procedureTypeGroup",
+                "text": "Select procedure",
+                "type": "group",
+                "item": [
+                  {
+                    "linkId": "procedureType",
+                    "text": "Select procedure",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "bron",
+                          "system": "http://canshare.com",
+                          "display": "Bronchoscopic"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "trans",
+                          "display": "Transthoracic"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "frozen",
+                          "display": "Frozen section (intra operative)"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "op",
+                          "display": "Operative"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "bronchoscopicTumourSite",
+                    "text": "Tumour site",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "rul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rml",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Middle Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "mb",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Main Bronchus"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "bron",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "bronchoscopicProcedureType",
+                    "text": "Procedure type",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "ebiop",
+                          "display": "Endobronchial biopsy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "tbiop",
+                          "display": "Transbronchial biopsy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "wash",
+                          "display": "Bronchial washings"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "brush",
+                          "display": "Bronchial brushings"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lavage",
+                          "display": "Bronchoalveolar lavage"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "needle",
+                          "display": "Transbronchial needle aspirate (TBNA)"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "ebus",
+                          "display": "Endobronchial Ultrasound-guided Bronchoscopy (EBUS)"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "other",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "bron",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "bronchoscopicProcedureNotes",
+                    "text": "Additional comments",
+                    "type": "text",
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "bron",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
               {
                 "linkId": "site",
                 "text": "Site and laterality",

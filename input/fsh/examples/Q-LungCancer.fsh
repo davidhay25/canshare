@@ -18,6 +18,8 @@ Alias: $snomed = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 Alias: $ucum = http://unitsofmeasure.org
 Alias: $canshare = http://canshare.com
+Alias: $extractNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes
+Alias: $usageNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes
 
 Instance: QLungCancer
 InstanceOf: Questionnaire
@@ -43,6 +45,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
 
+
 //-------- requesting clinician
 * item[=].item[+].linkId = "requestingclinician"
 * item[=].item[=].text = "Requesting clinician"
@@ -57,10 +60,13 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[+].linkId = "cc"
 * item[=].item[=].text = "Copy to"
 * item[=].item[=].type = #reference
+* item[=].item[=].repeats = true
 * item[=].item[=].code = $canshare#cc "CopyTo"
 * item[=].item[=].code.display = "Copy to" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
+
+
 
 //-------- requesting facility
 * item[=].item[+].linkId = "requestingfacility"
@@ -184,12 +190,18 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
+* item[=].item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Should be present if the answer to symptoms was yes.
+"""
 
 //-------------  previous cyto
 
 * item[=].item[+].linkId = "previousCytoGroup"
 * item[=].item[=].text = "Previous cyto"
 * item[=].item[=].type = #group
+
+
 
 //the first question - the answer will trigger the conditional
 * item[=].item[=].item[+].linkId = "previousCyto"
@@ -204,6 +216,8 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
 
+
+
 * item[=].item[=].item[+].linkId = "previousCytoDetails"
 * item[=].item[=].item[=].text = "Details"
 * item[=].item[=].item[=].type = #text
@@ -212,6 +226,11 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+If the 'previous Cyto' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
+"""
 
 //---------- previous treatment ------------
 
@@ -433,6 +452,72 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[+].linkId = "proc"
 * item[=].text = "Procedure"
 * item[=].type = #group
+
+
+
+* item[=].item[+].linkId = "procedureTypeGroup"
+* item[=].item[=].text = "Select procedure"
+* item[=].item[=].type = #group
+
+* item[=].item[=].item[+].linkId = "procedureType"
+* item[=].item[=].item[=].text = "Select procedure"
+* item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].answerOption[+].valueCoding = $canshare#bron "Bronchoscopic"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #trans "Transthoracic"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #frozen "Frozen section (intra operative)"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #op "Operative"
+
+//specify rendering as radio...
+//* item[=].item[=].item[=].extension[0].url = $control-radio
+//* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
+
+
+//------- bronchoscopic items
+* item[=].item[=].item[+].linkId = "bronchoscopicTumourSite"
+* item[=].item[=].item[=].text = "Tumour site"
+* item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rul "Right Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rml "Right Middle Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rll "Right Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lul "Left Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lll "Left Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#mb "Main Bronchus"
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
+
+
+* item[=].item[=].item[+].linkId = "bronchoscopicProcedureType"
+* item[=].item[=].item[=].text = "Procedure type"
+* item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ebiop "Endobronchial biopsy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #tbiop "Transbronchial biopsy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #wash "Bronchial washings"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #brush "Bronchial brushings"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #lavage "Bronchoalveolar lavage"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #needle "Transbronchial needle aspirate (TBNA)"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ebus "Endobronchial Ultrasound-guided Bronchoscopy (EBUS)"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #other "Other"
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
+
+
+* item[=].item[=].item[+].linkId = "bronchoscopicProcedureNotes"
+* item[=].item[=].item[=].text = "Additional comments"
+* item[=].item[=].item[=].type = #text
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
+
+
+
+
+//++++++++++++= bottom for now+++++++++
+
 
 
 
