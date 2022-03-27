@@ -73,7 +73,7 @@
                   {
                     "code": "principalclinician",
                     "system": "http://canshare.com",
-                    "display": "Copy to"
+                    "display": "Principal clinician"
                   }
                 ],
                 "extension": [
@@ -399,7 +399,7 @@
                     "extension": [
                       {
                         "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes",
-                        "valueString": "Should be present if the answer to symptoms was yet."
+                        "valueString": "Should be present if the answer to symptoms was yes."
                       }
                     ]
                   }
@@ -448,6 +448,10 @@
                             }
                           ]
                         }
+                      },
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-sourceStandard",
+                        "valueString": "WHO Tumour Classification"
                       }
                     ]
                   },
@@ -661,6 +665,12 @@
                           "system": "http://snomed.info/sct"
                         }
                       }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+                        "valueBoolean": true
+                      }
                     ]
                   },
                   {
@@ -675,6 +685,12 @@
                           "code": "tnm",
                           "system": "http://snomed.info/sct"
                         }
+                      }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+                        "valueBoolean": true
                       }
                     ]
                   },
@@ -691,6 +707,12 @@
                           "system": "http://snomed.info/sct"
                         }
                       }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+                        "valueBoolean": true
+                      }
                     ]
                   },
                   {
@@ -705,6 +727,16 @@
                           "code": "tnm",
                           "system": "http://snomed.info/sct"
                         }
+                      }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract",
+                        "valueBoolean": true
+                      },
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes",
+                        "valueString": "Has references in the 'component' element to the individual TNM Observations"
                       }
                     ]
                   },
@@ -721,6 +753,12 @@
                           "system": "http://snomed.info/sct"
                         }
                       }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes",
+                        "valueString": "An extension in the stage Observation"
+                      }
                     ]
                   },
                   {
@@ -735,6 +773,12 @@
                           "code": "tnm",
                           "system": "http://snomed.info/sct"
                         }
+                      }
+                    ],
+                    "extension": [
+                      {
+                        "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes",
+                        "valueString": "An extension in the stage Observation"
                       }
                     ]
                   }
@@ -933,6 +977,7 @@
             "linkId": "proc",
             "text": "Procedure",
             "type": "group",
+            "repeats": true,
             "item": [
               {
                 "linkId": "procedureTypeGroup",
@@ -1097,7 +1142,7 @@
                   },
                   {
                     "linkId": "bronchoscopicProcedureNotes",
-                    "text": "Additional comments",
+                    "text": "Bronchoscopic additional comments",
                     "type": "text",
                     "enableWhen": [
                       {
@@ -1109,127 +1154,459 @@
                         }
                       }
                     ]
+                  },
+                  {
+                    "linkId": "transthoracicProcedureSite",
+                    "text": "Tumour site",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "rul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rml",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Middle Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lin",
+                          "display": "Lingula"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "trac",
+                          "display": "Trachea"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "cw",
+                          "display": "Chest wall"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "ns",
+                          "display": "Not Specified"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "trans",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "transthoracicProcedureType",
+                    "text": "Type of transthoracic procedure",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Transthoracic core needle biopsy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "tfna",
+                          "display": "Transthoracic fine needle aspirate"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "pfa",
+                          "display": "Pleural fluid aspirate"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "vats",
+                          "display": "Video-assisted surgery (VATS) biopsy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "ob",
+                          "display": "Open biopsy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "trans",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "transthoracicProcedureComments",
+                    "text": "Transthoracic additional comments",
+                    "type": "text",
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "trans",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "frozensectionindication",
+                    "text": "Clinical indication for frozen section",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "pal",
+                          "display": "Confirm malignancy, proceed to oncologic/palliative care"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "anc",
+                          "display": "Confirm malignancy, confirm sufficient lesional material for ancillary studies"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "clear",
+                          "display": "Confirm margins clear of malignancy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "frozen",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "frozensectiontype",
+                    "text": "Type of frozen section",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "pal",
+                          "display": "Wedge resection"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "anc",
+                          "display": "Lymph node"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "frozen",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "transthoracicProcedureFrozenComments",
+                    "text": "Frozen section additional comments",
+                    "type": "text",
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "frozen",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "procedureoperativets",
+                    "text": "Tumour site",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "rul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rml",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Middle Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "rll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Right Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lul",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Upper Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lll",
+                          "system": "http://clinfhir.com/CodeSystem/site",
+                          "display": "Left Lower Lobe"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lin",
+                          "display": "Lingula"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "trac",
+                          "display": "Trachea"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "cw",
+                          "display": "Chest wall"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "ns",
+                          "display": "Not Specified"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "op",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "procedureoperativeproc",
+                    "text": "Procedure type",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "wedge",
+                          "display": "Wedge resection"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "seg",
+                          "display": "Segmentectomy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "lob",
+                          "display": "Lobectomy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "bilob",
+                          "display": "BiLobectomy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "pneum",
+                          "display": "Pneumonectomy"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "sleeve",
+                          "display": "Sleeve resection"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "oth",
+                          "display": "Other"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "op",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "procedureoperativeadj",
+                    "text": "Involvement of adjacent organs",
+                    "type": "choice",
+                    "answerOption": [
+                      {
+                        "valueCoding": {
+                          "code": "ni",
+                          "display": "Not identified"
+                        }
+                      },
+                      {
+                        "valueCoding": {
+                          "code": "pres",
+                          "display": "Present"
+                        }
+                      }
+                    ],
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "op",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "linkId": "procedureoperativeComments",
+                    "text": "Additional comments on operative procedure",
+                    "type": "text",
+                    "enableWhen": [
+                      {
+                        "question": "procedureType",
+                        "operator": "=",
+                        "answerCoding": {
+                          "code": "op",
+                          "system": "http://canshare.com"
+                        }
+                      }
+                    ]
                   }
                 ]
               },
               {
-                "linkId": "site",
-                "text": "Site and laterality",
+                "linkId": "additionalSpecimens",
+                "text": "Additional specimens submitted",
                 "type": "choice",
                 "answerOption": [
                   {
                     "valueCoding": {
-                      "code": "rul",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Right Upper Lobe"
+                      "code": "none",
+                      "display": "None"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "rml",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Right Middle Lobe"
+                      "code": "ln",
+                      "display": "Lymph node"
                     }
                   },
                   {
                     "valueCoding": {
-                      "code": "rll",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Right Lower Lobe"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "lul",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Left Upper Lobe"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "lll",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Left Lower Lobe"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "mb",
-                      "system": "http://clinfhir.com/CodeSystem/site",
-                      "display": "Main Bronchus"
-                    }
-                  }
-                ]
-              },
-              {
-                "linkId": "type",
-                "text": "Nature of procedure",
-                "type": "choice",
-                "answerOption": [
-                  {
-                    "valueCoding": {
-                      "code": "wedge",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
-                      "display": "wedge"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "segmentectomy",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
-                      "display": "segmentectomy"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "bilobectomy",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
-                      "display": "bilobectomy"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "lobectomy",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
-                      "display": "lobectomy"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "pneumonectomy",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
-                      "display": "pneumonectomy"
-                    }
-                  },
-                  {
-                    "valueCoding": {
-                      "code": "other",
-                      "system": "http://clinfhir.com/CodeSystem/resection",
+                      "code": "oth",
                       "display": "Other"
                     }
                   }
                 ]
-              },
-              {
-                "linkId": "procCode",
-                "text": "Procedure code",
-                "type": "choice",
-                "answerValueSet": "http://hl7.org/fhir/ValueSet/procedure-code"
-              },
-              {
-                "linkId": "procNotes",
-                "text": "Procedure notes",
-                "type": "text"
-              },
-              {
-                "linkId": "adjOrgansInv",
-                "text": "Adjacent Organs involved",
-                "type": "boolean"
-              },
-              {
-                "linkId": "adjOrgansDetails",
-                "text": "Details of adjacent Organs involvement",
-                "type": "text"
               }
             ]
           },

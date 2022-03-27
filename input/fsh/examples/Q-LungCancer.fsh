@@ -20,6 +20,7 @@ Alias: $ucum = http://unitsofmeasure.org
 Alias: $canshare = http://canshare.com
 Alias: $extractNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes
 Alias: $usageNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes
+Alias: $sourceStandard = http://canshare.com/fhir/StructureDefinition/questionnaire-sourceStandard
 
 Instance: QLungCancer
 InstanceOf: Questionnaire
@@ -41,7 +42,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].text = "Principal clinician caring for patient"
 * item[=].item[=].type = #reference
 * item[=].item[=].code = $canshare#principalclinician "Principal clinician"
-* item[=].item[=].code.display = "Copy to" 
+* item[=].item[=].code.display = "Principal clinician" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
 
@@ -215,8 +216,9 @@ Should be present if the answer to symptoms was yes.
 * item[=].item[=].item[=].extension[0].url = $control-radio
 * item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
-
-
+//Source standard
+* item[=].item[=].item[=].extension[+].url = $sourceStandard
+* item[=].item[=].item[=].extension[=].valueString = "WHO Tumour Classification"
 
 * item[=].item[=].item[+].linkId = "previousCytoDetails"
 * item[=].item[=].item[=].text = "Details"
@@ -318,6 +320,7 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#other
 
 
+//--------- TNM
 * item[=].item[=].item[+].linkId = "clinicalT"
 * item[=].item[=].item[=].text = "Clinical T "
 * item[=].item[=].item[=].type = #string
@@ -325,12 +328,17 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
 
+* item[=].item[=].item[=].extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].item[=].extension[=].valueBoolean = true
+
 * item[=].item[=].item[+].linkId = "clinicalN"
 * item[=].item[=].item[=].text = "Clinical N"
 * item[=].item[=].item[=].type = #string
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+* item[=].item[=].item[=].extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].item[=].extension[=].valueBoolean = true
 
 * item[=].item[=].item[+].linkId = "clinicalM"
 * item[=].item[=].item[=].text = "Clinical M"
@@ -338,6 +346,8 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+* item[=].item[=].item[=].extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].item[=].extension[=].valueBoolean = true
 
 * item[=].item[=].item[+].linkId = "clinicalGroupStage"
 * item[=].item[=].item[=].text = "Clinical Group Stage"
@@ -346,6 +356,14 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
 
+* item[=].item[=].item[=].extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Has references in the 'component' element to the individual TNM Observations
+"""
+
 * item[=].item[=].item[+].linkId = "clinicalTNMEdition"
 * item[=].item[=].item[=].text = "Clinical TNM edition"
 * item[=].item[=].item[=].type = #string
@@ -353,12 +371,22 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
 
+* item[=].item[=].item[=].extension[0].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+An extension in the stage Observation
+"""
+
 * item[=].item[=].item[+].linkId = "clinicalStageDate"
 * item[=].item[=].item[=].text = "Clinical Stage date"
 * item[=].item[=].item[=].type = #date
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
+
+* item[=].item[=].item[=].extension[0].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+An extension in the stage Observation
+"""
 
 //---------- neoadjuvant ------------
 
@@ -447,11 +475,12 @@ Otherwise create an Observation with this text.
 * item[=].item[=].type = #text
 */
 
-//=============== procedure
+//=============== procedure =============
 
 * item[+].linkId = "proc"
 * item[=].text = "Procedure"
 * item[=].type = #group
+* item[=].repeats = true
 
 
 
@@ -506,20 +535,165 @@ Otherwise create an Observation with this text.
 
 
 * item[=].item[=].item[+].linkId = "bronchoscopicProcedureNotes"
-* item[=].item[=].item[=].text = "Additional comments"
+* item[=].item[=].item[=].text = "Bronchoscopic additional comments"
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "procedureType"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
 
+// ----- tranthoracic procedure
+* item[=].item[=].item[+].linkId = "transthoracicProcedureSite"
+* item[=].item[=].item[=].text = "Tumour site"
+* item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rul "Right Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rml "Right Middle Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rll "Right Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lul "Left Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lll "Left Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #lin "Lingula"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #trac "Trachea"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #cw "Chest wall"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ns "Not Specified"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
+
+* item[=].item[=].item[+].linkId = "transthoracicProcedureType"
+* item[=].item[=].item[=].text = "Type of transthoracic procedure"
+* item[=].item[=].item[=].type = #choice
+
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Transthoracic core needle biopsy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #tfna "Transthoracic fine needle aspirate"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #pfa "Pleural fluid aspirate"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #vats "Video-assisted surgery (VATS) biopsy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ob "Open biopsy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
+
+* item[=].item[=].item[+].linkId = "transthoracicProcedureComments"
+* item[=].item[=].item[=].text = "Transthoracic additional comments"
+* item[=].item[=].item[=].type = #text
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
+
+// ------- frozen section
+* item[=].item[=].item[+].linkId = "frozensectionindication"
+* item[=].item[=].item[=].text = "Clinical indication for frozen section"
+* item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].answerOption[+].valueCoding = #pal "Confirm malignancy, proceed to oncologic/palliative care"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #anc "Confirm malignancy, confirm sufficient lesional material for ancillary studies"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #clear "Confirm margins clear of malignancy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
 
 
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
+
+
+* item[=].item[=].item[+].linkId = "frozensectiontype"
+* item[=].item[=].item[=].text = "Type of frozen section"
+* item[=].item[=].item[=].type = #choice
+
+* item[=].item[=].item[=].answerOption[+].valueCoding = #pal "Wedge resection"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #anc "Lymph node"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
+
+
+* item[=].item[=].item[+].linkId = "transthoracicProcedureFrozenComments"
+* item[=].item[=].item[=].text = "Frozen section additional comments"
+* item[=].item[=].item[=].type = #text
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
+
+
+// --------- procedure operative
+* item[=].item[=].item[+].linkId = "procedureoperativets"
+* item[=].item[=].item[=].text = "Tumour site"
+* item[=].item[=].item[=].type = #choice
+
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rul "Right Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rml "Right Middle Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rll "Right Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lul "Left Upper Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#lll "Left Lower Lobe"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #lin "Lingula"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #trac "Trachea"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #cw "Chest wall"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ns "Not Specified"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
+
+//---
+* item[=].item[=].item[+].linkId = "procedureoperativeproc"
+* item[=].item[=].item[=].text = "Procedure type"
+* item[=].item[=].item[=].type = #choice
+
+* item[=].item[=].item[=].answerOption[+].valueCoding = #wedge "Wedge resection"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #seg "Segmentectomy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #lob "Lobectomy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #bilob "BiLobectomy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #pneum "Pneumonectomy"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #sleeve "Sleeve resection"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
+
+
+//---
+* item[=].item[=].item[+].linkId = "procedureoperativeadj"
+* item[=].item[=].item[=].text = "Involvement of adjacent organs"
+* item[=].item[=].item[=].type = #choice
+
+* item[=].item[=].item[=].answerOption[+].valueCoding = #ni "Not identified"
+* item[=].item[=].item[=].answerOption[+].valueCoding = #pres "Present"
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
+
+* item[=].item[=].item[+].linkId = "procedureoperativeComments"
+* item[=].item[=].item[=].text = "Additional comments on operative procedure"
+* item[=].item[=].item[=].type = #text
+
+* item[=].item[=].item[=].enableWhen[0].question = "procedureType"
+* item[=].item[=].item[=].enableWhen[=].operator = #=
+* item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
+
+
+//---------
+* item[=].item[+].linkId = "additionalSpecimens"
+* item[=].item[=].text = "Additional specimens submitted"
+* item[=].item[=].type = #choice
+
+* item[=].item[=].answerOption[+].valueCoding = #none "None"
+* item[=].item[=].answerOption[+].valueCoding = #ln "Lymph node"
+* item[=].item[=].answerOption[+].valueCoding = #oth "Other"
 
 //++++++++++++= bottom for now+++++++++
 
 
-
+/*
 
 * item[=].item[+].linkId = "site"
 * item[=].item[=].text = "Site and laterality"
@@ -562,7 +736,7 @@ Otherwise create an Observation with this text.
 * item[=].item[=].text = "Details of adjacent Organs involvement"
 * item[=].item[=].type = #text
 
-
+*/
 
 //=============== specimen
 * item[+].linkId = "specimen"
