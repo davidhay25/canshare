@@ -10,7 +10,7 @@
     "coding": [
       {
         "code": "vap",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "Asbestos exposure"
       }
     ]
@@ -22,7 +22,7 @@
     "coding": [
       {
         "code": "no",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "No"
       }
     ]

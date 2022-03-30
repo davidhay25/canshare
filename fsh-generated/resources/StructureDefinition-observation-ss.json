@@ -807,7 +807,7 @@
           "coding": [
             {
               "code": "ss",
-              "system": "http://canshare.com"
+              "system": "http://canshare.com/cs"
             }
           ]
         },
@@ -2751,7 +2751,7 @@
           "coding": [
             {
               "code": "ss",
-              "system": "http://canshare.com"
+              "system": "http://canshare.com/cs"
             }
           ]
         }

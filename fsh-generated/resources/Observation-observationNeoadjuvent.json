@@ -10,7 +10,7 @@
     "coding": [
       {
         "code": "neo",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "Neoadjuvent therapy"
       }
     ]
@@ -22,7 +22,7 @@
     "coding": [
       {
         "code": "notadmin",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "Not administered"
       }
     ]

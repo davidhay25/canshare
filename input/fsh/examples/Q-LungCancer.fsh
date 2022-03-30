@@ -17,7 +17,9 @@ Alias: $resection-cs = http://clinfhir.com/CodeSystem/resection
 Alias: $snomed = http://snomed.info/sct
 Alias: $loinc = http://loinc.org
 Alias: $ucum = http://unitsofmeasure.org
-Alias: $canshare = http://canshare.com
+Alias: $canshare = http://canshare.com/cs
+Alias: $canshareReview = http://canshare.com/cs/review
+
 Alias: $extractNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes
 Alias: $usageNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes
 Alias: $sourceStandard = http://canshare.com/fhir/StructureDefinition/questionnaire-sourceStandard
@@ -37,35 +39,89 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].text = "Administration"
 * item[=].type = #group
 
+* item[=].item[+].linkId = "reviewer"
+* item[=].item[=].text = "Reviewer"
+* item[=].item[=].type = #string
+* item[=].item[=].code = $canshareReview#reviewer "Reviewer"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+The name of the person reviewing this form. Only used during the review process.
+"""
+
+
+//-------- completed by
+* item[=].item[+].linkId = "completedby"
+* item[=].item[=].text = "Completed by"
+* item[=].item[=].type = #reference
+
+* item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
+* item[=].item[=].extension[=].valueCode = #Practitioner
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest to practitioner
+"""
+
+//-------- approved by
+* item[=].item[+].linkId = "approvedby"
+* item[=].item[=].text = "Approved by"
+* item[=].item[=].type = #reference
+
+* item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
+* item[=].item[=].extension[=].valueCode = #Practitioner
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest to practitioner
+"""
+
+
 //-------- principal
 * item[=].item[+].linkId = "principalclinician"
 * item[=].item[=].text = "Principal clinician caring for patient"
 * item[=].item[=].type = #reference
-* item[=].item[=].code = $canshare#principalclinician "Principal clinician"
+//* item[=].item[=].code = $canshare#principalclinician "Principal clinician"
 * item[=].item[=].code.display = "Principal clinician" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
 
 
 //-------- requesting clinician
 * item[=].item[+].linkId = "requestingclinician"
 * item[=].item[=].text = "Requesting clinician"
 * item[=].item[=].type = #reference
-* item[=].item[=].code = $canshare#requestingclinician "Requesting clinician"
+//* item[=].item[=].code = $canshare#requestingclinician "Requesting clinician"
 * item[=].item[=].code.display = "Requesting clinician" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
 
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from ServiceRequest.requester
+"""
 
 //-------- copy to
 * item[=].item[+].linkId = "cc"
 * item[=].item[=].text = "Copy to"
 * item[=].item[=].type = #reference
 * item[=].item[=].repeats = true
-* item[=].item[=].code = $canshare#cc "CopyTo"
+//* item[=].item[=].code = $canshare#cc "CopyTo"
 * item[=].item[=].code.display = "Copy to" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Practitioner
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
 
 
 
@@ -73,29 +129,68 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[+].linkId = "requestingfacility"
 * item[=].item[=].text = "Requesting facility"
 * item[=].item[=].type = #reference
-* item[=].item[=].code = $canshare#requestingfacility "Requesting facility"
-* item[=].item[=].code.display = "Requesting facility" 
+//* item[=].item[=].code = $canshare#requestingfacility "Requesting facility"
+//* item[=].item[=].code.display = "Requesting facility" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Organization
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
+
 
 //-------- laboratory facility
 * item[=].item[+].linkId = "laboratoryfacility"
 * item[=].item[=].text = "Laboratory facility"
 * item[=].item[=].type = #reference
-* item[=].item[=].code = $canshare#laboratoryfacility "Laboratory facility"
-* item[=].item[=].code.display = "Laboratory facility" 
+//* item[=].item[=].code = $canshare#laboratoryfacility "Laboratory facility"
+//* item[=].item[=].code.display = "Laboratory facility" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Organization
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
+
 
 //-------- copy to facility
 * item[=].item[+].linkId = "ccfacility"
 * item[=].item[=].text = "Copy to facility"
 * item[=].item[=].type = #reference
-* item[=].item[=].code = $canshare#ccfacility "CopyTo facility"
-* item[=].item[=].code.display = "Copy to" 
+//* item[=].item[=].code = $canshare#ccfacility "CopyTo facility"
+//* item[=].item[=].code.display = "Copy to" 
 * item[=].item[=].extension[0].url = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceResource"
 * item[=].item[=].extension[=].valueCode = #Organization
 
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
+
+* item[=].item[+].linkId = "returntissue"
+* item[=].item[=].text = "Patient has requested return of body tissue"
+* item[=].item[=].type = #boolean
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Reference from extension on ServiceRequest
+"""
+
+* item[=].item[+].linkId = "admincomments"
+* item[=].item[=].text = "Reviewer comments on admin"
+* item[=].item[=].type = #text
+* item[=].item[=].code = $canshareReview#admincomments "Admin comments"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Only used for reviewing a form
+"""
+
+
+/*
 * item[=].item[+].linkId = "mdmreferral"
 * item[=].item[=].text = "Refer for MDM assessment"
 * item[=].item[=].type = #boolean
@@ -104,7 +199,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].text = "If checked, the system will generate a ServiceRequest for an MDM review"
 * item[=].item[=].type = #display
 
-
+*/
 //==================  clinical information section
 
 * item[+].linkId = "clinicalinfo"
@@ -123,8 +218,16 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerOption[+].valueCoding  = $ss-cs#exgt1yr "Ex smoker greater than 1 year"
 * item[=].item[=].answerOption[+].valueCoding  = $ss-cs#never "Never smoked"
 
+
+
+
 * item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
 * item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Refer to MOH guidelines
+"""
 
 // -------- vaping status
 * item[=].item[+].linkId = "vs"
@@ -140,7 +243,8 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].answerOption[+].valueCoding = $vs-cs#exgt1yr "Ex vaping more than 1 year"
 * item[=].item[=].answerOption[+].valueCoding = $vs-cs#trying  "Trying to give up vaping"
 * item[=].item[=].answerOption[+].valueCoding = $vs-cs#never  "Never vaped"
-
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
 
 //asbestos
 
@@ -148,13 +252,16 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].text = "Asbestos exposure"
 * item[=].item[=].type = #choice
 
+* item[=].item[=].code = $canshare#asbestos "Asbestos"
+
 * item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
 * item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
 //specify rendering as radio...
 * item[=].item[=].extension[0].url = $control-radio
 * item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
-
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
 
 /*
 
@@ -175,6 +282,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[+].linkId = "symptoms"
 * item[=].item[=].item[=].text = "Presenting symptoms"
 * item[=].item[=].item[=].type = #choice
+* item[=].item[=].item[=].code = $canshare#presenting "Presenting symptoms"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#asked-unknown "Unknown"
@@ -183,17 +291,19 @@ Description: "Questionnaire for Lung Cancer histology request"
 * item[=].item[=].item[=].extension[0].url = $control-radio
 * item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
+//---
 * item[=].item[=].item[+].linkId = "symptomsDetails"
 * item[=].item[=].item[=].text = "Details"
 * item[=].item[=].item[=].type = #text
-
+* item[=].item[=].item[=].code = $canshare#presentingdetail "Presenting symptoms details"
 * item[=].item[=].item[=].enableWhen[0].question = "symptoms"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
-* item[=].item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].item[=].extension[=].valueString = """
-Should be present if the answer to symptoms was yes.
+If the 'present symptoms' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
 """
 
 //-------------  previous cyto
@@ -207,6 +317,7 @@ Should be present if the answer to symptoms was yes.
 //the first question - the answer will trigger the conditional
 * item[=].item[=].item[+].linkId = "previousCyto"
 * item[=].item[=].item[=].text = "Result of any previous cytological investigations or biopsies"
+* item[=].item[=].item[=].code = $canshare#previouscyto "Previous cyto"
 * item[=].item[=].item[=].type = #choice
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
@@ -220,8 +331,10 @@ Should be present if the answer to symptoms was yes.
 * item[=].item[=].item[=].extension[+].url = $sourceStandard
 * item[=].item[=].item[=].extension[=].valueString = "WHO Tumour Classification"
 
+//------
 * item[=].item[=].item[+].linkId = "previousCytoDetails"
 * item[=].item[=].item[=].text = "Details"
+* item[=].item[=].item[=].code = $canshare#previouscytodetails "Previous cyto details"
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "previousCyto"
@@ -243,6 +356,7 @@ Otherwise create an Observation with this text.
 //the first question - the answer will trigger the conditional
 * item[=].item[=].item[+].linkId = "previousTreatment"
 * item[=].item[=].item[=].text = "Result of any previous treatment"
+* item[=].item[=].item[=].code = $canshare#prevTx
 * item[=].item[=].item[=].type = #choice
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#N "No"
@@ -252,14 +366,20 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[=].extension[0].url = $control-radio
 * item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
-
-* item[=].item[=].item[+].linkId = "previousTreatmantDetails"
+* item[=].item[=].item[+].linkId = "previousTreatmentDetails"
 * item[=].item[=].item[=].text = "Details"
+* item[=].item[=].item[=].code = $canshare#prevTxDtl
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "previousTreatment"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
+
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+If the 'previous treatment' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
+"""
 
 
 //---------- previous diagnosis ------------
@@ -270,6 +390,7 @@ Otherwise create an Observation with this text.
 
 //the first question - the answer will trigger the conditional
 * item[=].item[=].item[+].linkId = "previousDiagnosis"
+* item[=].item[=].item[=].code = $canshare#prevDx
 * item[=].item[=].item[=].text = "Details of any previous diagnosis"
 * item[=].item[=].item[=].type = #choice
 * item[=].item[=].item[=].answerOption[+].valueCoding = $yesnosystem#Y "Yes"
@@ -283,13 +404,18 @@ Otherwise create an Observation with this text.
 
 * item[=].item[=].item[+].linkId = "previousDiagnosisDetails"
 * item[=].item[=].item[=].text = "Details"
+* item[=].item[=].item[=].code = $canshare#prevTxDtl
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "previousDiagnosis"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
-
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+If the 'previous diagnosis' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
+"""
 
 //---------- relevant radiology ------------
 
@@ -300,6 +426,7 @@ Otherwise create an Observation with this text.
 //the first question - the answer will trigger the conditional
 * item[=].item[=].item[+].linkId = "radiology"
 * item[=].item[=].item[=].text = "Details of any relevant radiology"
+* item[=].item[=].item[=].code = $canshare#prevRadiol
 * item[=].item[=].item[=].type = #choice
 * item[=].item[=].item[=].answerOption[+].valueCoding = $snomed#unk "Unknown"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $snomed#tnm "Clinical TNM"
@@ -309,21 +436,26 @@ Otherwise create an Observation with this text.
 //* item[=].item[=].item[=].extension[0].url = $control-radio
 //* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
 
-
-
 * item[=].item[=].item[+].linkId = "radiologyOther"
 * item[=].item[=].item[=].text = "Other relevant details"
+* item[=].item[=].item[=].code = $canshare#prevRadiolDtl
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#other
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+If the 'Details of any relevant radiology' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
+"""
 
 //--------- TNM
 * item[=].item[=].item[+].linkId = "clinicalT"
 * item[=].item[=].item[=].text = "Clinical T "
 * item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].code = $loinc#21905-5
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
@@ -334,6 +466,7 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[+].linkId = "clinicalN"
 * item[=].item[=].item[=].text = "Clinical N"
 * item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].code = $loinc#21906-3
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
@@ -343,6 +476,7 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[+].linkId = "clinicalM"
 * item[=].item[=].item[=].text = "Clinical M"
 * item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].code = $loinc#21907-1
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
@@ -352,6 +486,7 @@ Otherwise create an Observation with this text.
 * item[=].item[=].item[+].linkId = "clinicalGroupStage"
 * item[=].item[=].item[=].text = "Clinical Group Stage"
 * item[=].item[=].item[=].type = #string
+* item[=].item[=].item[=].code = $loinc#21908-9
 * item[=].item[=].item[=].enableWhen[0].question = "radiology"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $snomed#tnm
@@ -373,7 +508,7 @@ Has references in the 'component' element to the individual TNM Observations
 
 * item[=].item[=].item[=].extension[0].url = $extractNotes
 * item[=].item[=].item[=].extension[=].valueString = """
-An extension in the stage Observation
+An extension in all of the the TNM Observations
 """
 
 * item[=].item[=].item[+].linkId = "clinicalStageDate"
@@ -385,7 +520,7 @@ An extension in the stage Observation
 
 * item[=].item[=].item[=].extension[0].url = $extractNotes
 * item[=].item[=].item[=].extension[=].valueString = """
-An extension in the stage Observation
+The Observation.effectiveDateTime on all the TNM observations 
 """
 
 //---------- neoadjuvant ------------
@@ -415,10 +550,33 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $yesnosystem#Y
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+If the 'Details of any relevant neoadjuvant therapy' is 'no' or 'unknown', then extract an Observation with that value. 
+Otherwise create an Observation with this text.
+"""
+
 //Other clinical
 * item[=].item[+].linkId = "otherclinical"
 * item[=].item[=].text = "Other Clinical data "
 * item[=].item[=].type = #text
+
+* item[=].item[=].extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[+].linkId = "clinicalcomments"
+* item[=].item[=].text = "Reviewer comments on clinical"
+* item[=].item[=].type = #text
+* item[=].item[=].code = $canshareReview#clinicalcomments "Clinical comments"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Only used for reviewing a form
+"""
+
 
 //--------------- end of clinical section
 
@@ -447,12 +605,14 @@ An extension in the stage Observation
 * item[=].item[=].answerOption[+].valueCoding = #distant "distant metastasis"
 * item[=].item[=].answerOption[+].valueCoding = #other "Other"
 
-
+/*
 //================ Tumour site section
 
 * item[+].linkId = "tumoursitegroup"
 * item[=].text = "Tumour Site"
 * item[=].type = #group
+
+*/
 
 * item[=].item[+].linkId = "tumoursite"
 * item[=].item[=].text = "Tumour site"
@@ -475,6 +635,19 @@ An extension in the stage Observation
 * item[=].item[=].type = #text
 */
 
+* item[=].item[+].linkId = "tumourcomments"
+* item[=].item[=].text = "Reviewer comments on tumour"
+* item[=].item[=].type = #text
+* item[=].item[=].code = $canshareReview#tumourcomments "Tumour comments"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Only used for reviewing a form
+"""
+
 //=============== procedure =============
 
 * item[+].linkId = "proc"
@@ -496,6 +669,11 @@ An extension in the stage Observation
 * item[=].item[=].item[=].answerOption[+].valueCoding = #frozen "Frozen section (intra operative)"
 * item[=].item[=].item[=].answerOption[+].valueCoding = #op "Operative"
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+A selector on the form. Not extracted itself.
+"""
+
 //specify rendering as radio...
 //* item[=].item[=].item[=].extension[0].url = $control-radio
 //* item[=].item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
@@ -504,6 +682,7 @@ An extension in the stage Observation
 //------- bronchoscopic items
 * item[=].item[=].item[+].linkId = "bronchoscopicTumourSite"
 * item[=].item[=].item[=].text = "Tumour site"
+
 * item[=].item[=].item[=].type = #choice
 * item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rul "Right Upper Lobe"
 * item[=].item[=].item[=].answerOption[+].valueCoding = $site-cs#rml "Right Middle Lobe"
@@ -516,7 +695,12 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.bodySite element
+"""
 
+//---------
 * item[=].item[=].item[+].linkId = "bronchoscopicProcedureType"
 * item[=].item[=].item[=].text = "Procedure type"
 * item[=].item[=].item[=].type = #choice
@@ -533,6 +717,11 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure resource. Note that bodySite element used for tumour site
+"""
+
 
 * item[=].item[=].item[+].linkId = "bronchoscopicProcedureNotes"
 * item[=].item[=].item[=].text = "Bronchoscopic additional comments"
@@ -541,6 +730,12 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[0].question = "procedureType"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#bron
+
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.note
+"""
+
 
 // ----- tranthoracic procedure
 * item[=].item[=].item[+].linkId = "transthoracicProcedureSite"
@@ -561,6 +756,13 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.bodySite element
+"""
+
+//-------
+
 * item[=].item[=].item[+].linkId = "transthoracicProcedureType"
 * item[=].item[=].item[=].text = "Type of transthoracic procedure"
 * item[=].item[=].item[=].type = #choice
@@ -575,13 +777,24 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
 
-* item[=].item[=].item[+].linkId = "transthoracicProcedureComments"
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.code element
+"""
+
+//----
+* item[=].item[=].item[+].linkId = "transthoracicProcedureNote"
 * item[=].item[=].item[=].text = "Transthoracic additional comments"
 * item[=].item[=].item[=].type = #text
 
 * item[=].item[=].item[=].enableWhen[0].question = "procedureType"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#trans
+
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.note element
+"""
 
 // ------- frozen section
 * item[=].item[=].item[+].linkId = "frozensectionindication"
@@ -593,11 +806,17 @@ An extension in the stage Observation
 * item[=].item[=].item[=].answerOption[+].valueCoding = #oth "Other"
 
 
+
 * item[=].item[=].item[=].enableWhen[0].question = "procedureType"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.reasonCode element
+"""
 
+//-------
 * item[=].item[=].item[+].linkId = "frozensectiontype"
 * item[=].item[=].item[=].text = "Type of frozen section"
 * item[=].item[=].item[=].type = #choice
@@ -611,8 +830,14 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.code element
+"""
 
-* item[=].item[=].item[+].linkId = "transthoracicProcedureFrozenComments"
+
+//---
+* item[=].item[=].item[+].linkId = "frozensectionnote"
 * item[=].item[=].item[=].text = "Frozen section additional comments"
 * item[=].item[=].item[=].type = #text
 
@@ -620,6 +845,10 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#frozen
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.note element
+"""
 
 // --------- procedure operative
 * item[=].item[=].item[+].linkId = "procedureoperativets"
@@ -642,6 +871,12 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.bodySite element
+"""
+
+
 //---
 * item[=].item[=].item[+].linkId = "procedureoperativeproc"
 * item[=].item[=].item[=].text = "Procedure type"
@@ -659,6 +894,11 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.code element
+"""
+
 
 //---
 * item[=].item[=].item[+].linkId = "procedureoperativeadj"
@@ -672,6 +912,13 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
 
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.extension element
+"""
+
+
+//---
 * item[=].item[=].item[+].linkId = "procedureoperativeComments"
 * item[=].item[=].item[=].text = "Additional comments on operative procedure"
 * item[=].item[=].item[=].type = #text
@@ -679,6 +926,11 @@ An extension in the stage Observation
 * item[=].item[=].item[=].enableWhen[0].question = "procedureType"
 * item[=].item[=].item[=].enableWhen[=].operator = #=
 * item[=].item[=].item[=].enableWhen[=].answerCoding = $canshare#op
+
+* item[=].item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].item[=].extension[=].valueString = """
+Procedure.note element
+"""
 
 
 //---------
@@ -689,6 +941,20 @@ An extension in the stage Observation
 * item[=].item[=].answerOption[+].valueCoding = #none "None"
 * item[=].item[=].answerOption[+].valueCoding = #ln "Lymph node"
 * item[=].item[=].answerOption[+].valueCoding = #oth "Other"
+
+* item[=].item[+].linkId = "procedurecomments"
+* item[=].item[=].text = "Reviewer comments on procedure"
+* item[=].item[=].type = #text
+* item[=].item[=].code = $canshareReview#procedurecomments "Procedure comments"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Only used for reviewing a form
+"""
+
 
 //++++++++++++= bottom for now+++++++++
 
@@ -742,17 +1008,37 @@ An extension in the stage Observation
 * item[+].linkId = "specimen"
 * item[=].text = "Specimen Information"
 * item[=].type = #group
+* item[=].repeats = true
+
+* item[=].extension[+].url = $extractNotes
+* item[=].extension[=].valueString = """
+There's a reference from the Procedure to the Specimen/s
+"""
 
 * item[=].item[+].linkId = "specLabel"
 * item[=].item[=].text = "Specimen Label"
 * item[=].item[=].type = #string
 
+* item[=].item[+].linkId = "specimencomments"
+* item[=].item[=].text = "Reviewer comments"
+* item[=].item[=].type = #text
+* item[=].item[=].code = $canshareReview#specimencomments "Specimen comments"
+
+* item[=].item[=].extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-observationExtract"
+* item[=].item[=].extension[=].valueBoolean = true
+
+* item[=].item[=].extension[+].url = $usageNotes
+* item[=].item[=].extension[=].valueString = """
+Only used for reviewing a form
+"""
+
+/*
 * item[=].item[+].linkId = "specReturn"
 * item[=].item[=].text = "Patient requests specimen return"
 * item[=].item[=].type = #boolean
 
 
-
+*/
 
 /*
 

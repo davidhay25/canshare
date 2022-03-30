@@ -10,7 +10,7 @@
     "coding": [
       {
         "code": "vap",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "Vaping Status"
       }
     ]
@@ -22,7 +22,7 @@
     "coding": [
       {
         "code": "current",
-        "system": "http://canshare.com",
+        "system": "http://canshare.com/cs",
         "display": "Current Vaper"
       }
     ]

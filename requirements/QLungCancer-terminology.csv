@@ -1,0 +1,108 @@
+linkId,text,itemCode,level,code,system,display
+ss,Smoking Status,272166-2,2,current,http://clinfhir.com/CodeSystem/ss,Current smoker
+ss,Smoking Status,272166-2,2,exlt1yr,http://clinfhir.com/CodeSystem/ss,Ex smoker less than 1 year
+ss,Smoking Status,272166-2,2,exgt1yr,http://clinfhir.com/CodeSystem/ss,Ex smoker greater than 1 year
+ss,Smoking Status,272166-2,2,never,http://clinfhir.com/CodeSystem/ss,Never smoked
+vs,Vaping Status,272166-2,2,currentnic,http://canshare.com/CodeSystem/vs,Currently vaping with nicotine
+vs,Vaping Status,272166-2,2,currentnonic,http://canshare.com/CodeSystem/vs,Currently vaping without nicotine
+vs,Vaping Status,272166-2,2,current,http://canshare.com/CodeSystem/vs,Currently vaping
+vs,Vaping Status,272166-2,2,exlt1yr,http://canshare.com/CodeSystem/vs,Ex vaping less than 1 year
+vs,Vaping Status,272166-2,2,exgt1yr,http://canshare.com/CodeSystem/vs,Ex vaping more than 1 year
+vs,Vaping Status,272166-2,2,trying,http://canshare.com/CodeSystem/vs,Trying to give up vaping
+vs,Vaping Status,272166-2,2,never,http://canshare.com/CodeSystem/vs,Never vaped
+absestos,Asbestos exposure,undefinedCode,2,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+absestos,Asbestos exposure,undefinedCode,2,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+symptoms,Presenting symptoms,undefinedCode,3,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+symptoms,Presenting symptoms,undefinedCode,3,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+symptoms,Presenting symptoms,undefinedCode,3,asked-unknown,http://terminology.hl7.org/CodeSystem/v2-0136,Unknown
+previousCyto,Result of any previous cytological investigations or biopsies,undefinedCode,3,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+previousCyto,Result of any previous cytological investigations or biopsies,undefinedCode,3,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+previousCyto,Result of any previous cytological investigations or biopsies,undefinedCode,3,asked-unknown,http://terminology.hl7.org/CodeSystem/v2-0136,Unknown
+previousTreatment,Result of any previous treatment,undefinedCode,3,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+previousTreatment,Result of any previous treatment,undefinedCode,3,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+previousTreatment,Result of any previous treatment,undefinedCode,3,asked-unknown,http://terminology.hl7.org/CodeSystem/v2-0136,Unknown
+previousDiagnosis,Details of any previous diagnosis,undefinedCode,3,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+previousDiagnosis,Details of any previous diagnosis,undefinedCode,3,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+previousDiagnosis,Details of any previous diagnosis,undefinedCode,3,asked-unknown,http://terminology.hl7.org/CodeSystem/v2-0136,Unknown
+radiology,Details of any relevant radiology,undefinedCode,3,unk,http://snomed.info/sct,Unknown
+radiology,Details of any relevant radiology,undefinedCode,3,tnm,http://snomed.info/sct,Clinical TNM
+radiology,Details of any relevant radiology,undefinedCode,3,other,http://snomed.info/sct,Other
+neoadjuvant,Details of any relevant neoadjuvant therapy,undefinedCode,3,Y,http://terminology.hl7.org/CodeSystem/v2-0136,Yes
+neoadjuvant,Details of any relevant neoadjuvant therapy,undefinedCode,3,N,http://terminology.hl7.org/CodeSystem/v2-0136,No
+neoadjuvant,Details of any relevant neoadjuvant therapy,undefinedCode,3,asked-unknown,http://terminology.hl7.org/CodeSystem/v2-0136,Unknown
+tumourprocedure,Procedure,undefinedCode,2,diag, ,Diagnostic (biopsy / cytology)
+tumourprocedure,Procedure,undefinedCode,2,resec, ,Resection specimen (operative)
+tumourprocedure,Procedure,undefinedCode,2,frozen, ,Frozen section
+tumourindication,Clinical Indication,undefinedCode,2,new, ,New primary cancer
+tumourindication,Clinical Indication,undefinedCode,2,regional, ,Regional recurrance
+tumourindication,Clinical Indication,undefinedCode,2,distant, ,distant metastasis
+tumourindication,Clinical Indication,undefinedCode,2,other, ,Other
+tumoursite,Tumour site,undefinedCode,2,rul,http://clinfhir.com/CodeSystem/site,Right Upper Lobe
+tumoursite,Tumour site,undefinedCode,2,rml,http://clinfhir.com/CodeSystem/site,Right Middle Lobe
+tumoursite,Tumour site,undefinedCode,2,rll,http://clinfhir.com/CodeSystem/site,Right Lower Lobe
+tumoursite,Tumour site,undefinedCode,2,lul,http://clinfhir.com/CodeSystem/site,Left Upper Lobe
+tumoursite,Tumour site,undefinedCode,2,lll,http://clinfhir.com/CodeSystem/site,Left Lower Lobe
+tumoursite,Tumour site,undefinedCode,2,mb,http://clinfhir.com/CodeSystem/site,Main Bronchus
+procedureType,Select procedure,undefinedCode,3,bron,http://canshare.com,Bronchoscopic
+procedureType,Select procedure,undefinedCode,3,trans, ,Transthoracic
+procedureType,Select procedure,undefinedCode,3,frozen, ,Frozen section (intra operative)
+procedureType,Select procedure,undefinedCode,3,op, ,Operative
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,rul,http://clinfhir.com/CodeSystem/site,Right Upper Lobe
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,rml,http://clinfhir.com/CodeSystem/site,Right Middle Lobe
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,rll,http://clinfhir.com/CodeSystem/site,Right Lower Lobe
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,lul,http://clinfhir.com/CodeSystem/site,Left Upper Lobe
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,lll,http://clinfhir.com/CodeSystem/site,Left Lower Lobe
+bronchoscopicTumourSite,Tumour site,undefinedCode,3,mb,http://clinfhir.com/CodeSystem/site,Main Bronchus
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,ebiop, ,Endobronchial biopsy
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,tbiop, ,Transbronchial biopsy
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,wash, ,Bronchial washings
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,brush, ,Bronchial brushings
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,lavage, ,Bronchoalveolar lavage
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,needle, ,Transbronchial needle aspirate (TBNA)
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,ebus, ,Endobronchial Ultrasound-guided Bronchoscopy (EBUS)
+bronchoscopicProcedureType,Procedure type,undefinedCode,3,other, ,Other
+transthoracicProcedureSite,Tumour site,undefinedCode,3,rul,http://clinfhir.com/CodeSystem/site,Right Upper Lobe
+transthoracicProcedureSite,Tumour site,undefinedCode,3,rml,http://clinfhir.com/CodeSystem/site,Right Middle Lobe
+transthoracicProcedureSite,Tumour site,undefinedCode,3,rll,http://clinfhir.com/CodeSystem/site,Right Lower Lobe
+transthoracicProcedureSite,Tumour site,undefinedCode,3,lul,http://clinfhir.com/CodeSystem/site,Left Upper Lobe
+transthoracicProcedureSite,Tumour site,undefinedCode,3,lll,http://clinfhir.com/CodeSystem/site,Left Lower Lobe
+transthoracicProcedureSite,Tumour site,undefinedCode,3,lin, ,Lingula
+transthoracicProcedureSite,Tumour site,undefinedCode,3,trac, ,Trachea
+transthoracicProcedureSite,Tumour site,undefinedCode,3,cw, ,Chest wall
+transthoracicProcedureSite,Tumour site,undefinedCode,3,ns, ,Not Specified
+transthoracicProcedureSite,Tumour site,undefinedCode,3,oth, ,Other
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,oth, ,Transthoracic core needle biopsy
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,tfna, ,Transthoracic fine needle aspirate
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,pfa, ,Pleural fluid aspirate
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,vats, ,Video-assisted surgery (VATS) biopsy
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,ob, ,Open biopsy
+transthoracicProcedureType,Type of transthoracic procedure,undefinedCode,3,oth, ,Other
+frozensectionindication,Clinical indication for frozen section,undefinedCode,3,pal, ,Confirm malignancy, proceed to oncologic/palliative care
+frozensectionindication,Clinical indication for frozen section,undefinedCode,3,anc, ,Confirm malignancy, confirm sufficient lesional material for ancillary studies
+frozensectionindication,Clinical indication for frozen section,undefinedCode,3,clear, ,Confirm margins clear of malignancy
+frozensectionindication,Clinical indication for frozen section,undefinedCode,3,oth, ,Other
+frozensectiontype,Type of frozen section,undefinedCode,3,pal, ,Wedge resection
+frozensectiontype,Type of frozen section,undefinedCode,3,anc, ,Lymph node
+frozensectiontype,Type of frozen section,undefinedCode,3,oth, ,Other
+procedureoperativets,Tumour site,undefinedCode,3,rul,http://clinfhir.com/CodeSystem/site,Right Upper Lobe
+procedureoperativets,Tumour site,undefinedCode,3,rml,http://clinfhir.com/CodeSystem/site,Right Middle Lobe
+procedureoperativets,Tumour site,undefinedCode,3,rll,http://clinfhir.com/CodeSystem/site,Right Lower Lobe
+procedureoperativets,Tumour site,undefinedCode,3,lul,http://clinfhir.com/CodeSystem/site,Left Upper Lobe
+procedureoperativets,Tumour site,undefinedCode,3,lll,http://clinfhir.com/CodeSystem/site,Left Lower Lobe
+procedureoperativets,Tumour site,undefinedCode,3,lin, ,Lingula
+procedureoperativets,Tumour site,undefinedCode,3,trac, ,Trachea
+procedureoperativets,Tumour site,undefinedCode,3,cw, ,Chest wall
+procedureoperativets,Tumour site,undefinedCode,3,ns, ,Not Specified
+procedureoperativets,Tumour site,undefinedCode,3,oth, ,Other
+procedureoperativeproc,Procedure type,undefinedCode,3,wedge, ,Wedge resection
+procedureoperativeproc,Procedure type,undefinedCode,3,seg, ,Segmentectomy
+procedureoperativeproc,Procedure type,undefinedCode,3,lob, ,Lobectomy
+procedureoperativeproc,Procedure type,undefinedCode,3,bilob, ,BiLobectomy
+procedureoperativeproc,Procedure type,undefinedCode,3,pneum, ,Pneumonectomy
+procedureoperativeproc,Procedure type,undefinedCode,3,sleeve, ,Sleeve resection
+procedureoperativeproc,Procedure type,undefinedCode,3,oth, ,Other
+procedureoperativeadj,Involvement of adjacent organs,undefinedCode,3,ni, ,Not identified
+procedureoperativeadj,Involvement of adjacent organs,undefinedCode,3,pres, ,Present
+additionalSpecimens,Additional specimens submitted,undefinedCode,2,none, ,None
+additionalSpecimens,Additional specimens submitted,undefinedCode,2,ln, ,Lymph node
+additionalSpecimens,Additional specimens submitted,undefinedCode,2,oth, ,Other
