@@ -1,6 +1,12 @@
 {
   "resourceType": "Patient",
   "id": "patient2",
+  "identifier": [
+    {
+      "system": "https://standards.digital.health.nz/ns/nhi-id",
+      "value": "BBBB5678"
+    }
+  ],
   "name": [
     {
       "given": [
@@ -10,5 +16,6 @@
       "text": "Jane Doe"
     }
   ],
+  "birthDate": "2010-05-04",
   "gender": "female"
 }

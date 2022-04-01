@@ -1,6 +1,12 @@
 {
   "resourceType": "Patient",
   "id": "patient1",
+  "identifier": [
+    {
+      "system": "https://standards.digital.health.nz/ns/nhi-id",
+      "value": "AAA2134"
+    }
+  ],
   "name": [
     {
       "given": [
@@ -10,5 +16,6 @@
       "text": "John Doe"
     }
   ],
+  "birthDate": "1989-01-01",
   "gender": "male"
 }

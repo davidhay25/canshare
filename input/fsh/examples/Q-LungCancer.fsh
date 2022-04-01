@@ -23,6 +23,11 @@ Alias: $canshareReview = http://canshare.com/cs/review
 Alias: $extractNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes
 Alias: $usageNotes = http://canshare.com/fhir/StructureDefinition/questionnaire-usageNotes
 Alias: $sourceStandard = http://canshare.com/fhir/StructureDefinition/questionnaire-sourceStandard
+//Alias: $row = http://canshare.com/fhir/StructureDefinition/questionnaire-row 
+// todo - fsh doesn't seem to recognize valueExpression
+Alias: $initialValue = http://canshare.com/fhir/StructureDefinition/sdc-questionnaire-initialExpression
+
+
 
 Instance: QLungCancer
 InstanceOf: Questionnaire
@@ -33,6 +38,105 @@ Description: "Questionnaire for Lung Cancer histology request"
 * name = "LungCancerHistologyRequest"
 * title = "A form to capture data to accompany a histology request for lung cancer"
 
+
+//========= demographics section
+* item[+].linkId = "demog"
+* item[=].text = "Demographics"
+* item[=].type = #group
+
+* item[=].extension[0].url = $extractNotes
+* item[=].extension[=].valueString = """
+Patient resource. Use conditional create.
+"""
+
+* item[=].item[+].linkId = "NHI"
+* item[=].item[=].text = "NHI"
+* item[=].item[=].type = #string
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.identifier field. System is https://standards.digital.health.nz/ns/nhi-id
+"""
+* item[=].item[=].extension[0].url = $initialValue
+* item[=].item[=].extension[=].valueString = "%patient.identifier"
+
+* item[=].item[+].linkId = "patient-family"
+* item[=].item[=].text = "Family name"
+* item[=].item[=].type = #string
+
+* item[=].item[=].extension[0].url = $initialValue
+* item[=].item[=].extension[=].valueString = "%patient.family"
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.name.family
+"""
+
+
+* item[=].item[+].linkId = "patient-given"
+* item[=].item[=].text = "Given name"
+* item[=].item[=].type = #string
+* item[=].item[=].repeats = true
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.name.given
+"""
+* item[=].item[=].extension[+].url = $initialValue
+* item[=].item[=].extension[=].valueString = "%patient.given"
+
+//* item[=].item[=].extension[+].url = $row
+//* item[=].item[=].extension[=].valueCode = #right
+
+//---
+
+* item[=].item[+].linkId = "patient-dob"
+* item[=].item[=].text = "Date of Birth"
+* item[=].item[=].type = #string
+
+* item[=].item[=].extension[0].url = $initialValue
+* item[=].item[=].extension[=].valueString = "%patient.birthDate"
+
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.birthDate
+"""
+
+
+
+* item[=].item[+].linkId = "patient-gender"
+* item[=].item[=].text = "Gender"
+* item[=].item[=].type = #choice
+* item[=].item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#male "Male"
+* item[=].item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#female "Female"
+* item[=].item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#other "Other"
+* item[=].item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#unknown "Unknown"
+
+* item[=].item[=].extension[0].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.gender
+"""
+
+* item[=].item[=].extension[+].url = $initialValue
+* item[=].item[=].extension[=].valueString = "%patient.gender"
+
+* item[=].item[=].extension[+].url = $control-radio
+* item[=].item[=].extension[=].valueCodeableConcept = http://hl7.org/fhir/questionnaire-item-control#radio-button
+
+
+* item[=].item[+].linkId = "patient-ethnicity"
+* item[=].item[=].text = "Ethnicity"
+* item[=].item[=].type = #choice
+* item[=].item[=].answerValueSet = "https://nzhts.digital.health.nz/fhir/ValueSet/ethnic-group-level-4-code"
+
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.extension - url = http://hl7.org.nz/fhir/StructureDefinition/nz-ethnicity
+"""
+* item[=].item[=].extension[+].url = $extractNotes
+* item[=].item[=].extension[=].valueString = """
+Patient.extension
+"""
 
 //========= administrative section
 * item[+].linkId = "admin"
@@ -49,7 +153,7 @@ Description: "Questionnaire for Lung Cancer histology request"
 
 * item[=].item[=].extension[+].url = $usageNotes
 * item[=].item[=].extension[=].valueString = """
-The name of the person reviewing this form. Only used during the review process.
+The name of the person reviewing this form. Only used during the review process on identifier.
 """
 
 
@@ -63,7 +167,7 @@ The name of the person reviewing this form. Only used during the review process.
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest to practitioner
+Reference from extension on ServiceRequest to practitioner. Practitioner should have conditional create on identifier.
 """
 
 //-------- approved by
@@ -76,7 +180,7 @@ Reference from extension on ServiceRequest to practitioner
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest to practitioner
+Reference from extension on ServiceRequest to practitioner. Practitioner should have conditional create on identifier.
 """
 
 
@@ -91,7 +195,7 @@ Reference from extension on ServiceRequest to practitioner
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Reference from extension on ServiceRequest. Practitioner should have conditional create on identifier.
 """
 
 
@@ -106,7 +210,7 @@ Reference from extension on ServiceRequest
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from ServiceRequest.requester
+Reference from ServiceRequest.requester. Practitioner should have conditional create on identifier.
 """
 
 //-------- copy to
@@ -120,7 +224,7 @@ Reference from ServiceRequest.requester
 * item[=].item[=].extension[=].valueCode = #Practitioner
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Reference from extension on ServiceRequest. Practitioner should have conditional create on identifier.
 """
 
 
@@ -135,7 +239,7 @@ Reference from extension on ServiceRequest
 * item[=].item[=].extension[=].valueCode = #Organization
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Reference from extension on ServiceRequest. Organization should have conditional create on identifier.
 """
 
 
@@ -149,7 +253,7 @@ Reference from extension on ServiceRequest
 * item[=].item[=].extension[=].valueCode = #Organization
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Reference from extension on ServiceRequest. Organisation should have conditional create on identifier.
 """
 
 
@@ -164,7 +268,7 @@ Reference from extension on ServiceRequest
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Reference from extension on ServiceRequest. Organisation should have conditional create on identifier.
 """
 
 * item[=].item[+].linkId = "returntissue"
@@ -173,7 +277,7 @@ Reference from extension on ServiceRequest
 
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest
+Extension on ServiceRequest
 """
 
 * item[=].item[+].linkId = "admincomments"

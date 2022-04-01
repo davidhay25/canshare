@@ -178,6 +178,14 @@
       },
       {
         "reference": {
+          "reference": "Questionnaire/QCervicalCancer"
+        },
+        "name": "QCervicalCancer",
+        "description": "Questionnaire for Cervical Cancer histology request",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Questionnaire/QLungCancer"
         },
         "name": "QLungCancer",

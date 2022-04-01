@@ -7,8 +7,9 @@
 const http = require('http')
 const fs = require('fs');
 
-let QName = 'QLungCancer'
+//let QName = 'QLungCancer'
 //let QName = 'QLungCancerCognito'
+let QName = 'QCervicalCancer'
 
 console.log("Uploading " + QName)
 
