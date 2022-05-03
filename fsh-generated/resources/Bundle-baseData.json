@@ -360,7 +360,7 @@
                   },
                   {
                     "url": "http://canshare.com/fhir/StructureDefinition/questionnaire-extractNotes",
-                    "valueString": "Reference from extension on ServiceRequest. Organisation should have conditional create on identifier."
+                    "valueString": "ServiceRequest.performer Organisation should have conditional create on identifier."
                   }
                 ]
               },

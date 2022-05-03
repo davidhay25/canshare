@@ -253,7 +253,7 @@ Reference from extension on ServiceRequest. Organization should have conditional
 * item[=].item[=].extension[=].valueCode = #Organization
 * item[=].item[=].extension[+].url = $extractNotes
 * item[=].item[=].extension[=].valueString = """
-Reference from extension on ServiceRequest. Organisation should have conditional create on identifier.
+ServiceRequest.performer Organisation should have conditional create on identifier.
 """
 
 

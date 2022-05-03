@@ -26,22 +26,6 @@
     "resource": [
       {
         "reference": {
-          "reference": "StructureDefinition/actnow-complete"
-        },
-        "name": "ActNow review Composition",
-        "description": "Defines the ActNow review composition",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
-          "reference": "StructureDefinition/cs-extracted-Observation"
-        },
-        "name": "Extracted Observations",
-        "description": "Describes the supported content of extracted observations",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
           "reference": "StructureDefinition/cs-Questionnaire"
         },
         "name": "Questionnaire for canShare",
@@ -62,14 +46,6 @@
         },
         "name": "Smoking Status",
         "description": "An observation for smoking status",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
-          "reference": "StructureDefinition/regimen-careplan"
-        },
-        "name": "Regimen Careplan",
-        "description": "A CarePlan that represents a PlanDefinition being applied to a Patient.",
         "exampleBoolean": false
       },
       {
